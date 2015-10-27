@@ -17,11 +17,14 @@ import Foundation
 //
 
 import UIKit
+import Parse
+import Bolts
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
+    let loginViewControllerSegue = "LoginSuccessful"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +39,21 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
-        let userEmail = userEmailTextField.text;
-        let userPassword = userPasswordTextField.text;
         
-        PFUser.logInWithUsernameInBackground(userEmail, password: userPassword)
-            {(user, error) in
-                if user != nil{
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }
-                else{
-                    println("Error")
-                }
+        var userEmail = userEmailTextField.text
+        userEmail = userEmail.lowercaseString
+        var userPassword = userPasswordTextField.text
+        
+        PFUser.logInWithUsernameInBackground(userEmail, password: userPassword){
+            user, error in
+            if user != nil{
+                self.performSegueWithIdentifier(self.loginViewControllerSegue, sender: nil)
+            }else if let error = error{
+                self.showErrorView(error)
+               
+            }
         }
-        
-        
-        
-        
     }
+        
 }
 

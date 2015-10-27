@@ -30,6 +30,7 @@
 		CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */; };
 		CF1CE4441BDECA27007AA9A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4431BDECA27007AA9A4 /* Main.storyboard */; };
 		CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */; };
+		CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF1CE4431BDECA27007AA9A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */,
 				CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */,
 				CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */,
+				CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */,
 				CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */,
 				CF1CE4431BDECA27007AA9A4 /* Main.storyboard */,
 				CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */,
@@ -292,6 +295,7 @@
 				CF1CE4401BDEB069007AA9A4 /* SoundByte-Bridge-Header.m in Sources */,
 				CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */,
 				CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */,
+				CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */,
 				CF1CE4001BDE97EB007AA9A4 /* SoundByte.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +497,7 @@
 				CF1CE41B1BDE97EB007AA9A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CF1CE41C1BDE97EB007AA9A4 /* Build configuration list for PBXNativeTarget "SoundByteTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +506,7 @@
 				CF1CE41E1BDE97EB007AA9A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

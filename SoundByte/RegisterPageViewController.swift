@@ -16,7 +16,8 @@ class RegisterPageViewController: UIViewController {
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
-    let user = PFObject(className: "User")
+    let signUpSuccessful = "SignupSuccessful"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +33,9 @@ class RegisterPageViewController: UIViewController {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
     }
+    
+    
+    
     
     @IBAction func registerButton(sender: UIButton) {
         let userEmail = userEmailTextField.text
@@ -63,30 +67,22 @@ class RegisterPageViewController: UIViewController {
             return
         }
         
+        
         //Store data
-        
-        user.setObject(userEmail, forKey: "Email")
-        user.setObject(userPassword, forKey: "Password")
-        user.saveInBackgroundWithBlock {(succeeded,error) -> Void in
+        let user = PFUser()
+        user.username = userEmailTextField.text
+        user.password = userPasswordTextField.text
+        user.signUpInBackgroundWithBlock {succeeded,error in
             if succeeded{
-                self.displayMyAlertMessage("Registration is successful. Thank you!")
-                self.performSegueWithIdentifier("register", sender: self)
-                
+                self.performSegueWithIdentifier(self.signUpSuccessful, sender: nil)
             }
-            else{
-                println("Error: \(error!) \(error!.userInfo!)")
+            else if let error = error{
+                self.showErrorView(error)
             }
+            
         }
         
-        var myAlert = UIAlertController(title:"Alert", message: "Registration is successful. Thank you!", preferredStyle:UIAlertControllerStyle.Alert);
-        
-        let okAction = UIAlertAction(title:"OK", style:UIAlertActionStyle.Default){action in self.dismissViewControllerAnimated(true, completion: nil);
-        }
-        
-        myAlert.addAction(okAction)
-        self.presentViewController(myAlert, animated:true, completion:nil)
-        
-        //Display alert message with confirmation
+               //Display alert message with confirmation
         
     }
     func displayMyAlertMessage(userMessage:String){
