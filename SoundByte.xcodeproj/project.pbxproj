@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */; };
-		CF1CE4001BDE97EB007AA9A4 /* SoundByte.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE3FE1BDE97EB007AA9A4 /* SoundByte.xcdatamodeld */; };
 		CF1CE4021BDE97EB007AA9A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */; };
 		CF1CE4071BDE97EB007AA9A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */; };
 		CF1CE40A1BDE97EB007AA9A4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4081BDE97EB007AA9A4 /* LaunchScreen.xib */; };
-		CF1CE4161BDE97EB007AA9A4 /* SoundByteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4151BDE97EB007AA9A4 /* SoundByteTests.swift */; };
 		CF1CE4271BDE9A27007AA9A4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE4241BDE9A27007AA9A4 /* Bolts.framework */; };
 		CF1CE4281BDE9A27007AA9A4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE4251BDE9A27007AA9A4 /* Parse.framework */; };
 		CF1CE4291BDE9A27007AA9A4 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE4261BDE9A27007AA9A4 /* ParseUI.framework */; };
@@ -31,6 +29,9 @@
 		CF1CE4441BDECA27007AA9A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4431BDECA27007AA9A4 /* Main.storyboard */; };
 		CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */; };
 		CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */; };
+		CFE34DAF1BE122C10048F12C /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34D741BE122C10048F12C /* Rdio.framework */; };
+		CFE34DB11BE1231C0048F12C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34DB01BE1231C0048F12C /* CoreMedia.framework */; };
+		F91486E6F43F0E8BA53B048D /* libPods-SoundByte.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEABD1CE054E55A2BA8BBFDF /* libPods-SoundByte.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		781D2C69B1A2CD1540177A39 /* Pods-SoundByte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.debug.xcconfig"; sourceTree = "<group>"; };
+		B010D826907277282D7E27BB /* Pods-SoundByte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.release.xcconfig"; sourceTree = "<group>"; };
+		CEABD1CE054E55A2BA8BBFDF /* libPods-SoundByte.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundByte.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF1CE3F71BDE97EB007AA9A4 /* SoundByte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundByte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF1CE3FB1BDE97EB007AA9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,8 +56,6 @@
 		CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CF1CE4091BDE97EB007AA9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CF1CE40F1BDE97EB007AA9A4 /* SoundByteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundByteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF1CE4141BDE97EB007AA9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF1CE4151BDE97EB007AA9A4 /* SoundByteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundByteTests.swift; sourceTree = "<group>"; };
 		CF1CE4241BDE9A27007AA9A4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CF1CE4251BDE9A27007AA9A4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		CF1CE4261BDE9A27007AA9A4 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -73,6 +75,8 @@
 		CF1CE4431BDECA27007AA9A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		CFE34D741BE122C10048F12C /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = "rdio-ios-4.0.0/Rdio.framework"; sourceTree = "<group>"; };
+		CFE34DB01BE1231C0048F12C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +84,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE34DB11BE1231C0048F12C /* CoreMedia.framework in Frameworks */,
 				CF1CE43D1BDE9A8B007AA9A4 /* libsqlite3.0.dylib in Frameworks */,
 				CF1CE43B1BDE9A84007AA9A4 /* libz.1.2.5.dylib in Frameworks */,
 				CF1CE4391BDE9A7A007AA9A4 /* SystemConfiguration.framework in Frameworks */,
 				CF1CE4371BDE9A73007AA9A4 /* StoreKit.framework in Frameworks */,
 				CF1CE4351BDE9A6D007AA9A4 /* Security.framework in Frameworks */,
 				CF1CE4331BDE9A67007AA9A4 /* QuartzCore.framework in Frameworks */,
+				CFE34DAF1BE122C10048F12C /* Rdio.framework in Frameworks */,
 				CF1CE4311BDE9A5F007AA9A4 /* CoreLocation.framework in Frameworks */,
 				CF1CE42F1BDE9A58007AA9A4 /* CoreGraphics.framework in Frameworks */,
 				CF1CE42D1BDE9A51007AA9A4 /* CFNetwork.framework in Frameworks */,
@@ -93,6 +99,7 @@
 				CF1CE4291BDE9A27007AA9A4 /* ParseUI.framework in Frameworks */,
 				CF1CE4281BDE9A27007AA9A4 /* Parse.framework in Frameworks */,
 				CF1CE4271BDE9A27007AA9A4 /* Bolts.framework in Frameworks */,
+				F91486E6F43F0E8BA53B048D /* libPods-SoundByte.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,13 +113,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12D4F172CF78994499666929 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				781D2C69B1A2CD1540177A39 /* Pods-SoundByte.debug.xcconfig */,
+				B010D826907277282D7E27BB /* Pods-SoundByte.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CF1CE3EE1BDE97EB007AA9A4 = {
 			isa = PBXGroup;
 			children = (
 				CF1CE3F91BDE97EB007AA9A4 /* SoundByte */,
-				CF1CE4121BDE97EB007AA9A4 /* SoundByteTests */,
 				CF1CE3F81BDE97EB007AA9A4 /* Products */,
 				CF1CE41F1BDE98DE007AA9A4 /* Frameworks */,
+				12D4F172CF78994499666929 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,26 +168,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CF1CE4121BDE97EB007AA9A4 /* SoundByteTests */ = {
-			isa = PBXGroup;
-			children = (
-				CF1CE4151BDE97EB007AA9A4 /* SoundByteTests.swift */,
-				CF1CE4131BDE97EB007AA9A4 /* Supporting Files */,
-			);
-			path = SoundByteTests;
-			sourceTree = "<group>";
-		};
-		CF1CE4131BDE97EB007AA9A4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CF1CE4141BDE97EB007AA9A4 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		CF1CE41F1BDE98DE007AA9A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFE34DB01BE1231C0048F12C /* CoreMedia.framework */,
+				CFE34D741BE122C10048F12C /* Rdio.framework */,
 				CF1CE43C1BDE9A8B007AA9A4 /* libsqlite3.0.dylib */,
 				CF1CE43A1BDE9A84007AA9A4 /* libz.1.2.5.dylib */,
 				CF1CE4381BDE9A7A007AA9A4 /* SystemConfiguration.framework */,
@@ -185,6 +186,7 @@
 				CF1CE4241BDE9A27007AA9A4 /* Bolts.framework */,
 				CF1CE4251BDE9A27007AA9A4 /* Parse.framework */,
 				CF1CE4261BDE9A27007AA9A4 /* ParseUI.framework */,
+				CEABD1CE054E55A2BA8BBFDF /* libPods-SoundByte.a */,
 			);
 			name = Frameworks;
 			path = SoundByte.xcodeproj;
@@ -197,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF1CE4191BDE97EB007AA9A4 /* Build configuration list for PBXNativeTarget "SoundByte" */;
 			buildPhases = (
+				574CBC4A7CD5BCD09B83A6CA /* Check Pods Manifest.lock */,
 				CF1CE3F31BDE97EB007AA9A4 /* Sources */,
 				CF1CE3F41BDE97EB007AA9A4 /* Frameworks */,
 				CF1CE3F51BDE97EB007AA9A4 /* Resources */,
+				F3E6FD03BD2EE47A08472FA5 /* Embed Pods Frameworks */,
+				36D3F8F8C353BC27628D5D4D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,6 +290,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36D3F8F8C353BC27628D5D4D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		574CBC4A7CD5BCD09B83A6CA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E6FD03BD2EE47A08472FA5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CF1CE3F31BDE97EB007AA9A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -296,7 +349,6 @@
 				CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */,
 				CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */,
 				CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */,
-				CF1CE4001BDE97EB007AA9A4 /* SoundByte.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +356,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1CE4161BDE97EB007AA9A4 /* SoundByteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,15 +464,21 @@
 		};
 		CF1CE41A1BDE97EB007AA9A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 781D2C69B1A2CD1540177A39 /* Pods-SoundByte.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundByte.xcodeproj",
+					"$(PROJECT_DIR)/SoundByte.xcodeproj/rdio-ios-4.0.0",
 				);
 				INFOPLIST_FILE = SoundByte/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundByte/SoundByte-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -430,15 +487,22 @@
 		};
 		CF1CE41B1BDE97EB007AA9A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B010D826907277282D7E27BB /* Pods-SoundByte.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundByte.xcodeproj",
+					"$(PROJECT_DIR)/SoundByte.xcodeproj/rdio-ios-4.0.0",
 				);
 				INFOPLIST_FILE = SoundByte/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundByte/SoundByte-Bridging-Header.h";
 			};
