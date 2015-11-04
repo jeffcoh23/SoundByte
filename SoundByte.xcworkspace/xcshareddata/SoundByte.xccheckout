@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A49011AA-AD24-43A9-8E02-E65B7CF5B075</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SoundByte</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</key>
+		<string>https://github.com/jeffcoh23/SoundByte.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SoundByte.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jeffcoh23/SoundByte.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SoundByte</string>
+		</dict>
+	</array>
+</dict>
+</plist>
