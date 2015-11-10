@@ -55,18 +55,5 @@ class LoginViewController: UIViewController {
         }
     }
         
-//        var query: PFQuery = PFQuery(className: "_User")
-//        query.whereKey("Email", equalTo: userEmail)
-//        query.whereKey("Password", equalTo: userPassword)
-//        query.findObjectsInBackgroundWithBlock
-//            {(user, error) -> Void in
-//                if error == nil{
-//                    self.dismissViewControllerAnimated(true, completion: nil)
-//                    
-//                }
-//                else{
-//                    println("Error")
-//                }
-//        }
 }
 
