@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A0DEB2991B1DA46A76477C5C'
-               BlueprintName = 'Pods-SoundByte'
+               BlueprintIdentifier = 'FD2F09CEC3D2DA5E7C4F0633'
+               BlueprintName = 'ConvenienceKit-ConvenienceKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_SoundByte.framework'>
+               BuildableName = 'ConvenienceKit.bundle'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
