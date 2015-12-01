@@ -26,10 +26,10 @@
 		CF1CE43D1BDE9A8B007AA9A4 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE43C1BDE9A8B007AA9A4 /* libsqlite3.0.dylib */; };
 		CF1CE4401BDEB069007AA9A4 /* SoundByte-Bridge-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE43F1BDEB069007AA9A4 /* SoundByte-Bridge-Header.m */; };
 		CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */; };
-		CF1CE4441BDECA27007AA9A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4431BDECA27007AA9A4 /* Main.storyboard */; };
 		CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */; };
 		CF254E971BE290B2008486A5 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF254E961BE290B2008486A5 /* CustomTableViewCell.swift */; };
 		CF254E991BE2914F008486A5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF254E981BE2914F008486A5 /* TableViewController.swift */; };
+		CFAEC7451C0E3373002E4F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAEC7441C0E3373002E4F55 /* Main.storyboard */; };
 		CFB339F11BE1DDBF00FAC89C /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB339F01BE1DDBF00FAC89C /* FriendsTableViewController.swift */; };
 		CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */; };
 		CFE34DAF1BE122C10048F12C /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34D741BE122C10048F12C /* Rdio.framework */; };
@@ -75,10 +75,10 @@
 		CF1CE43E1BDEB069007AA9A4 /* SoundByte-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundByte-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF1CE43F1BDEB069007AA9A4 /* SoundByte-Bridge-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SoundByte-Bridge-Header.m"; sourceTree = "<group>"; };
 		CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CF1CE4431BDECA27007AA9A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		CF254E961BE290B2008486A5 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CF254E981BE2914F008486A5 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		CFAEC7441C0E3373002E4F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CFB339F01BE1DDBF00FAC89C /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		CFE34D741BE122C10048F12C /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = "rdio-ios-4.0.0/Rdio.framework"; sourceTree = "<group>"; };
@@ -150,6 +150,7 @@
 		CF1CE3F91BDE97EB007AA9A4 /* SoundByte */ = {
 			isa = PBXGroup;
 			children = (
+				CFAEC7441C0E3373002E4F55 /* Main.storyboard */,
 				CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */,
 				CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */,
 				CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */,
@@ -157,7 +158,6 @@
 				CF254E981BE2914F008486A5 /* TableViewController.swift */,
 				CF254E961BE290B2008486A5 /* CustomTableViewCell.swift */,
 				CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */,
-				CF1CE4431BDECA27007AA9A4 /* Main.storyboard */,
 				CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */,
 				CF1CE4081BDE97EB007AA9A4 /* LaunchScreen.xib */,
 				CF1CE43F1BDEB069007AA9A4 /* SoundByte-Bridge-Header.m */,
@@ -284,9 +284,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFAEC7451C0E3373002E4F55 /* Main.storyboard in Resources */,
 				CF1CE40A1BDE97EB007AA9A4 /* LaunchScreen.xib in Resources */,
 				CF1CE4071BDE97EB007AA9A4 /* Images.xcassets in Resources */,
-				CF1CE4441BDECA27007AA9A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
