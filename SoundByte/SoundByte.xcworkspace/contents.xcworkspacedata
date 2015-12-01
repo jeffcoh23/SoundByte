@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:AppDelegate.swift">
+   </FileRef>
+   <Group
+      location = "group:Base.lproj"
+      name = "Base.lproj">
+      <FileRef
+         location = "group:Main.storyboard">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:CustomCell.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CustomTableViewCell.swift">
+   </FileRef>
+   <FileRef
+      location = "group:FriendSearchTableViewCell.swift">
+   </FileRef>
+   <FileRef
+      location = "group:FriendsSearchViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:FriendsTableViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:LaunchScreen.xib">
+   </FileRef>
+   <FileRef
+      location = "group:LoginViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Main.storyboard">
+   </FileRef>
+   <FileRef
+      location = "group:ParseHelper.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Podfile">
+   </FileRef>
+   <FileRef
+      location = "group:RegisterPageViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:RegisterViewController.swift">
+   </FileRef>
+   <Group
+      location = "group:SoundByte"
+      name = "SoundByte">
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:SoundByte.xcdatamodeld">
+   </FileRef>
+   <FileRef
+      location = "group:SoundByte.xcworkspace">
+   </FileRef>
+   <FileRef
+      location = "group:TableViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:UIViewControllerExtension.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ViewController.swift">
+   </FileRef>
+</Workspace>

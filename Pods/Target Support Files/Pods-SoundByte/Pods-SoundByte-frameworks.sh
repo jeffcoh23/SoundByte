@@ -82,3 +82,14 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-SoundByte/AFNetworking.framework"
+  install_framework "Pods-SoundByte/AFOAuth2Manager.framework"
+  install_framework "Pods-SoundByte/ConvenienceKit.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-SoundByte/AFNetworking.framework"
+  install_framework "Pods-SoundByte/AFOAuth2Manager.framework"
+  install_framework "Pods-SoundByte/ConvenienceKit.framework"
+fi

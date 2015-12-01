@@ -5,11 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A49011AA-AD24-43A9-8E02-E65B7CF5B075</string>
+	<string>FF54BA36-C5D0-4C02-B47F-F5537891930F</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SoundByte</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0A891745A5ADA564E7F5DAC563AD5C8DD4CC37D3</key>
+		<string>https://github.com/jeffcoh23/SoundByte.git</string>
 		<key>4D1DA99861A14CC07A32068D83A5CEFC365C2657</key>
 		<string>https://github.com/jeffcoh23/SoundByte</string>
 		<key>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</key>
@@ -19,17 +21,19 @@
 	<string>SoundByte.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>0A891745A5ADA564E7F5DAC563AD5C8DD4CC37D3</key>
+		<string>..SoundByte</string>
 		<key>4D1DA99861A14CC07A32068D83A5CEFC365C2657</key>
-		<string>../SoundByte/</string>
-		<key>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</key>
 		<string>..</string>
+		<key>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/jeffcoh23/SoundByte.git</string>
+	<string>https://github.com/jeffcoh23/SoundByte</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</string>
+	<string>4D1DA99861A14CC07A32068D83A5CEFC365C2657</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -38,7 +42,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SoundByte</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
@@ -47,6 +51,14 @@
 			<string>4D1DA99861A14CC07A32068D83A5CEFC365C2657</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SoundByte</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0A891745A5ADA564E7F5DAC563AD5C8DD4CC37D3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SoundByteSoundByte</string>
 		</dict>
 	</array>
 </dict>

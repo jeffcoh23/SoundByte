@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D80BFF75C45C620609B537F /* Pods_SoundByte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AF81E996464C4841DC437B /* Pods_SoundByte.framework */; };
 		CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */; };
 		CF1CE4021BDE97EB007AA9A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */; };
 		CF1CE4071BDE97EB007AA9A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */; };
@@ -34,7 +35,9 @@
 		CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */; };
 		CFE34DAF1BE122C10048F12C /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34D741BE122C10048F12C /* Rdio.framework */; };
 		CFE34DB11BE1231C0048F12C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34DB01BE1231C0048F12C /* CoreMedia.framework */; };
-		F91486E6F43F0E8BA53B048D /* libPods-SoundByte.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEABD1CE054E55A2BA8BBFDF /* libPods-SoundByte.a */; };
+		CFFC56A21C0E38A20062E102 /* FriendSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC569F1C0E38A20062E102 /* FriendSearchTableViewCell.swift */; };
+		CFFC56A31C0E38A20062E102 /* FriendsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC56A01C0E38A20062E102 /* FriendsSearchViewController.swift */; };
+		CFFC56A41C0E38A20062E102 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC56A11C0E38A20062E102 /* ParseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +52,8 @@
 
 /* Begin PBXFileReference section */
 		781D2C69B1A2CD1540177A39 /* Pods-SoundByte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.debug.xcconfig"; sourceTree = "<group>"; };
+		A6AF81E996464C4841DC437B /* Pods_SoundByte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundByte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B010D826907277282D7E27BB /* Pods-SoundByte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.release.xcconfig"; sourceTree = "<group>"; };
-		CEABD1CE054E55A2BA8BBFDF /* libPods-SoundByte.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundByte.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF1CE3F71BDE97EB007AA9A4 /* SoundByte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundByte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF1CE3FB1BDE97EB007AA9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +86,9 @@
 		CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		CFE34D741BE122C10048F12C /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = "rdio-ios-4.0.0/Rdio.framework"; sourceTree = "<group>"; };
 		CFE34DB01BE1231C0048F12C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CFFC569F1C0E38A20062E102 /* FriendSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewCell.swift; sourceTree = "<group>"; };
+		CFFC56A01C0E38A20062E102 /* FriendsSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewController.swift; sourceTree = "<group>"; };
+		CFFC56A11C0E38A20062E102 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +111,7 @@
 				CF1CE4291BDE9A27007AA9A4 /* ParseUI.framework in Frameworks */,
 				CF1CE4281BDE9A27007AA9A4 /* Parse.framework in Frameworks */,
 				CF1CE4271BDE9A27007AA9A4 /* Bolts.framework in Frameworks */,
-				F91486E6F43F0E8BA53B048D /* libPods-SoundByte.a in Frameworks */,
+				0D80BFF75C45C620609B537F /* Pods_SoundByte.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +156,9 @@
 		CF1CE3F91BDE97EB007AA9A4 /* SoundByte */ = {
 			isa = PBXGroup;
 			children = (
+				CFFC569F1C0E38A20062E102 /* FriendSearchTableViewCell.swift */,
+				CFFC56A01C0E38A20062E102 /* FriendsSearchViewController.swift */,
+				CFFC56A11C0E38A20062E102 /* ParseHelper.swift */,
 				CFAEC7441C0E3373002E4F55 /* Main.storyboard */,
 				CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */,
 				CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */,
@@ -195,7 +204,7 @@
 				CF1CE4241BDE9A27007AA9A4 /* Bolts.framework */,
 				CF1CE4251BDE9A27007AA9A4 /* Parse.framework */,
 				CF1CE4261BDE9A27007AA9A4 /* ParseUI.framework */,
-				CEABD1CE054E55A2BA8BBFDF /* libPods-SoundByte.a */,
+				A6AF81E996464C4841DC437B /* Pods_SoundByte.framework */,
 			);
 			name = Frameworks;
 			path = SoundByte.xcodeproj;
@@ -357,10 +366,13 @@
 				CF1CE4401BDEB069007AA9A4 /* SoundByte-Bridge-Header.m in Sources */,
 				CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */,
 				CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */,
+				CFFC56A21C0E38A20062E102 /* FriendSearchTableViewCell.swift in Sources */,
+				CFFC56A31C0E38A20062E102 /* FriendsSearchViewController.swift in Sources */,
 				CFB339F11BE1DDBF00FAC89C /* FriendsTableViewController.swift in Sources */,
 				CF254E971BE290B2008486A5 /* CustomTableViewCell.swift in Sources */,
 				CF254E991BE2914F008486A5 /* TableViewController.swift in Sources */,
 				CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */,
+				CFFC56A41C0E38A20062E102 /* ParseHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
