@@ -18,29 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        
+        Parse.enableLocalDatastore()
         // Initialize Parse.
         Parse.setApplicationId("WtGRPWzBj8ZHiNsGOTqXWIVE1lPMafB2jTDyhi6H",
             clientKey: "UmJp9oYG8HhqFZk4aXHyD0QJZlmNcPA5AuztdhKb")
         
-//        var tableVC:FriendsTableViewController = FriendsTableViewController(className: "User")
-//        tableVC.title = "Friends"
-//        
-//        UINavigationBar.appearance().tintColor = UIColor(red: 0.05, green: 0.47, blue: 0.91, alpha: 1.0)
-//        UINavigationBar.appearance().barTintColor = UIColor(red: 0.05, green: 0.47, blue: 0.91, alpha: 1.0)
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-//        
-//        
-//        var navigationVC:UINavigationController = UINavigationController(rootViewController: tableVC)
-//        
-//        let frame = UIScreen.mainScreen().bounds
-//        window = UIWindow(frame: frame)
-//        
-//        window!.rootViewController = navigationVC
-//        window!.makeKeyAndVisible()
         return true
     }
+    
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

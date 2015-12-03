@@ -16,6 +16,7 @@ public var SelectedSongNumber = Int()
 
 class TimelineViewController: UIViewController, AVAudioPlayerDelegate{
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -25,10 +26,11 @@ class TimelineViewController: UIViewController, AVAudioPlayerDelegate{
     var IDArray = [String]()
     var NameArray = [String]()
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
     
     
     let followingQuery = PFQuery(className: "Follow")
+    NSLog("\(PFUser.currentUser())")
     followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
     let playlistFromFollowedUsers = PFQuery(className: "Playlist")

@@ -27,6 +27,9 @@ class LoginViewController: UIViewController {
     let loginViewControllerSegue = "LoginSuccessful"
     
     override func viewDidLoad() {
+        if PFUser.currentUser() != nil{
+            self.performSegueWithIdentifier(self.loginViewControllerSegue, sender: nil)
+        }
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
