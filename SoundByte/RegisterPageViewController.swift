@@ -81,10 +81,9 @@ class RegisterPageViewController: UIViewController {
             }
             
         }
-        
-               //Display alert message with confirmation
-        
+    
     }
+    //Display alert message with confirmation
     func displayMyAlertMessage(userMessage:String){
         var myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert);
         
@@ -94,19 +93,6 @@ class RegisterPageViewController: UIViewController {
         
         self.presentViewController(myAlert, animated:true, completion:nil);
     }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }
 
