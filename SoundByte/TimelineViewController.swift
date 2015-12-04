@@ -59,7 +59,6 @@ class TimelineViewController: UIViewController, AVAudioPlayerDelegate{
     
     func grabSong(){
         var SongQuery = PFQuery(className: "Playlist")
-        NSLog("\(SongQuery)")
         SongQuery.getObjectInBackgroundWithId(IDArray[SelectedSongNumber], block: {
             (object : PFObject?, error: NSError?) -> Void in
             
