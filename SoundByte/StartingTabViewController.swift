@@ -9,27 +9,11 @@
 import UIKit
 import Parse
 
-class StartingTabViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-
+class StartingTabViewController: UITabBarController{
     
     override func viewWillAppear(animated: Bool) {
-        NSLog("\(PFUser.currentUser())")
-        if (PFUser.currentUser() == nil){
-            dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
-                self.presentViewController(viewController, animated: true, completion: nil)
-                
-            })
-        }
-        else{
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                //self.seg
-            })
-        }
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        super.viewDidLoad()
+
     }
    }

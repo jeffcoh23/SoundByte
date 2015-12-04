@@ -26,9 +26,6 @@ class TimelineViewController: UIViewController, AVAudioPlayerDelegate{
     var IDArray = [String]()
     var NameArray = [String]()
     override func viewDidLoad() {
-        //super.viewDidLoad()
-    
-    
     let followingQuery = PFQuery(className: "Follow")
     NSLog("\(PFUser.currentUser())")
     followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
@@ -46,10 +43,15 @@ class TimelineViewController: UIViewController, AVAudioPlayerDelegate{
         (result: [AnyObject]?, error: NSError?) -> Void in
         
         var songIDs = result as! [PFObject]
+        if songIDs.count < 1{
+            return
+        }
+        else{
         for i in 0...songIDs.count-1{
             self.IDArray.append(songIDs[i].valueForKey("objectId") as! String)
             self.NameArray.append(songIDs[i].valueForKey("songName") as! String)
             self.tableView.reloadData()
+            }
         }
         
         })
