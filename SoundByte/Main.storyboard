@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bqu-0H-eeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="418" y="-394"/>
+            <point key="canvasLocation" x="418" y="-362"/>
         </scene>
         <!--Login-->
         <scene sceneID="Hpm-ld-oeC">
@@ -116,7 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-Lb-RQ1">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-Lb-RQ1">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7d7-Uv-pWG"/>
@@ -126,7 +126,7 @@
                                     <outlet property="delegate" destination="zp4-Ww-yiD" id="pby-Cu-Lli"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-kd-Xtz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-kd-Xtz">
                                 <rect key="frame" x="0.0" y="108" width="320" height="411"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="1096" y="980"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Starting Tab View Controller-->
         <scene sceneID="Mtv-FZ-btW">
             <objects>
-                <tabBarController id="H46-WE-5id" sceneMemberID="viewController">
+                <tabBarController id="H46-WE-5id" customClass="StartingTabViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="9KE-7u-MAB"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -276,7 +276,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqy-cq-3sq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="336"/>
+            <point key="canvasLocation" x="879" y="316"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="gai-aK-TSS">
@@ -374,10 +374,10 @@
             </objects>
             <point key="canvasLocation" x="1360" y="-362"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="ymb-18-P90">
             <objects>
-                <viewController storyboardIdentifier="Home" id="LLx-Zv-4su" customClass="HomeViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" id="LLx-Zv-4su" customClass="SettingsViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9KI-bc-1G5"/>
                         <viewControllerLayoutGuide type="bottom" id="PvY-gv-z4i"/>
@@ -433,7 +433,7 @@
                             <constraint firstAttribute="centerX" secondItem="21Y-Nw-8Ep" secondAttribute="centerX" id="YTG-WM-Dv2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yrJ-1Z-Zwg"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="yrJ-1Z-Zwg"/>
                     <navigationItem key="navigationItem" id="8xx-If-nD5"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -442,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGb-R3-YBR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1549" y="980"/>
+            <point key="canvasLocation" x="1491" y="980"/>
         </scene>
     </scenes>
     <resources>

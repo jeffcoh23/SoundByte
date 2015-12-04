@@ -10,7 +10,7 @@
 import UIKit
 import Parse
 
-class HomeViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     @IBOutlet weak var userNameLabel: UILabel!
     
