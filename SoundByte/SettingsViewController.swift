@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         // Show the current visitor's username
         if let pUserName = PFUser.currentUser()?.username {
-            self.userNameLabel.text = "Hello @" + pUserName
+            self.userNameLabel.text = "Hello " + pUserName
         }
     }
     
