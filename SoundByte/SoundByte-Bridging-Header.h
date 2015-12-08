@@ -6,3 +6,4 @@
 #import <ParseUI/ParseUI.h>
 #import <Bolts/Bolts.h>
 #import "Rdio/Rdio.h"
+#import <Spotify/Spotify.h>

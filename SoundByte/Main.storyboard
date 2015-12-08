@@ -162,7 +162,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-Lb-RQ1">
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-Lb-RQ1">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7d7-Uv-pWG"/>
@@ -172,7 +172,7 @@
                                     <outlet property="delegate" destination="zp4-Ww-yiD" id="pby-Cu-Lli"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-kd-Xtz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-kd-Xtz">
                                 <rect key="frame" x="0.0" y="108" width="320" height="411"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -287,7 +287,7 @@
         <!--Song Search-->
         <scene sceneID="tEy-Pk-g5A">
             <objects>
-                <viewController id="lbB-OO-luo" sceneMemberID="viewController">
+                <viewController id="lbB-OO-luo" customClass="SongSearchViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iQV-d0-fBf"/>
                         <viewControllerLayoutGuide type="bottom" id="LgP-RW-82e"/>
@@ -295,9 +295,23 @@
                     <view key="view" contentMode="scaleToFill" id="1ih-bG-x4f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gI-F8-wzo">
+                                <rect key="frame" x="105" y="269" width="111" height="30"/>
+                                <state key="normal" title="Login To Spotify">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginWithSpotify:" destination="lbB-OO-luo" eventType="touchUpInside" id="7j7-Le-9Mc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Song Search" id="9xq-Hx-ovK"/>
+                    <connections>
+                        <outlet property="spotifyLoginButton" destination="0gI-F8-wzo" id="LQc-cK-4vu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJ2-uo-nY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

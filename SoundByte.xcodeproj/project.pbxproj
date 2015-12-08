@@ -502,6 +502,7 @@
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"$(inherited)",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundByte/SoundByte-Bridging-Header.h";
@@ -526,6 +527,7 @@
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"$(inherited)",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundByte/SoundByte-Bridging-Header.h";
