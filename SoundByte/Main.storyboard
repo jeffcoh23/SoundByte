@@ -73,6 +73,12 @@
                                     <segue destination="6vn-aN-KsR" kind="show" identifier="registerView" id="Nyz-mh-aJ1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atv-Yp-UfV">
+                                <rect key="frame" x="16" y="142" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlp-YR-dKG">
                                 <rect key="frame" x="16" y="189" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,12 +90,6 @@
                                     <action selector="loginButtonTapped:" destination="IWl-8W-0i3" eventType="touchUpInside" id="cw2-RR-chA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atv-Yp-UfV">
-                                <rect key="frame" x="16" y="142" width="81" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -143,7 +143,7 @@
                     <connections>
                         <outlet property="userEmailTextField" destination="G5P-IA-EjI" id="2xj-Cu-eoL"/>
                         <outlet property="userPasswordTextField" destination="z3P-te-LD8" id="UtT-jB-4WU"/>
-                        <segue destination="H46-WE-5id" kind="show" identifier="LoginSuccessful" id="ZEa-DV-Ekl"/>
+                        <segue destination="H46-WE-5id" kind="presentation" identifier="LoginSuccessful" id="UnP-Va-OPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I38-rK-jMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -305,11 +305,28 @@
                                     <action selector="loginWithSpotify:" destination="lbB-OO-luo" eventType="touchUpInside" id="7j7-Le-9Mc"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMP-L1-oiU">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lbB-OO-luo" id="P0F-rA-60C"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tMP-L1-oiU" firstAttribute="top" secondItem="iQV-d0-fBf" secondAttribute="bottom" symbolic="YES" id="qhh-Gj-1BQ"/>
+                            <constraint firstItem="tMP-L1-oiU" firstAttribute="top" secondItem="iQV-d0-fBf" secondAttribute="bottom" symbolic="YES" id="vyO-w9-mwU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vyO-w9-mwU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Song Search" id="9xq-Hx-ovK"/>
                     <connections>
+                        <outlet property="songSearchBar" destination="tMP-L1-oiU" id="3eY-Tq-nno"/>
                         <outlet property="spotifyLoginButton" destination="0gI-F8-wzo" id="LQc-cK-4vu"/>
                     </connections>
                 </viewController>
@@ -522,7 +539,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46G-Tl-2eV">
                                         <rect key="frame" x="13" y="191" width="241" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
