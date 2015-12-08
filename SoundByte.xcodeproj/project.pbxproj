@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D80BFF75C45C620609B537F /* Pods_SoundByte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AF81E996464C4841DC437B /* Pods_SoundByte.framework */; };
 		CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */; };
-		CF1CE4021BDE97EB007AA9A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */; };
+		CF1CE4021BDE97EB007AA9A4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4011BDE97EB007AA9A4 /* SettingsViewController.swift */; };
 		CF1CE4071BDE97EB007AA9A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */; };
 		CF1CE40A1BDE97EB007AA9A4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE4081BDE97EB007AA9A4 /* LaunchScreen.xib */; };
 		CF1CE4271BDE9A27007AA9A4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE4241BDE9A27007AA9A4 /* Bolts.framework */; };
@@ -25,19 +25,20 @@
 		CF1CE4391BDE9A7A007AA9A4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE4381BDE9A7A007AA9A4 /* SystemConfiguration.framework */; };
 		CF1CE43B1BDE9A84007AA9A4 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE43A1BDE9A84007AA9A4 /* libz.1.2.5.dylib */; };
 		CF1CE43D1BDE9A8B007AA9A4 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE43C1BDE9A8B007AA9A4 /* libsqlite3.0.dylib */; };
-		CF1CE4401BDEB069007AA9A4 /* SoundByte-Bridge-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE43F1BDEB069007AA9A4 /* SoundByte-Bridge-Header.m */; };
 		CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */; };
 		CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */; };
-		CF254E971BE290B2008486A5 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF254E961BE290B2008486A5 /* CustomTableViewCell.swift */; };
-		CF254E991BE2914F008486A5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF254E981BE2914F008486A5 /* TableViewController.swift */; };
+		CF626F2E1C164893006093A9 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF626F2D1C164893006093A9 /* Spotify.framework */; };
 		CFAEC7451C0E3373002E4F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAEC7441C0E3373002E4F55 /* Main.storyboard */; };
-		CFB339F11BE1DDBF00FAC89C /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB339F01BE1DDBF00FAC89C /* FriendsTableViewController.swift */; };
+		CFB339F11BE1DDBF00FAC89C /* StartingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */; };
 		CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */; };
 		CFE34DAF1BE122C10048F12C /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34D741BE122C10048F12C /* Rdio.framework */; };
 		CFE34DB11BE1231C0048F12C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34DB01BE1231C0048F12C /* CoreMedia.framework */; };
 		CFFC56A21C0E38A20062E102 /* FriendSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC569F1C0E38A20062E102 /* FriendSearchTableViewCell.swift */; };
 		CFFC56A31C0E38A20062E102 /* FriendsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC56A01C0E38A20062E102 /* FriendsSearchViewController.swift */; };
 		CFFC56A41C0E38A20062E102 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC56A11C0E38A20062E102 /* ParseHelper.swift */; };
+		CFFC56A61C0E4AEB0062E102 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC56A51C0E4AEB0062E102 /* TimelineViewController.swift */; };
+		CFFC56A81C1623E40062E102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC56A71C1623E40062E102 /* AVFoundation.framework */; };
+		CFFC56AD1C1628170062E102 /* SongSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC56AC1C1628170062E102 /* SongSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,7 @@
 		CF1CE3FB1BDE97EB007AA9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF1CE3FF1BDE97EB007AA9A4 /* SoundByte.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoundByte.xcdatamodel; sourceTree = "<group>"; };
-		CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF1CE4011BDE97EB007AA9A4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CF1CE4091BDE97EB007AA9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CF1CE40F1BDE97EB007AA9A4 /* SoundByteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundByteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,19 +77,20 @@
 		CF1CE43A1BDE9A84007AA9A4 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		CF1CE43C1BDE9A8B007AA9A4 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		CF1CE43E1BDEB069007AA9A4 /* SoundByte-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundByte-Bridging-Header.h"; sourceTree = "<group>"; };
-		CF1CE43F1BDEB069007AA9A4 /* SoundByte-Bridge-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SoundByte-Bridge-Header.m"; sourceTree = "<group>"; };
 		CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
-		CF254E961BE290B2008486A5 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		CF254E981BE2914F008486A5 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		CF626F2D1C164893006093A9 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		CFAEC7441C0E3373002E4F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		CFB339F01BE1DDBF00FAC89C /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingTabViewController.swift; sourceTree = "<group>"; };
 		CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		CFE34D741BE122C10048F12C /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = "rdio-ios-4.0.0/Rdio.framework"; sourceTree = "<group>"; };
 		CFE34DB01BE1231C0048F12C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		CFFC569F1C0E38A20062E102 /* FriendSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewCell.swift; sourceTree = "<group>"; };
 		CFFC56A01C0E38A20062E102 /* FriendsSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewController.swift; sourceTree = "<group>"; };
 		CFFC56A11C0E38A20062E102 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
+		CFFC56A51C0E4AEB0062E102 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		CFFC56A71C1623E40062E102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CFFC56AC1C1628170062E102 /* SongSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFFC56A81C1623E40062E102 /* AVFoundation.framework in Frameworks */,
+				CF626F2E1C164893006093A9 /* Spotify.framework in Frameworks */,
 				CFE34DB11BE1231C0048F12C /* CoreMedia.framework in Frameworks */,
 				CF1CE43D1BDE9A8B007AA9A4 /* libsqlite3.0.dylib in Frameworks */,
 				CF1CE43B1BDE9A84007AA9A4 /* libz.1.2.5.dylib in Frameworks */,
@@ -158,22 +162,21 @@
 			children = (
 				CFFC569F1C0E38A20062E102 /* FriendSearchTableViewCell.swift */,
 				CFFC56A01C0E38A20062E102 /* FriendsSearchViewController.swift */,
+				CFFC56A51C0E4AEB0062E102 /* TimelineViewController.swift */,
+				CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */,
+				CFFC56AC1C1628170062E102 /* SongSearchViewController.swift */,
 				CFFC56A11C0E38A20062E102 /* ParseHelper.swift */,
 				CFAEC7441C0E3373002E4F55 /* Main.storyboard */,
+				CF1CE4011BDE97EB007AA9A4 /* SettingsViewController.swift */,
 				CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */,
-				CF1CE4011BDE97EB007AA9A4 /* ViewController.swift */,
 				CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */,
 				CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */,
-				CF254E981BE2914F008486A5 /* TableViewController.swift */,
-				CF254E961BE290B2008486A5 /* CustomTableViewCell.swift */,
 				CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */,
 				CF1CE4061BDE97EB007AA9A4 /* Images.xcassets */,
 				CF1CE4081BDE97EB007AA9A4 /* LaunchScreen.xib */,
-				CF1CE43F1BDEB069007AA9A4 /* SoundByte-Bridge-Header.m */,
 				CF1CE3FE1BDE97EB007AA9A4 /* SoundByte.xcdatamodeld */,
 				CF1CE3FA1BDE97EB007AA9A4 /* Supporting Files */,
 				CF1CE43E1BDEB069007AA9A4 /* SoundByte-Bridging-Header.h */,
-				CFB339F01BE1DDBF00FAC89C /* FriendsTableViewController.swift */,
 			);
 			path = SoundByte;
 			sourceTree = "<group>";
@@ -189,6 +192,8 @@
 		CF1CE41F1BDE98DE007AA9A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF626F2D1C164893006093A9 /* Spotify.framework */,
+				CFFC56A71C1623E40062E102 /* AVFoundation.framework */,
 				CFE34DB01BE1231C0048F12C /* CoreMedia.framework */,
 				CFE34D741BE122C10048F12C /* Rdio.framework */,
 				CF1CE43C1BDE9A8B007AA9A4 /* libsqlite3.0.dylib */,
@@ -361,16 +366,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1CE4021BDE97EB007AA9A4 /* ViewController.swift in Sources */,
+				CF1CE4021BDE97EB007AA9A4 /* SettingsViewController.swift in Sources */,
 				CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */,
-				CF1CE4401BDEB069007AA9A4 /* SoundByte-Bridge-Header.m in Sources */,
 				CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */,
 				CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */,
+				CFFC56AD1C1628170062E102 /* SongSearchViewController.swift in Sources */,
 				CFFC56A21C0E38A20062E102 /* FriendSearchTableViewCell.swift in Sources */,
 				CFFC56A31C0E38A20062E102 /* FriendsSearchViewController.swift in Sources */,
-				CFB339F11BE1DDBF00FAC89C /* FriendsTableViewController.swift in Sources */,
-				CF254E971BE290B2008486A5 /* CustomTableViewCell.swift in Sources */,
-				CF254E991BE2914F008486A5 /* TableViewController.swift in Sources */,
+				CFB339F11BE1DDBF00FAC89C /* StartingTabViewController.swift in Sources */,
+				CFFC56A61C0E4AEB0062E102 /* TimelineViewController.swift in Sources */,
 				CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */,
 				CFFC56A41C0E38A20062E102 /* ParseHelper.swift in Sources */,
 			);
