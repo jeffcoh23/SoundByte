@@ -8,8 +8,19 @@
 
 import UIKit
 
-
 //run "ruby spotify_token_swap.rb" to launch server
+
+extension Array {
+    func shuffled() -> [T] {
+        var list = self
+        for i in 0..<(list.count - 1) {
+            let j = Int(arc4random_uniform(UInt32(list.count - i))) + i
+            swap(&list[i], &list[j])
+        }
+        return list
+    }
+}
+
 
 class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
 
@@ -18,6 +29,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     //let kTokenSwapURL = "http://localhost:1234/swap"
     //let kTokenRefreshURL = "http://localhost:1234/refresh"
     
+    @IBOutlet weak var songSearchBar: UISearchBar!
     var player: SPTAudioStreamingController?
     let spotifyAuthenticator = SPTAuth.defaultInstance()
     
@@ -50,6 +62,109 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         println("login failed")
     }
+
+    
+    var IDArray = [String]()
+    var NameArray = [String]()
+    override func viewDidLoad() {
+        let followingQuery = PFQuery(className: "Follow")
+        //NSLog("\(PFUser.currentUser())")
+        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
+        
+        let playlistFromFollowedUsers = PFQuery(className: "Playlist")
+        playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
+        
+        //playlistFromFollowedUsers.includeKey("user")
+        //playlistFromFollowedUsers.orderByAscending("username")
+        
+       // NSLog("\(PFUser.currentUser())")
+
+        
+        playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
+            
+            (result: [AnyObject]?, error: NSError?) -> Void in
+            
+
+            var songIDs = result as! [PFObject]
+            if songIDs.count < 1{
+                return
+            }
+            else{
+                for i in 0...songIDs.count-1{
+                    self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
+                    //self.NameArray.append(songIDs[i].valueForKey("songName") as! String)
+                    //self.tableView.reloadData()
+                    
+                }
+            }
+            
+        })
+    }
+    
+    func grabSong(){
+        let followingQuery = PFQuery(className: "Follow")
+        //NSLog("\(PFUser.currentUser())")
+        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
+        
+        let playlistFromFollowedUsers = PFQuery(className: "Playlist")
+        playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
+        //NSLog("\(IDArray[SelectedSongNumber])")
+        for i in 0...IDArray.count-1{
+            let SpotifyURI = IDArray[i]
+            self.player!.playURIs([NSURL(string: SpotifyURI)!], withOptions: nil, callback: nil)
+        }
+        
+//        playlistFromFollowedUsers.getObjectInBackgroundWithId(IDArray[SelectedSongNumber], block: {
+//            (object : PFObject?, error: NSError?) -> Void in
+//                        //NSLog("\(object)")
+//            NSLog("\(object)")
+//           // if let
+//
+//            //object?.description
+//            //If this is a song file
+//        
+//            //if let AudioFileURLTemp = object?.objectForKey("songFile")?.url{
+//              //  NSLog(AudioFileURLTemp!)
+//                let spotifyURI = "\(object)"
+//                self.player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
+//                //AudioPlayer = AVPlayer(URL: NSURL(string: AudioFileURLTemp!))
+//                //AudioPlayer.play()
+//            //}
+//        })
+    }
+
+//    func startPlayback(){
+//        SPTYourMusic.savedTracksForUserWithAccessToken(spotifyAuthenticator.session.accessToken, callback: { (error, result) -> Void in
+//            if let result = result as? SPTListPage {
+//                NSLog("\(result)")
+//                self.fetchAll(result) { (tracks) in
+//                    NSLog("\(result)")
+//                    NSLog("\(tracks)")
+//                    let uris = SPTTrack.urisFromArray(tracks.shuffled())
+//                    
+//                    self.player!.playURIs(uris, fromIndex: 0) { (error) -> Void in
+//                        if let error = error {
+//                            NSLog(String(format: "playURIs error: %@", error))
+//                        }
+//                    }
+//                }
+//            }
+//        })
+//    }
+//    
+//    func fetchAll(listPage: SPTListPage, _ callback: (tracks: [SPTSavedTrack]) -> Void) {
+//        if listPage.hasNextPage {
+//            listPage.requestNextPageWithSession(spotifyAuthenticator.session, callback: { (error, page) -> Void in
+//                if let page = page as? SPTListPage {
+//                    self.fetchAll(listPage.pageByAppendingPage(page), callback)
+//                }
+//            })
+//        } else {
+//            if let items = listPage.items as? [SPTSavedTrack] {
+//                callback(tracks: items)
+//            }
+//        }
+//    }
     
     // SPTAudioStreamingPlaybackDelegate protocol methods
     
@@ -68,12 +183,44 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
                 return
             }
             self.spotifyLoginButton.hidden = true
-            self.useLoggedInPermissions()
+            self.grabSong()
+            
         })
     }
     
     func useLoggedInPermissions() {
-        let spotifyURI = "spotify:track:1WJk986df8mpqpktoktlce"
-        player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
+        
+        //let spotifyURI = PFQuery()
+        //spotifyURI.whereKey(<#key: String#>, containedIn: <#[AnyObject]#>)
+        //let spotifyURI = PFUser.currentUser().
+        //let spotifyURI = "spotify:track:4h0zU3O9R5xzuTmNO7dNDU)"
+        //player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
     }
 }
+
+
+
+//extension SongSearchViewController: UISearchBarDelegate {
+//
+//
+//    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+//        searchBar.setShowsCancelButton(true, animated: true)
+//        //state = .SearchMode
+//    }
+//    
+//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//        searchBar.text = ""
+//        searchBar.setShowsCancelButton(false, animated: true)
+//        //state = .DefaultMode
+//    }
+//    
+//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+//        SPTSearch.performSearchWithQuery(searchText, queryType: SPTTrack(), accessToken: nil, callback: nil){
+//            
+//        }
+//        
+//        //ParseHelper.searchUsers(searchText, completionBlock:updateList)
+//    }
+//    
+//}
