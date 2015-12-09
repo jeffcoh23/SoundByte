@@ -114,7 +114,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
             self.player!.playURIs([NSURL(string: SpotifyURI)!], withOptions: nil, callback: nil)
         }
         
-//        playlistFromFollowedUsers.getObjectInBackgroundWithId(IDArray[SelectedSongNumber], block: {
+        playlistFromFollowedUsers.getObjectInBackgroundWithId(IDArray[SelectedSongNumber], block: {
 //            (object : PFObject?, error: NSError?) -> Void in
 //                        //NSLog("\(object)")
 //            NSLog("\(object)")
@@ -130,10 +130,9 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
 //                //AudioPlayer = AVPlayer(URL: NSURL(string: AudioFileURLTemp!))
 //                //AudioPlayer.play()
 //            //}
-//        })
+        })
     }
-
-//    func startPlayback(){
+    func startPlayback(){
 //        SPTYourMusic.savedTracksForUserWithAccessToken(spotifyAuthenticator.session.accessToken, callback: { (error, result) -> Void in
 //            if let result = result as? SPTListPage {
 //                NSLog("\(result)")
@@ -150,9 +149,8 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
 //                }
 //            }
 //        })
-//    }
-//    
-//    func fetchAll(listPage: SPTListPage, _ callback: (tracks: [SPTSavedTrack]) -> Void) {
+    }
+   func fetchAll(listPage: SPTListPage, _ callback: (tracks: [SPTSavedTrack]) -> Void) {
 //        if listPage.hasNextPage {
 //            listPage.requestNextPageWithSession(spotifyAuthenticator.session, callback: { (error, page) -> Void in
 //                if let page = page as? SPTListPage {
@@ -164,7 +162,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
 //                callback(tracks: items)
 //            }
 //        }
-//    }
+    }
     
     // SPTAudioStreamingPlaybackDelegate protocol methods
     
@@ -197,10 +195,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         //player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
     }
 }
-
-
-
-//extension SongSearchViewController: UISearchBarDelegate {
+extension SongSearchViewController: UISearchBarDelegate {
 //
 //
 //    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -223,4 +218,4 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
 //        //ParseHelper.searchUsers(searchText, completionBlock:updateList)
 //    }
 //    
-//}
+}
