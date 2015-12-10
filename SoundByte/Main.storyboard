@@ -162,16 +162,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-Lb-RQ1">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="7d7-Uv-pWG"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="zp4-Ww-yiD" id="pby-Cu-Lli"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-kd-Xtz">
                                 <rect key="frame" x="0.0" y="108" width="320" height="411"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -218,6 +208,16 @@
                                     <outlet property="dataSource" destination="zp4-Ww-yiD" id="Mjx-AL-neb"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-Lb-RQ1">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="7d7-Uv-pWG"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zp4-Ww-yiD" id="pby-Cu-Lli"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -240,10 +240,10 @@
             </objects>
             <point key="canvasLocation" x="697" y="980"/>
         </scene>
-        <!--Timeline View Controller-->
+        <!--Timeline-->
         <scene sceneID="IAT-s5-5eJ">
             <objects>
-                <viewController storyboardIdentifier="Timeline" id="h44-Cc-FiT" userLabel="Timeline View Controller" customClass="TimelineViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Timeline" id="h44-Cc-FiT" customClass="TimelineViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sYE-SN-uoC"/>
                         <viewControllerLayoutGuide type="bottom" id="yPG-1S-NJn"/>
@@ -297,7 +297,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gI-F8-wzo">
-                                <rect key="frame" x="105" y="269" width="111" height="30"/>
+                                <rect key="frame" x="105" y="115" width="111" height="30"/>
                                 <state key="normal" title="Login To Spotify">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -305,18 +305,37 @@
                                     <action selector="loginWithSpotify:" destination="lbB-OO-luo" eventType="touchUpInside" id="7j7-Le-9Mc"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMP-L1-oiU">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMP-L1-oiU">
+                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="lbB-OO-luo" id="P0F-rA-60C"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="x8c-ev-Q0Z">
+                                <rect key="frame" x="0.0" y="153" width="320" height="366"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" id="yvF-7W-IeZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yvF-7W-IeZ" id="Ui8-jD-9g0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lbB-OO-luo" id="Odu-Wb-h2b"/>
+                                    <outlet property="delegate" destination="lbB-OO-luo" id="rb1-GK-rFi"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tMP-L1-oiU" firstAttribute="leading" secondItem="1ih-bG-x4f" secondAttribute="leadingMargin" id="1aK-am-mNb"/>
                             <constraint firstItem="tMP-L1-oiU" firstAttribute="top" secondItem="iQV-d0-fBf" secondAttribute="bottom" symbolic="YES" id="qhh-Gj-1BQ"/>
                             <constraint firstItem="tMP-L1-oiU" firstAttribute="top" secondItem="iQV-d0-fBf" secondAttribute="bottom" symbolic="YES" id="vyO-w9-mwU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tMP-L1-oiU" secondAttribute="trailing" id="zBG-yL-fz2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -328,11 +347,12 @@
                     <connections>
                         <outlet property="songSearchBar" destination="tMP-L1-oiU" id="3eY-Tq-nno"/>
                         <outlet property="spotifyLoginButton" destination="0gI-F8-wzo" id="LQc-cK-4vu"/>
+                        <outlet property="tableViewSongResults" destination="x8c-ev-Q0Z" id="Lid-bG-rTP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJ2-uo-nY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096" y="980"/>
+            <point key="canvasLocation" x="1089" y="980"/>
         </scene>
         <!--Starting Tab View Controller-->
         <scene sceneID="Mtv-FZ-btW">
@@ -567,7 +587,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGb-R3-YBR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1491" y="980"/>
+            <point key="canvasLocation" x="1506" y="980"/>
         </scene>
     </scenes>
     <resources>
