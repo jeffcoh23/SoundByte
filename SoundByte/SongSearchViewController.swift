@@ -31,6 +31,8 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     //let kTokenRefreshURL = "http://localhost:1234/refresh"
     
     
+    @IBOutlet weak var songNameLabel: UILabel!
+    @IBOutlet weak var addSongButton: UIButton!
     @IBOutlet weak var tableViewSongResults: UITableView!
     @IBOutlet weak var songSearchBar: UISearchBar!
     var player: SPTAudioStreamingController?
@@ -72,7 +74,6 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     var NameArray = [String]()
     override func viewDidLoad() {
         let followingQuery = PFQuery(className: "Follow")
-        //NSLog("\(PFUser.currentUser())")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
@@ -180,12 +181,15 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     }
     
     func loginWithSpotifySession(session: SPTSession) {
+        if spotifyAuthenticator.session.accessToken != nil{
+            self.spotifyLoginButton.hidden = true
+        }
+      
         player!.loginWithSession(session, callback: { (error: NSError!) in
             if error != nil {
                 println("Couldn't login with session: \(error)")
                 return
             }
-            self.spotifyLoginButton.hidden = true
             self.grabSong()
             
         })
@@ -236,14 +240,14 @@ extension SongSearchViewController: UISearchBarDelegate {
 extension SongSearchViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 20
+        return spotifyListPage?.items.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! UITableViewCell
         if spotifyListPage?.items == nil{
-            cell.textLabel!.text = "None bro"
+            cell.textLabel!.text = "No Results Found"
         }
 
         else{

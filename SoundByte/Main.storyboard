@@ -321,6 +321,29 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yvF-7W-IeZ" id="Ui8-jD-9g0">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmB-jG-Ck0">
+                                                    <rect key="frame" x="266" y="6" width="46" height="30"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIb-Vn-xt0">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="bottom" secondItem="vmB-jG-Ck0" secondAttribute="bottom" constant="-7" id="6JT-hf-IJq"/>
+                                                <constraint firstItem="vmB-jG-Ck0" firstAttribute="trailing" secondItem="Ui8-jD-9g0" secondAttribute="trailingMargin" id="BwX-yk-dob"/>
+                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="leading" secondItem="Ui8-jD-9g0" secondAttribute="leadingMargin" id="RK4-2z-s4F"/>
+                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="baseline" secondItem="vmB-jG-Ck0" secondAttribute="baseline" constant="-2" id="dcU-2c-h21"/>
+                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="top" secondItem="Ui8-jD-9g0" secondAttribute="topMargin" id="lAg-Lh-6po"/>
+                                                <constraint firstItem="vmB-jG-Ck0" firstAttribute="top" secondItem="Ui8-jD-9g0" secondAttribute="topMargin" constant="-2" id="z7V-BR-dL1"/>
+                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="top" secondItem="vmB-jG-Ck0" secondAttribute="top" constant="2" id="zBZ-oN-gCX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -345,6 +368,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Song Search" id="9xq-Hx-ovK"/>
                     <connections>
+                        <outlet property="addSongButton" destination="vmB-jG-Ck0" id="RdK-Wz-Wml"/>
+                        <outlet property="songNameLabel" destination="jIb-Vn-xt0" id="m2j-0a-19P"/>
                         <outlet property="songSearchBar" destination="tMP-L1-oiU" id="3eY-Tq-nno"/>
                         <outlet property="spotifyLoginButton" destination="0gI-F8-wzo" id="LQc-cK-4vu"/>
                         <outlet property="tableViewSongResults" destination="x8c-ev-Q0Z" id="Lid-bG-rTP"/>
