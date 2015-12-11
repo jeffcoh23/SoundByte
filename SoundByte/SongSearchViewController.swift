@@ -218,15 +218,9 @@ extension SongSearchViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: spotifyAuthenticator.session.accessToken, callback: {( error, result) -> Void in
             if let result = result as? SPTListPage{
-                //self.fetchAll(result){(tracks) in
-                    //let uris = SPTTrack.urisFromArray(tracks)
-                    //self.player?.playURIs(uris, fromIndex: 0){(error) -> Void in
-                      //  if let error = error{
-                        //    NSLog(String(format: "playURI error: %@", error))
-                        //}
                 self.spotifyListPage = result
                 if self.spotifyListPage?.items != nil{
-                    NSLog("\(self.spotifyListPage?.items.first)")}
+                    NSLog("\(self.spotifyListPage?.items)")}
                 //self.results = self.spotifyListPage?.items.mutableCopy()
                 self.tableViewSongResults.reloadData()
                     }
@@ -242,7 +236,7 @@ extension SongSearchViewController: UISearchBarDelegate {
 extension SongSearchViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return IDArray.count
+        return 20
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -252,7 +246,11 @@ extension SongSearchViewController: UITableViewDataSource {
             cell.textLabel!.text = "None bro"
         }
 
-        else{cell.textLabel!.text = self.spotifyListPage?.items.first?.name}
+        else{
+            cell.textLabel!.text = self.spotifyListPage?.items[indexPath.row].name
+
+            //cell.textLabel!.text = self.spotifyListPage?.items.first?.name
+        }
         
         return cell
     }
