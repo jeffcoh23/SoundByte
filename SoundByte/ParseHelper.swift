@@ -24,6 +24,7 @@ class ParseHelper{
     static let ParseFollowFromUser    = "fromUser"
     static let ParseFollowToUser      = "toUser"
     static let ParseUserUsername      = "username"
+    static let ParseSongClass = "Playlist"
     
 static func getFollowingUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
     let query = PFQuery(className: ParseFollowClass)
@@ -45,6 +46,13 @@ static func addFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
     
     followObject.saveInBackgroundWithBlock(nil)
 }
+    
+    static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
+        let followObject = PFObject(className: ParseSongClass)
+        followObject.setObject(user, forKey: "user")
+        followObject.setObject(song.uri.description, forKey: "spotifyTrackNumber")
+        followObject.saveInBackgroundWithBlock(nil)
+    }
 
 /**
 Deletes a follow relationship between two users.

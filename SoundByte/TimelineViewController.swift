@@ -46,6 +46,7 @@ class TimelineViewController: UIViewController, AVAudioPlayerDelegate{
         if songIDs.count < 1{
             return
         }
+            
         else{
         for i in 0...songIDs.count-1{
             self.IDArray.append(songIDs[i].valueForKey("objectId") as! String)
