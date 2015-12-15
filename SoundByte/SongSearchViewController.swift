@@ -60,19 +60,13 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
 
     
     var IDArray = [String]()
-    var NameArray = [String]()
+    
     override func viewDidLoad() {
         let followingQuery = PFQuery(className: "Follow")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
         playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        
-        //playlistFromFollowedUsers.includeKey("user")
-        //playlistFromFollowedUsers.orderByAscending("username")
-        
-       // NSLog("\(PFUser.currentUser())")
-
         
         playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
             
@@ -86,7 +80,6 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
             else{
                 for i in 0...songIDs.count-1{
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
-                    //self.NameArray.append(songIDs[i].valueForKey("songName") as! String)
                     //self.tableView.reloadData()
                     
                 }
@@ -97,67 +90,17 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     
     func grabSong(){
         let followingQuery = PFQuery(className: "Follow")
-        //NSLog("\(PFUser.currentUser())")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
         playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        //NSLog("\(IDArray[SelectedSongNumber])")
+        
         for i in 0...IDArray.count-1{
             let SpotifyURI = IDArray[i]
             self.player!.playURIs([NSURL(string: SpotifyURI)!], withOptions: nil, callback: nil)
         }
-        
-        
-//        playlistFromFollowedUsers.getObjectInBackgroundWithId(IDArray[SelectedSongNumber], block: {
-//            (object : PFObject?, error: NSError?) -> Void in
-//                        //NSLog("\(object)")
-//            NSLog("\(object)")
-//           // if let
-//
-//            //object?.description
-//            //If this is a song file
-//        
-//            //if let AudioFileURLTemp = object?.objectForKey("songFile")?.url{
-//              //  NSLog(AudioFileURLTemp!)
-//                let spotifyURI = "\(object)"
-//                self.player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
-//                //AudioPlayer = AVPlayer(URL: NSURL(string: AudioFileURLTemp!))
-//                //AudioPlayer.play()
-//            //}
-        //})
     }
-    func startPlayback(){
-//        SPTYourMusic.savedTracksForUserWithAccessToken(spotifyAuthenticator.session.accessToken, callback: { (error, result) -> Void in
-//            if let result = result as? SPTListPage {
-//                NSLog("\(result)")
-//                self.fetchAll(result) { (tracks) in
-//                    NSLog("\(result)")
-//                    NSLog("\(tracks)")
-//                    let uris = SPTTrack.urisFromArray(tracks.shuffled())
-//                    
-//                    self.player!.playURIs(uris, fromIndex: 0) { (error) -> Void in
-//                        if let error = error {
-//                            NSLog(String(format: "playURIs error: %@", error))
-//                        }
-//                    }
-//                }
-//            }
-//        })
-    }
-   func fetchAll(listPage: SPTListPage, _ callback: (tracks: [SPTSavedTrack]) -> Void) {
-//        if listPage.hasNextPage {
-//            listPage.requestNextPageWithSession(spotifyAuthenticator.session, callback: { (error, page) -> Void in
-//                if let page = page as? SPTListPage {
-//                    self.fetchAll(listPage.pageByAppendingPage(page), callback)
-//                }
-//            })
-//        } else {
-//            if let items = listPage.items as? [SPTSavedTrack] {
-//                callback(tracks: items)
-//            }
-//        }
-    }
+
     
     // SPTAudioStreamingPlaybackDelegate protocol methods
     
@@ -212,9 +155,6 @@ extension SongSearchViewController: UISearchBarDelegate {
         SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: spotifyAuthenticator.session.accessToken, callback: {( error, result) -> Void in
             if let result = result as? SPTListPage{
                 self.spotifyListPage = result
-                //if self.spotifyListPage?.items != nil{
-                    //NSLog("\(self.spotifyListPage?.items)")}
-                //self.results = self.spotifyListPage?.items.mutableCopy()
                 self.tableViewSongResults.reloadData()
                     }
               //  }
@@ -224,7 +164,6 @@ extension SongSearchViewController: UISearchBarDelegate {
     }
     
 }
-//spotify:track:7AFH5sXGvpJxqDQ3lr6qu1
 
 extension SongSearchViewController: UITableViewDataSource {
     
@@ -263,20 +202,6 @@ extension SongSearchViewController: UITableViewDataSource {
 extension SongSearchViewController: SongSearchTableViewCellDelegate {
     
     func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?) {
-//        NSLog("\(song)")
-//        ParseHelper.addFollowSongRelationshipToUser(song!, user: PFUser.currentUser()!)
-//        // update local cache
-//        //followingUsers?.append(user)
     }
 }
 
-//    func cell(cell: SongSearchTableViewCell, didSelectUnfollowUser user: PFUser) {
-//        if var followingUsers = followingUsers {
-//            ParseHelper.removeFollowRelationshipFromUser(PFUser.currentUser()!, toUser: user)
-//            // update local cache
-//            //removeObject(user, fromArray: &followingUsers)
-//            self.followingUsers = followingUsers
-//        }
-//    }
-    
-//}
