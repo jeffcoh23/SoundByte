@@ -14,42 +14,38 @@ import UIKit
 import Parse
 import AVKit
 
-public var AudioPlayer = AVPlayer()
 public var SelectedSongNumber = Int()
 
-class TimelineViewController: UIViewController, AVAudioPlayerDelegate{
+class TimelineViewController: UIViewController{
     
-    var users: [PFUser]?
-    
-    var followingUsers: [PFObject]?{
-        didSet{
-            tableView.reloadData()
-        }
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     @IBOutlet weak var tableView: UITableView!
-    var nameArray = [String]()    
+    var nameArray = [String]() {
+        didSet{
+            tableView.reloadData()
+        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         var usersname = "username"
         let findUserObjectId = PFQuery(className: "Follow")
         findUserObjectId.whereKey("fromUser", equalTo: PFUser.currentUser()!)
+        
         findUserObjectId.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let results = results{
                     for result in results {
                         let user : PFUser = result["toUser"] as! PFUser
                         let queryUsers = PFUser.query()
+                        
                         queryUsers!.getObjectInBackgroundWithId(user.objectId!, block: {( userGet: PFObject?, error: NSError?) -> Void in
                             if let userGet = userGet{
-                                self.nameArray.append(userGet.objectForKey(usersname) as! String)
-                                self.tableView.reloadData()}
-                                NSLog("\(self.nameArray)")
-
-                            
+                                self.nameArray.append(userGet.objectForKey("username") as! String)
+                                self.tableView.reloadData()
+                            }
                         })
                     }
                 }
@@ -68,16 +64,13 @@ extension TimelineViewController: UITableViewDataSource {
         }
     
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
             let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! TimelineTableViewCell
             cell.usernameLabel.text = self.nameArray[indexPath.row]
-            //cell.textLabel!.text = self.nameArray[indexPath.row]
             return cell
         }
         
         func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
             SelectedSongNumber = indexPath.row
-
             //grabSong()
         }
     
