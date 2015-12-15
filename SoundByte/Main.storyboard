@@ -263,14 +263,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RO2-aB-fC6">
-                                                    <rect key="frame" x="0.0" y="23" width="320" height="21"/>
+                                                    <rect key="frame" x="8" y="23" width="306" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="RO2-aB-fC6" firstAttribute="top" secondItem="jKV-26-CPK" secondAttribute="topMargin" constant="15" id="ZZN-Ju-Q2c"/>
+                                                <constraint firstItem="RO2-aB-fC6" firstAttribute="top" secondItem="jKV-26-CPK" secondAttribute="topMargin" id="ZZN-Ju-Q2c"/>
                                                 <constraint firstItem="RO2-aB-fC6" firstAttribute="leading" secondItem="jKV-26-CPK" secondAttribute="leadingMargin" id="hJ3-L2-8c9"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -287,7 +287,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9Z5-en-Lv9" firstAttribute="leading" secondItem="sYE-SN-uoC" secondAttribute="trailing" constant="8" symbolic="YES" id="e0G-1v-ZoO"/>
                             <constraint firstItem="yPG-1S-NJn" firstAttribute="top" secondItem="9Z5-en-Lv9" secondAttribute="bottom" id="rQl-II-OBD"/>
+                            <constraint firstItem="9Z5-en-Lv9" firstAttribute="top" secondItem="sYE-SN-uoC" secondAttribute="bottom" constant="8" symbolic="YES" id="vfp-Lj-FD0"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Timeline" id="nU6-SP-pGr"/>
