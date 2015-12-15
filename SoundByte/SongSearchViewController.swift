@@ -11,17 +11,6 @@ import UIKit
 
 //run "ruby spotify_token_swap.rb" to launch server
 
-extension Array {
-    func shuffled() -> [T] {
-        var list = self
-        for i in 0..<(list.count - 1) {
-            let j = Int(arc4random_uniform(UInt32(list.count - i))) + i
-            swap(&list[i], &list[j])
-        }
-        return list
-    }
-}
-
 
 class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
 
@@ -29,6 +18,8 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     let kCallbackURL = "soundbyte://return-after-login"
     //let kTokenSwapURL = "http://localhost:1234/swap"
     //let kTokenRefreshURL = "http://localhost:1234/refresh"
+    
+
     
     
     @IBOutlet weak var tableViewSongResults: UITableView!
@@ -72,7 +63,6 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     var NameArray = [String]()
     override func viewDidLoad() {
         let followingQuery = PFQuery(className: "Follow")
-        //NSLog("\(PFUser.currentUser())")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
@@ -180,12 +170,15 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     }
     
     func loginWithSpotifySession(session: SPTSession) {
+        if spotifyAuthenticator.session.accessToken != nil{
+            self.spotifyLoginButton.hidden = true
+        }
+      
         player!.loginWithSession(session, callback: { (error: NSError!) in
             if error != nil {
                 println("Couldn't login with session: \(error)")
                 return
             }
-            self.spotifyLoginButton.hidden = true
             self.grabSong()
             
         })
@@ -219,8 +212,8 @@ extension SongSearchViewController: UISearchBarDelegate {
         SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: spotifyAuthenticator.session.accessToken, callback: {( error, result) -> Void in
             if let result = result as? SPTListPage{
                 self.spotifyListPage = result
-                if self.spotifyListPage?.items != nil{
-                    NSLog("\(self.spotifyListPage?.items)")}
+                //if self.spotifyListPage?.items != nil{
+                    //NSLog("\(self.spotifyListPage?.items)")}
                 //self.results = self.spotifyListPage?.items.mutableCopy()
                 self.tableViewSongResults.reloadData()
                     }
@@ -236,22 +229,54 @@ extension SongSearchViewController: UISearchBarDelegate {
 extension SongSearchViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 20
+        if spotifyListPage?.items == nil{
+            return 1
+        }
+        return spotifyListPage!.items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongSearchTableViewCell
+        
+
+        cell.addSongSearchButton.hidden = true
         if spotifyListPage?.items == nil{
-            cell.textLabel!.text = "None bro"
+            cell.songSearchLabel!.text = "No Results Found"
         }
 
         else{
-            cell.textLabel!.text = self.spotifyListPage?.items[indexPath.row].name
-
-            //cell.textLabel!.text = self.spotifyListPage?.items.first?.name
+            cell.addSongSearchButton.hidden = false
+            cell.songSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].name
+            var song = self.spotifyListPage?.items[indexPath.row]
+            cell.songURI = song
         }
+        
+        cell.delegate = self
         
         return cell
     }
 }
+
+
+
+extension SongSearchViewController: SongSearchTableViewCellDelegate {
+    
+    func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?) {
+//        NSLog("\(song)")
+//        ParseHelper.addFollowSongRelationshipToUser(song!, user: PFUser.currentUser()!)
+//        // update local cache
+//        //followingUsers?.append(user)
+    }
+}
+
+//    func cell(cell: SongSearchTableViewCell, didSelectUnfollowUser user: PFUser) {
+//        if var followingUsers = followingUsers {
+//            ParseHelper.removeFollowRelationshipFromUser(PFUser.currentUser()!, toUser: user)
+//            // update local cache
+//            //removeObject(user, fromArray: &followingUsers)
+//            self.followingUsers = followingUsers
+//        }
+//    }
+    
+//}
