@@ -40,11 +40,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="G5P-IA-EjI">
-                                <rect key="frame" x="105" y="101" width="199" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="z3P-te-LD8">
                                 <rect key="frame" x="105" y="139" width="199" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -90,6 +85,11 @@
                                     <action selector="loginButtonTapped:" destination="IWl-8W-0i3" eventType="touchUpInside" id="cw2-RR-chA"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="G5P-IA-EjI">
+                                <rect key="frame" x="105" y="101" width="199" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -459,8 +459,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="spR-PQ-DPN">
-                                <rect key="frame" x="105" y="117" width="199" height="24"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="spR-PQ-DPN">
+                                <rect key="frame" x="160" y="117" width="144" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
@@ -470,13 +470,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMP-mP-uVL">
-                                <rect key="frame" x="165" y="149" width="139" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZR-fF-c5k">
-                                <rect key="frame" x="202" y="213" width="102" height="30"/>
+                                <rect key="frame" x="202" y="213" width="103" height="30"/>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -500,9 +495,14 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="PKy-SD-dPV">
-                                <rect key="frame" x="72" y="85" width="232" height="24"/>
+                                <rect key="frame" x="160" y="85" width="144" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMP-mP-uVL">
+                                <rect key="frame" x="160" y="149" width="144" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -512,24 +512,25 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Jnt-54-7r0" secondAttribute="trailing" id="3pw-ry-OpT"/>
                             <constraint firstItem="MMP-mP-uVL" firstAttribute="top" secondItem="8Pw-a8-sTV" secondAttribute="top" id="4le-7Z-Nid"/>
                             <constraint firstItem="7Kh-eZ-5oe" firstAttribute="top" secondItem="N2F-iO-Px4" secondAttribute="bottom" constant="8" symbolic="YES" id="7FX-ap-hiz"/>
-                            <constraint firstItem="spR-PQ-DPN" firstAttribute="leading" secondItem="rWe-zf-2gE" secondAttribute="trailing" constant="8" symbolic="YES" id="7iQ-Ad-OJf"/>
                             <constraint firstItem="8Pw-a8-sTV" firstAttribute="leading" secondItem="13l-CE-zfZ" secondAttribute="leadingMargin" id="A6t-L7-IZm"/>
                             <constraint firstItem="Jnt-54-7r0" firstAttribute="bottom" secondItem="PKy-SD-dPV" secondAttribute="bottom" id="Da9-4l-GBd"/>
                             <constraint firstItem="rWe-zf-2gE" firstAttribute="top" secondItem="spR-PQ-DPN" secondAttribute="top" id="DcJ-Vd-gwH"/>
+                            <constraint firstItem="MMP-mP-uVL" firstAttribute="width" secondItem="spR-PQ-DPN" secondAttribute="width" id="EMo-X5-bwL"/>
                             <constraint firstItem="MMP-mP-uVL" firstAttribute="bottom" secondItem="8Pw-a8-sTV" secondAttribute="bottom" id="FWc-Ez-RCl"/>
                             <constraint firstItem="MMP-mP-uVL" firstAttribute="top" secondItem="spR-PQ-DPN" secondAttribute="bottom" constant="8" symbolic="YES" id="FfP-z2-xwS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MMP-mP-uVL" secondAttribute="trailing" id="Gd8-ks-jfa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PKy-SD-dPV" secondAttribute="trailing" id="MSY-Vp-QrT"/>
                             <constraint firstItem="MMP-mP-uVL" firstAttribute="baseline" secondItem="8Pw-a8-sTV" secondAttribute="baseline" id="NoS-ru-hlw"/>
+                            <constraint firstItem="PKy-SD-dPV" firstAttribute="trailing" secondItem="13l-CE-zfZ" secondAttribute="trailingMargin" id="PUD-Vv-P73"/>
                             <constraint firstItem="MMP-mP-uVL" firstAttribute="leading" secondItem="8Pw-a8-sTV" secondAttribute="trailing" constant="8" symbolic="YES" id="PfT-Co-fb2"/>
                             <constraint firstItem="Jnt-54-7r0" firstAttribute="width" secondItem="PKy-SD-dPV" secondAttribute="width" id="SYd-IT-oSD"/>
+                            <constraint firstItem="spR-PQ-DPN" firstAttribute="width" secondItem="PKy-SD-dPV" secondAttribute="width" id="SiZ-m4-MTd"/>
                             <constraint firstItem="rWe-zf-2gE" firstAttribute="top" secondItem="Jnt-54-7r0" secondAttribute="bottom" constant="8" symbolic="YES" id="U0E-G2-GhE"/>
                             <constraint firstItem="MZR-fF-c5k" firstAttribute="baseline" secondItem="N2F-iO-Px4" secondAttribute="baseline" id="Xeb-9V-Iiv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="spR-PQ-DPN" secondAttribute="trailing" id="YAk-gA-LH7"/>
                             <constraint firstItem="spR-PQ-DPN" firstAttribute="top" secondItem="PKy-SD-dPV" secondAttribute="bottom" constant="8" symbolic="YES" id="Z6j-px-DV7"/>
                             <constraint firstItem="MZR-fF-c5k" firstAttribute="leading" secondItem="N2F-iO-Px4" secondAttribute="trailing" constant="8" symbolic="YES" id="aMt-Mz-HaO"/>
                             <constraint firstItem="8Pw-a8-sTV" firstAttribute="top" secondItem="rWe-zf-2gE" secondAttribute="bottom" constant="8" symbolic="YES" id="bE2-Dg-vZe"/>
-                            <constraint firstItem="PKy-SD-dPV" firstAttribute="leading" secondItem="Jnt-54-7r0" secondAttribute="trailing" constant="8" symbolic="YES" id="bQG-7S-WI5"/>
                             <constraint firstItem="7Kh-eZ-5oe" firstAttribute="leading" secondItem="13l-CE-zfZ" secondAttribute="leadingMargin" id="dqh-O9-652"/>
                             <constraint firstItem="rWe-zf-2gE" firstAttribute="bottom" secondItem="spR-PQ-DPN" secondAttribute="bottom" id="eKs-B1-6Va"/>
                             <constraint firstItem="N2F-iO-Px4" firstAttribute="top" secondItem="8Pw-a8-sTV" secondAttribute="bottom" constant="40" id="iD0-gZ-QjW"/>
@@ -549,7 +550,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3pw-ry-OpT"/>
                                 <exclude reference="SYd-IT-oSD"/>
+                                <exclude reference="MSY-Vp-QrT"/>
                             </mask>
                         </variation>
                     </view>
