@@ -12,11 +12,6 @@ class TimelineTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var usernameLabel: UILabel!
-    var user: PFUser?{
-        didSet {
-           // usernameLabel.text = //usernameLabel.text = user?.username
-        }
-    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
