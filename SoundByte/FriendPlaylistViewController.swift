@@ -1,35 +1,34 @@
 //
-//  SongSearchViewController.swift
+//  FriendPlaylistViewController.swift
 //  SoundByte
 //
-//  Created by Jeff Cohen on 12/7/15.
+//  Created by Jeff Cohen on 12/15/15.
 //  Copyright (c) 2015 Jeff Cohen. All rights reserved.
 //
 
 import UIKit
 
+class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
 
-//run "ruby spotify_token_swap.rb" to launch server
-
-
-class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
-    
     let kClientID = "cf5b0855e8f440719ad3a1811e704fe3"
     let kCallbackURL = "soundbyte://return-after-login"
     //let kTokenSwapURL = "http://localhost:1234/swap"
     //let kTokenRefreshURL = "http://localhost:1234/refresh"
     
-    
-    
-    
-    @IBOutlet weak var tableViewSongResults: UITableView!
-    @IBOutlet weak var songSearchBar: UISearchBar!
-    var player: SPTAudioStreamingController?
+    var player: SPTAudioStreamingController!
     let spotifyAuthenticator = SPTAuth.defaultInstance()
-    var spotifyListPage: SPTListPage?
+    var IDArray = [String]()
     
-    @IBOutlet weak var spotifyLoginButton: UIButton!
+    // All necessary labels including image views
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var albumLabel: UILabel!
+    @IBOutlet weak var shadedCoverView: UIImageView!
+    @IBOutlet weak var coverView: UIImageView!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     @IBAction func loginWithSpotify(sender: AnyObject) {
+       // func loginWithSpotify() {
         spotifyAuthenticator.clientID = kClientID
         spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
         spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
@@ -43,11 +42,16 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
     }
     
+
+    
+    
     // SPTAuthViewDelegate protocol methods
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!) {
         setupSpotifyPlayer()
         loginWithSpotifySession(session)
+        //loginWithSpotify(nil)
+
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
@@ -58,10 +62,12 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         println("login failed")
     }
     
-    
-    var IDArray = [String]()
-    
     override func viewDidLoad() {
+        //super.viewDidLoad()
+        //loginWithSpotify(nil)
+        self.titleLabel.text = "Nothing Playing"
+        self.albumLabel.text = ""
+        self.artistLabel.text = ""
         let followingQuery = PFQuery(className: "Follow")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
@@ -101,7 +107,23 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         }
     }
     
-    
+//    func grabSong(){
+//       // let uris = SPTTrack.urisFromArray(IDArray)
+//        //NSLog("\(uris)")
+//        self.player.playURIs(IDArray, fromIndex: 0) { (error) -> Void in
+//            if let error = error {
+//                println(error)
+//                //self.log(String(format: "playURIs error: %@", error))
+//            }
+//        }
+////        for i in 0...IDArray.count-1{
+////            //var SpotifyURI = IDArray[i]
+////            let uris = SPTTrack.urisFromArray(IDArray)
+////            self.player!.playURIs(uris, withOptions: nil, callback: nil)
+////        }
+//    }
+
+
     // SPTAudioStreamingPlaybackDelegate protocol methods
     
     private
@@ -113,9 +135,9 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     }
     
     func loginWithSpotifySession(session: SPTSession) {
-        if spotifyAuthenticator.session.accessToken != nil{
-            self.spotifyLoginButton.hidden = true
-        }
+//        if spotifyAuthenticator.session.accessToken != nil{
+//            self.spotifyLoginButton.hidden = true
+//        }
         
         player!.loginWithSession(session, callback: { (error: NSError!) in
             if error != nil {
@@ -126,81 +148,41 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
             
         })
     }
-    
-    func useLoggedInPermissions() {
+
         
-        //let spotifyURI = PFQuery()
-        //spotifyURI.whereKey(<#key: String#>, containedIn: <#[AnyObject]#>)
-        //let spotifyURI = PFUser.currentUser().
-        //let spotifyURI = "spotify:track:4h0zU3O9R5xzuTmNO7dNDU)"
-        //player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
+        
+        // Do any additional setup after loading the view.
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    // Buttons for playing, pausing, rewinding, and fast-forwarding
+
+
+    
+    @IBAction func playPauseButtonTapped(sender: AnyObject) {
+        self.player.setIsPlaying(!self.player.isPlaying, callback: nil)
+    }
+    @IBAction func rewindButtonTapped(sender: AnyObject) {
+        self.player?.skipPrevious(nil)
+    }
+    
+    @IBAction func fastForwardButtonTapped(sender: AnyObject) {
+        self.player?.skipNext(nil)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 
-extension SongSearchViewController: UISearchBarDelegate {
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-        //state = .SearchMode
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBar.text = ""
-        searchBar.setShowsCancelButton(false, animated: true)
-        //state = .DefaultMode
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: spotifyAuthenticator.session.accessToken, callback: {( error, result) -> Void in
-            if let result = result as? SPTListPage{
-                self.spotifyListPage = result
-                self.tableViewSongResults.reloadData()
-            }
-            //  }
-            //}
-        })
-        
-    }
-    
-}
+    /*
+    // MARK: - Navigation
 
-extension SongSearchViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if spotifyListPage?.items == nil{
-            return 1
-        }
-        return spotifyListPage!.items.count
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongSearchTableViewCell
-        
-        
-        cell.addSongSearchButton.hidden = true
-        if spotifyListPage?.items == nil{
-            cell.songSearchLabel!.text = "No Results Found"
-        }
-            
-        else{
-            cell.addSongSearchButton.hidden = false
-            cell.songSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].name
-            var song = self.spotifyListPage?.items[indexPath.row]
-            cell.songURI = song
-        }
-        
-        cell.delegate = self
-        
-        return cell
-    }
-}
-
-
-
-extension SongSearchViewController: SongSearchTableViewCellDelegate {
-    
-    func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?) {
-    }
-}
+    */
