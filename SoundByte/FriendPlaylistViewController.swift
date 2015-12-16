@@ -101,9 +101,21 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
         playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
         
+        var spotifyURIArray = [NSURL]()
         for i in 0...IDArray.count-1{
-            let SpotifyURI = IDArray[i]
-            self.player!.playURIs([NSURL(string: SpotifyURI)!], withOptions: nil, callback: nil)
+            spotifyURIArray.append(NSURL(string: IDArray[i])!)
+            //let SpotifyURI = [NSURL(string: IDArray[i])!]
+            
+            //NSLog("\(SpotifyURI)")
+            //NSLog("\(IDArray)")
+            self.player!.playURIs(spotifyURIArray, fromIndex: 0) { (error) -> Void in
+                    if let error = error {
+                        println(error)
+                                //self.log(String(format: "playURIs error: %@", error))
+                    }
+            }
+
+            //self.player!.playURIs([NSURL(string: SpotifyURI)!], withOptions: nil, callback: nil)
         }
     }
     
