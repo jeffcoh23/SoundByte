@@ -13,13 +13,13 @@ import UIKit
 
 
 class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
-
+    
     let kClientID = "cf5b0855e8f440719ad3a1811e704fe3"
     let kCallbackURL = "soundbyte://return-after-login"
     //let kTokenSwapURL = "http://localhost:1234/swap"
     //let kTokenRefreshURL = "http://localhost:1234/refresh"
     
-
+    
     
     
     @IBOutlet weak var tableViewSongResults: UITableView!
@@ -33,7 +33,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         spotifyAuthenticator.clientID = kClientID
         spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
         spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
-       // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
+        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
         //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
         
         let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
@@ -57,7 +57,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         println("login failed")
     }
-
+    
     
     var IDArray = [String]()
     
@@ -72,7 +72,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
             
             (result: [AnyObject]?, error: NSError?) -> Void in
             
-
+            
             var songIDs = result as! [PFObject]
             if songIDs.count < 1{
                 return
@@ -100,7 +100,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
             self.player!.playURIs([NSURL(string: SpotifyURI)!], withOptions: nil, callback: nil)
         }
     }
-
+    
     
     // SPTAudioStreamingPlaybackDelegate protocol methods
     
@@ -116,7 +116,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         if spotifyAuthenticator.session.accessToken != nil{
             self.spotifyLoginButton.hidden = true
         }
-      
+        
         player!.loginWithSession(session, callback: { (error: NSError!) in
             if error != nil {
                 println("Couldn't login with session: \(error)")
@@ -156,8 +156,8 @@ extension SongSearchViewController: UISearchBarDelegate {
             if let result = result as? SPTListPage{
                 self.spotifyListPage = result
                 self.tableViewSongResults.reloadData()
-                    }
-              //  }
+            }
+            //  }
             //}
         })
         
@@ -178,12 +178,12 @@ extension SongSearchViewController: UITableViewDataSource {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongSearchTableViewCell
         
-
+        
         cell.addSongSearchButton.hidden = true
         if spotifyListPage?.items == nil{
             cell.songSearchLabel!.text = "No Results Found"
         }
-
+            
         else{
             cell.addSongSearchButton.hidden = false
             cell.songSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].name
@@ -204,4 +204,3 @@ extension SongSearchViewController: SongSearchTableViewCellDelegate {
     func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?) {
     }
 }
-
