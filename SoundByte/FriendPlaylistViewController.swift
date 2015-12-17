@@ -28,7 +28,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBAction func loginWithSpotify(sender: AnyObject) {
-       // func loginWithSpotify() {
         spotifyAuthenticator.clientID = kClientID
         spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
         spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
@@ -50,8 +49,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!) {
         setupSpotifyPlayer()
         loginWithSpotifySession(session)
-        //loginWithSpotify(nil)
-
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
@@ -64,7 +61,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     override func viewDidLoad() {
         //super.viewDidLoad()
-        //loginWithSpotify(nil)
         self.titleLabel.text = "Nothing Playing"
         self.albumLabel.text = ""
         self.artistLabel.text = ""
@@ -86,8 +82,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
             else{
                 for i in 0...songIDs.count-1{
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
-                    //self.tableView.reloadData()
-                    
                 }
             }
             
@@ -95,46 +89,72 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     }
     
     func grabSong(){
-        let followingQuery = PFQuery(className: "Follow")
-        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
-        
-        let playlistFromFollowedUsers = PFQuery(className: "Playlist")
-        playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        
         var spotifyURIArray = [NSURL]()
         for i in 0...IDArray.count-1{
             spotifyURIArray.append(NSURL(string: IDArray[i])!)
-            //let SpotifyURI = [NSURL(string: IDArray[i])!]
-            
-            //NSLog("\(SpotifyURI)")
-            //NSLog("\(IDArray)")
-            self.player!.playURIs(spotifyURIArray, fromIndex: 0) { (error) -> Void in
+        }
+           // NSLog("\(spotifyURIArray)")
+            self.player!.playURIs(spotifyURIArray, fromIndex: 1) { (error) -> Void in
                     if let error = error {
                         println(error)
-                                //self.log(String(format: "playURIs error: %@", error))
                     }
+//                    else{
+//                        //NSLog("yo")
+                        self.updateUI(self.player.currentTrackURI)
+//
+//                }
             }
 
-            //self.player!.playURIs([NSURL(string: SpotifyURI)!], withOptions: nil, callback: nil)
+        //}
+    }
+    
+    func updateUI(uriTrack: NSURL!){
+        //NSLog("\(self.player.currentTrackURI)")
+        var auth: SPTAuth = SPTAuth.defaultInstance()
+        if uriTrack == nil{
+            NSLog("sdf")
+            self.coverView.image = nil
+            //self.shadedCoverView.image = nil
+            return
+        }
+        self.spinner.startAnimating()
+        SPTTrack.trackWithURI(uriTrack, session: auth.session) { (error, track) -> Void in
+            if let track = track as? SPTTrack, artist = track.artists.first as? SPTPartialArtist{
+            self.titleLabel.text = track.name
+            self.albumLabel.text = track.album.name
+            //var artist = track.artists[0] as! SPTPartialTrack
+            self.artistLabel.text = artist.name
+            var imageURL = track.album.largestCover.imageURL
+            if imageURL == nil{
+                NSLog("This album doesnt have any images!", track.album)
+                self.coverView.image = nil
+                self.shadedCoverView.image = nil
+                return
+            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),{() -> Void in
+                var error: NSError? = nil
+                var image: UIImage? = nil
+                var imageData = NSData(contentsOfURL: imageURL)
+                if imageData != nil{
+                    image = UIImage(data: imageData!)
+                }
+                dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                    self.spinner.stopAnimating()
+                    self.coverView.image = image
+                    if image == nil{
+                        NSLog("Couldnt load cover image ")
+                        return
+                    }
+                    })
+                //var blurred: UIImage = self.applyBlurOnImage(image!, withRadius: 10.0)
+//                dispatch_async(dispatch_get_main_queue(), {() -> Void in
+//                    self.shadedCoverView.image = blurred
+//                })
+            })
+        }
         }
     }
     
-//    func grabSong(){
-//       // let uris = SPTTrack.urisFromArray(IDArray)
-//        //NSLog("\(uris)")
-//        self.player.playURIs(IDArray, fromIndex: 0) { (error) -> Void in
-//            if let error = error {
-//                println(error)
-//                //self.log(String(format: "playURIs error: %@", error))
-//            }
-//        }
-////        for i in 0...IDArray.count-1{
-////            //var SpotifyURI = IDArray[i]
-////            let uris = SPTTrack.urisFromArray(IDArray)
-////            self.player!.playURIs(uris, withOptions: nil, callback: nil)
-////        }
-//    }
-
 
     // SPTAudioStreamingPlaybackDelegate protocol methods
     
@@ -144,6 +164,7 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
         player = SPTAudioStreamingController(clientId: spotifyAuthenticator.clientID) // can also use kClientID; they're the same value
         player!.playbackDelegate = self
         player!.diskCache = SPTDiskCache(capacity: 1024 * 1024 * 64)
+        
     }
     
     func loginWithSpotifySession(session: SPTSession) {
@@ -157,6 +178,8 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                 return
             }
             self.grabSong()
+            //NSLog("\(self.player.currentTrackURI)")
+
             
         })
     }
@@ -175,13 +198,30 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     @IBAction func playPauseButtonTapped(sender: AnyObject) {
         self.player.setIsPlaying(!self.player.isPlaying, callback: nil)
+        self.updateUI(self.player.currentTrackURI)
+
     }
     @IBAction func rewindButtonTapped(sender: AnyObject) {
+        //NSLog("\(self.player.currentTrackURI)")
         self.player?.skipPrevious(nil)
+        self.updateUI(self.player.currentTrackURI)
+       // NSLog("\(self.player.currentTrackURI)")
+
+
+
     }
     
     @IBAction func fastForwardButtonTapped(sender: AnyObject) {
+        //the problem is that the spotify track number does not update after the skipNext is called, so the 
+        // updating does not really happen
+        NSLog("\(self.player.currentTrackURI)")
+
         self.player?.skipNext(nil)
+        updateUI(self.player.currentTrackURI)
+        NSLog("\(self.player.currentTrackURI)")
+
+
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
