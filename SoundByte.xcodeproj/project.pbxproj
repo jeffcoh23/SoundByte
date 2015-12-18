@@ -31,6 +31,8 @@
 		CF626F2E1C164893006093A9 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF626F2D1C164893006093A9 /* Spotify.framework */; };
 		CFAEC7451C0E3373002E4F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAEC7441C0E3373002E4F55 /* Main.storyboard */; };
 		CFB339F11BE1DDBF00FAC89C /* StartingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */; };
+		CFC23E871C24AC8300B2A6E3 /* SpotifyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC23E861C24AC8300B2A6E3 /* SpotifyAuth.swift */; };
+		CFC23E891C24AE8200B2A6E3 /* FriendPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC23E881C24AE8200B2A6E3 /* FriendPlaylistViewController.swift */; };
 		CFDD84FD1C1B41ED007148A6 /* SongSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD84FC1C1B41ED007148A6 /* SongSearchTableViewCell.swift */; };
 		CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */; };
 		CFE34DAF1BE122C10048F12C /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE34D741BE122C10048F12C /* Rdio.framework */; };
@@ -85,6 +87,8 @@
 		CF626F2D1C164893006093A9 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		CFAEC7441C0E3373002E4F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingTabViewController.swift; sourceTree = "<group>"; };
+		CFC23E861C24AC8300B2A6E3 /* SpotifyAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyAuth.swift; sourceTree = "<group>"; };
+		CFC23E881C24AE8200B2A6E3 /* FriendPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendPlaylistViewController.swift; sourceTree = "<group>"; };
 		CFDD84FC1C1B41ED007148A6 /* SongSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchTableViewCell.swift; sourceTree = "<group>"; };
 		CFE34D361BDFD5950048F12C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		CFE34D741BE122C10048F12C /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = "rdio-ios-4.0.0/Rdio.framework"; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				CF1CE3FA1BDE97EB007AA9A4 /* Supporting Files */,
 				CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */,
 				CFFC56A11C0E38A20062E102 /* ParseHelper.swift */,
+				CFC23E881C24AE8200B2A6E3 /* FriendPlaylistViewController.swift */,
+				CFC23E861C24AC8300B2A6E3 /* SpotifyAuth.swift */,
 				CFAEC7441C0E3373002E4F55 /* Main.storyboard */,
 				CF1CE4011BDE97EB007AA9A4 /* SettingsViewController.swift */,
 				CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */,
@@ -406,6 +412,7 @@
 			files = (
 				CFDD84FD1C1B41ED007148A6 /* SongSearchTableViewCell.swift in Sources */,
 				CF1CE4021BDE97EB007AA9A4 /* SettingsViewController.swift in Sources */,
+				CFC23E891C24AE8200B2A6E3 /* FriendPlaylistViewController.swift in Sources */,
 				CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */,
 				CF0DC8F01C209315005C9825 /* TimelineTableViewCell.swift in Sources */,
 				CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */,
@@ -416,6 +423,7 @@
 				CFB339F11BE1DDBF00FAC89C /* StartingTabViewController.swift in Sources */,
 				CFFC56A61C0E4AEB0062E102 /* TimelineViewController.swift in Sources */,
 				CFE34D371BDFD5950048F12C /* UIViewControllerExtension.swift in Sources */,
+				CFC23E871C24AC8300B2A6E3 /* SpotifyAuth.swift in Sources */,
 				CFFC56A41C0E38A20062E102 /* ParseHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
