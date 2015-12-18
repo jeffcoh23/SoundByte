@@ -16,12 +16,14 @@ protocol SongSearchTableViewCellDelegate: class {
 
 class SongSearchTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var artistSearchLabel: UILabel!
     @IBOutlet weak var songSearchLabel: UILabel!
     @IBOutlet weak var addSongSearchButton: UIButton!
     weak var delegate: SongSearchTableViewCellDelegate?
  
 
     var songURI: AnyObject?
+    
 
     @IBAction func songFollowButtonTapped(sender: AnyObject) {
         delegate?.cell(self, didSelectFollowSong: songURI!)

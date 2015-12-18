@@ -182,10 +182,13 @@ extension SongSearchViewController: UITableViewDataSource {
         cell.addSongSearchButton.hidden = true
         if spotifyListPage?.items == nil{
             cell.songSearchLabel!.text = "No Results Found"
+            cell.artistSearchLabel.hidden = true
         }
             
         else{
             cell.addSongSearchButton.hidden = false
+            //var partialTrack = self.spotifyListPage?.items[indexPath.row].artists?.first.description
+            cell.artistSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].artists?.first!.name
             cell.songSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].name
             var song = self.spotifyListPage?.items[indexPath.row]
             cell.songURI = song
