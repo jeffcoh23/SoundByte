@@ -193,7 +193,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEJ-HB-uhQ">
-                                                    <rect key="frame" x="221" y="8" width="76" height="30"/>
+                                                    <rect key="frame" x="236" y="8" width="76" height="30"/>
                                                     <state key="normal" title="Add Friend">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -204,7 +204,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="wEJ-HB-uhQ" firstAttribute="top" secondItem="5qq-fn-nI3" secondAttribute="topMargin" id="VQD-N6-Q6o"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wEJ-HB-uhQ" secondAttribute="trailing" constant="15" id="ZQI-j1-FRc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wEJ-HB-uhQ" secondAttribute="trailing" id="ZQI-j1-FRc"/>
                                                 <constraint firstItem="wEJ-HB-uhQ" firstAttribute="baseline" secondItem="CM7-BM-Pdd" secondAttribute="baseline" id="jWT-MX-hIw"/>
                                                 <constraint firstItem="CM7-BM-Pdd" firstAttribute="leading" secondItem="5qq-fn-nI3" secondAttribute="leadingMargin" id="wbb-HM-C8a"/>
                                             </constraints>
@@ -341,15 +341,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yvF-7W-IeZ" id="Ui8-jD-9g0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmB-jG-Ck0">
-                                                    <rect key="frame" x="266" y="5" width="46" height="30"/>
-                                                    <state key="normal" title="Button">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="songFollowButtonTapped:" destination="yvF-7W-IeZ" eventType="touchUpInside" id="zPs-rs-qaF"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrL-Jg-h8Y">
                                                     <rect key="frame" x="8" y="22" width="250" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -362,6 +353,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmB-jG-Ck0">
+                                                    <rect key="frame" x="282" y="6" width="30" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <state key="normal" title="+">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="songFollowButtonTapped:" destination="yvF-7W-IeZ" eventType="touchUpInside" id="zPs-rs-qaF"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="jIb-Vn-xt0" firstAttribute="bottom" secondItem="vmB-jG-Ck0" secondAttribute="bottom" id="6JT-hf-IJq"/>
@@ -371,15 +372,16 @@
                                                 <constraint firstItem="jIb-Vn-xt0" firstAttribute="leading" secondItem="Ui8-jD-9g0" secondAttribute="leadingMargin" id="RK4-2z-s4F"/>
                                                 <constraint firstItem="CrL-Jg-h8Y" firstAttribute="leading" secondItem="Ui8-jD-9g0" secondAttribute="leadingMargin" id="UCm-aO-3gk"/>
                                                 <constraint firstItem="vmB-jG-Ck0" firstAttribute="leading" secondItem="CrL-Jg-h8Y" secondAttribute="trailing" constant="8" symbolic="YES" id="XW8-Qw-rve"/>
+                                                <constraint firstAttribute="centerY" secondItem="vmB-jG-Ck0" secondAttribute="centerY" id="XpT-He-Krb"/>
                                                 <constraint firstItem="vmB-jG-Ck0" firstAttribute="leading" secondItem="CrL-Jg-h8Y" secondAttribute="trailing" constant="8" symbolic="YES" id="Y88-dL-nYF"/>
                                                 <constraint firstItem="vmB-jG-Ck0" firstAttribute="centerY" secondItem="jIb-Vn-xt0" secondAttribute="centerY" constant="1.5" id="ave-7n-Ypv"/>
                                                 <constraint firstItem="vmB-jG-Ck0" firstAttribute="leading" secondItem="jIb-Vn-xt0" secondAttribute="trailing" constant="8" symbolic="YES" id="cid-d7-VFi"/>
                                                 <constraint firstItem="jIb-Vn-xt0" firstAttribute="leading" secondItem="CrL-Jg-h8Y" secondAttribute="leading" id="dFk-ob-EiL"/>
-                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="baseline" secondItem="vmB-jG-Ck0" secondAttribute="baseline" constant="-2" id="dcU-2c-h21"/>
+                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="baseline" secondItem="vmB-jG-Ck0" secondAttribute="baseline" id="dcU-2c-h21"/>
                                                 <constraint firstItem="jIb-Vn-xt0" firstAttribute="top" secondItem="Ui8-jD-9g0" secondAttribute="topMargin" id="lAg-Lh-6po"/>
                                                 <constraint firstItem="CrL-Jg-h8Y" firstAttribute="top" secondItem="jIb-Vn-xt0" secondAttribute="bottom" constant="-5" id="mKZ-BX-Q26"/>
                                                 <constraint firstItem="vmB-jG-Ck0" firstAttribute="top" secondItem="Ui8-jD-9g0" secondAttribute="topMargin" constant="-2" id="z7V-BR-dL1"/>
-                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="top" secondItem="vmB-jG-Ck0" secondAttribute="top" constant="2" id="zBZ-oN-gCX"/>
+                                                <constraint firstItem="jIb-Vn-xt0" firstAttribute="top" secondItem="vmB-jG-Ck0" secondAttribute="top" id="zBZ-oN-gCX"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -389,6 +391,7 @@
                                                     <exclude reference="Y88-dL-nYF"/>
                                                     <exclude reference="ave-7n-Ypv"/>
                                                     <exclude reference="cid-d7-VFi"/>
+                                                    <exclude reference="z7V-BR-dL1"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

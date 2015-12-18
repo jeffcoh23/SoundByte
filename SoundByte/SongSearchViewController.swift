@@ -30,17 +30,17 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     
     @IBOutlet weak var spotifyLoginButton: UIButton!
     @IBAction func loginWithSpotify(sender: AnyObject) {
-        spotifyAuthenticator.clientID = kClientID
-        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
-        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
-        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
-        //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
-        
-        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
-        spotifyAuthenticationViewController.delegate = self
-        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        spotifyAuthenticationViewController.definesPresentationContext = true
-        presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
+//        spotifyAuthenticator.clientID = kClientID
+//        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
+//        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
+//        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
+//        //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
+//        
+//        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
+//        spotifyAuthenticationViewController.delegate = self
+//        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+//        spotifyAuthenticationViewController.definesPresentationContext = true
+//        presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
     }
     
     // SPTAuthViewDelegate protocol methods
@@ -62,6 +62,17 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     var IDArray = [String]()
     
     override func viewDidLoad() {
+        spotifyAuthenticator.clientID = kClientID
+        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
+        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
+        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
+        //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
+        
+        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
+        spotifyAuthenticationViewController.delegate = self
+//        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+//        spotifyAuthenticationViewController.definesPresentationContext = true
+//        presentViewController(spotifyAuthenticationViewController, animated: true, completion: nil)
         let followingQuery = PFQuery(className: "Follow")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
