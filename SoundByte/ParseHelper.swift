@@ -47,12 +47,17 @@ static func addFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
     followObject.saveInBackgroundWithBlock(nil)
 }
     
-    static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
+static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
         let followObject = PFObject(className: ParseSongClass)
         followObject.setObject(user, forKey: "user")
-        followObject.setObject(song.uri.description, forKey: "spotifyTrackNumber")
+    
+        var str = song.uri.description
+        var index1 = advance(song.uri.description.startIndex, 14)
+        var subStr = str.substringFromIndex(index1)
+        followObject.setObject(subStr, forKey: "spotifyTrackNumber")
+        //NSLog("\(subStr)")
         followObject.saveInBackgroundWithBlock(nil)
-    }
+}
 
 /**
 Deletes a follow relationship between two users.
