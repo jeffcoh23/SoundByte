@@ -30,24 +30,25 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     
     @IBOutlet weak var spotifyLoginButton: UIButton!
     @IBAction func loginWithSpotify(sender: AnyObject) {
-//        spotifyAuthenticator.clientID = kClientID
-//        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
-//        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
-//        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
-//        //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
-//        
-//        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
-//        spotifyAuthenticationViewController.delegate = self
-//        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-//        spotifyAuthenticationViewController.definesPresentationContext = true
-//        presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
+        spotifyAuthenticator.clientID = kClientID
+        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
+        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
+        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
+        //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
+        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
+        spotifyAuthenticationViewController.delegate = self
+        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        spotifyAuthenticationViewController.definesPresentationContext = true
+        presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
     }
     
     // SPTAuthViewDelegate protocol methods
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!) {
+        var auth: SPTAuth = SPTAuth.defaultInstance()
         setupSpotifyPlayer()
-        loginWithSpotifySession(session)
+        //NSLog("\(auth.session.description)")
+        loginWithSpotifySession(auth.session)
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
@@ -57,22 +58,52 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         println("login failed")
     }
+//    
+//    override func viewWillAppear(animated: Bool) {
+//        spotifyAuthenticator.clientID = kClientID
+//        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
+//        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
+//        super.viewWillAppear(animated)
+//        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
+//        spotifyAuthenticationViewController.delegate = self
+//        setupSpotifyPlayer()
+//        NSLog("\(spotifyAuthenticator.session.description)")
+//    }
     
+    func sessionUpdatedNotification (notification: NSNotification) -> Void{
+        if self.navigationController?.topViewController == self{
+            var auth: SPTAuth = SPTAuth.defaultInstance()
+            if auth.session.isValid(){
+                
+                self.setupSpotifyPlayer()
+                self.loginWithSpotifySession(auth.session)
+                
+            }
+        }
+    }
     
     var IDArray = [String]()
     
     override func viewDidLoad() {
-        spotifyAuthenticator.clientID = kClientID
-        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
-        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: "sessionUpdated", object: nil)
+        //NSLog("\(auth.session.description)")
+        //loginWithSpotifySession(auth.session)
+    //    spotifyAuthenticator.clientID = kClientID
+      //  spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
+       // spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
         // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
         //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
-        
-        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
-        spotifyAuthenticationViewController.delegate = self
+        //SPTAuthViewController.authenticationViewController()
+  //      let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
+        //spotifyAuthenticationViewController.delegate = self
 //        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
 //        spotifyAuthenticationViewController.definesPresentationContext = true
-//        presentViewController(spotifyAuthenticationViewController, animated: true, completion: nil)
+//       presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
+
+//        if spotifyAuthenticator.session!.accessToken == nil{
+//            songSearchBar.hidden = true
+//            tableViewSongResults.hidden = true
+//        }
         let followingQuery = PFQuery(className: "Follow")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
@@ -133,7 +164,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
                 println("Couldn't login with session: \(error)")
                 return
             }
-            self.grabSong()
+            //self.grabSong()
             
         })
     }
@@ -166,6 +197,7 @@ extension SongSearchViewController: UISearchBarDelegate {
         SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: spotifyAuthenticator.session.accessToken, callback: {( error, result) -> Void in
             if let result = result as? SPTListPage{
                 self.spotifyListPage = result
+                //NSLog("\(self.spotifyListPage?.items.)")
                 self.tableViewSongResults.reloadData()
             }
             //  }

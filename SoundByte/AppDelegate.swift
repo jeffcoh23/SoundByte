@@ -24,8 +24,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize Parse.
         Parse.setApplicationId("WtGRPWzBj8ZHiNsGOTqXWIVE1lPMafB2jTDyhi6H",
             clientKey: "UmJp9oYG8HhqFZk4aXHyD0QJZlmNcPA5AuztdhKb")
+        var auth: SPTAuth = SPTAuth.defaultInstance()
+        auth.clientID = "cf5b0855e8f440719ad3a1811e704fe3"
+        auth.requestedScopes = [SPTAuthStreamingScope]
+        auth.redirectURL = NSURL(string: "soundbyte://return-after-login")
         
         return true
+    }
+    
+    func application(application: UIApplication, url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool{
+        var auth: SPTAuth = SPTAuth.defaultInstance()
+        var authCallback: SPTAuthCallback = {(error: NSError?, session: SPTSession?) -> Void in
+            if error != nil {
+                NSLog("auth error:")
+                return
+            }
+            auth.session = session
+            NSNotificationCenter.defaultCenter().postNotificationName("sessionUpdated", object: self)
+        }
+        if auth.canHandleURL(url){
+            auth.handleAuthCallbackWithTriggeredAuthURL(url, callback: authCallback)
+            return true
+        }
+        return false
     }
     
     

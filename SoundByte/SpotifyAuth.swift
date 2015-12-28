@@ -9,12 +9,12 @@
 //import Foundation
 ////import KeychainAccess
 ////import Keys
-//import Spotify
 //
-//private let kClientID = "cf5b0855e8f440719ad3a1811e704fe3"
+//
+//private let kClientId = "cf5b0855e8f440719ad3a1811e704fe3"
 //private let kCallbackURL = "soundbyte://return-after-login"
-////let kTokenSwapURL = "http://localhost:1234/swap"
-////let kTokenRefreshURL = "http://localhost:1234/refresh"
+//private let kTokenSwapURL = "http://localhost:1234/swap"
+//private let kTokenRefreshURL = "http://localhost:1234/refresh"
 //
 //
 //public class SpotifyAuth {
@@ -27,7 +27,7 @@
 //        auth.tokenSwapURL = NSURL(string: kTokenSwapURL)
 //        return auth
 //    }
-//    private let keychain = Keychain(service: kClientId)
+//    //private let keychain = Keychain(service: kClientId)
 //    
 //    public var clientID: String { return auth.clientID }
 //    public var log: (String) -> Void = { (_) in return }
@@ -65,4 +65,26 @@
 //                return
 //            })
 //        }
+//}
+//    public func handleOpenURL(url: NSURL) -> Bool {
+//        var authCallback = { (error: NSError?, session: SPTSession?) -> Void in
+//            if let error = error {
+//                self.log(String(format: "Auth error: %@", error))
+//                return
+//            }
+//            
+//            if let session = session {
+//                self.keychain.set( NSKeyedArchiver.archivedDataWithRootObject(session), key: kSessionUserDefaultsKey)
+//                self.session = session
+//                self.startPlayback()
+//            }
+//        }
+//        
+//        if (auth.canHandleURL(url)) {
+//            auth.handleAuthCallbackWithTriggeredAuthURL(url, callback:authCallback)
+//            return true
+//        }
+//        
+//        return false
+//    }
 //}

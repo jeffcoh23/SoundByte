@@ -23,7 +23,7 @@ class SongSearchTableViewCell: UITableViewCell {
  
 
     var songURI: AnyObject?
-    
+
 
     @IBAction func songFollowButtonTapped(sender: AnyObject) {
         delegate?.cell(self, didSelectFollowSong: songURI!)
