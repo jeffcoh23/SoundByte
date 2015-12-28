@@ -144,7 +144,7 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
                     self.grabSong(self.IDArray[i])
                 }
-                //NSLog("\(self.IDArray)")
+                //NSLog("\(url?.valueForKey("uri") as! NSURL)")
             }
             
         })
@@ -167,9 +167,11 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                 var err : NSError? = nil
                 let jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(recievedData, options: NSJSONReadingOptions.AllowFragments, error: &err) as! NSDictionary
                 if err == nil{
-                    NSLog("\(jsonResult.description)")
-                    let list = jsonResult.objectForKey("preview_url") as! String
-                    self.audioPlayer = AVPlayer(URL: (NSURL(string: list)))
+                    let songPreview = jsonResult.objectForKey("preview_url") as! String
+                    let songURI = jsonResult.objectForKey("uri") as! String
+                    NSLog("\(songURI)")
+                    self.updateUI(NSURL(string: songURI))
+                    self.audioPlayer = AVPlayer(URL: (NSURL(string: songPreview)))
                     self.audioPlayer.play()
                     
                     
@@ -181,26 +183,8 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
         })
     }
     
-        
-//        audioPlayer = AVPlayer(URL: (NSURL(string: "https://p.scdn.co/mp3-preview/934da7155ec15deb326635d69d050543ecbee2b4")))
-//        audioPlayer.play()
-        
-//            self.player!.playURIs(spotifyURIArray, fromIndex: 0) { (error) -> Void in
-//                    if let error = error {
-//                        println(error)
-//                    }
-////                    else{
-////                        //NSLog("yo")
-//                        self.updateUI(self.player.currentTrackURI)
-////
-////                }
-//            }
-
-        //}
-    //}
     
     func updateUI(uriTrack: NSURL!){
-        //NSLog("\(self.player.currentTrackURI)")
         var auth: SPTAuth = SPTAuth.defaultInstance()
         if uriTrack == nil{
             self.coverView.image = nil
@@ -288,7 +272,7 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     @IBAction func playPauseButtonTapped(sender: AnyObject) {
         self.player.setIsPlaying(!self.player.isPlaying, callback: nil)
-        self.updateUI(self.player.currentTrackURI)
+        //self.updateUI()
 
     }
     @IBAction func rewindButtonTapped(sender: AnyObject) {
