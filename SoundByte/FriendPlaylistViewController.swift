@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+import Parse
 
 class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
 
@@ -18,7 +21,7 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     var player: SPTAudioStreamingController!
     let spotifyAuthenticator = SPTAuth.defaultInstance()
     var IDArray = [String]()
-    
+    var audioPlayer = AVPlayer()
     // All necessary labels including image views
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
@@ -139,21 +142,16 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
             else{
                 for i in 0...songIDs.count-1{
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
+                    self.grabSong(self.IDArray[i])
                 }
                 //NSLog("\(self.IDArray)")
             }
             
         })
-
-        self.grabSong()
-//        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
-//        spotifyAuthenticationViewController.delegate = self
-//        self.setupSpotifyPlayer()
-//        self.loginWithSpotifySession(auth.session)
     }
     
-    func grabSong(){
-        let apiURL = "https://api.spotify.com/v1/tracks/0eGsygTp906u18L0Oimnem"
+    func grabSong(TrackId: String){
+        let apiURL = "https://api.spotify.com/v1/tracks/\(TrackId)"
         let url = NSURL(string: apiURL)
         
         var urlRequest = NSMutableURLRequest(URL: url!) as NSMutableURLRequest
@@ -168,11 +166,11 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
             else{
                 var err : NSError? = nil
                 let jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(recievedData, options: NSJSONReadingOptions.AllowFragments, error: &err) as! NSDictionary
-                if err == nil{ //&& jsonResult.objectForKey("categories") != nil{
+                if err == nil{
                     NSLog("\(jsonResult.description)")
-                    let list = jsonResult.objectForKey("preview_url") as! String //?.objectForKey("items") as! NSArray
-//                    self.audioPlayer = AVPlayer(URL: (NSURL(string: list)))
-//                    self.audioPlayer.play()
+                    let list = jsonResult.objectForKey("preview_url") as! String
+                    self.audioPlayer = AVPlayer(URL: (NSURL(string: list)))
+                    self.audioPlayer.play()
                     
                     
                 }
@@ -269,7 +267,7 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                 println("Couldn't login with session: \(error)")
                 return
             }
-            self.grabSong()
+            //self.grabSong()
             //NSLog("\(self.player.currentTrackURI)")
 
             
