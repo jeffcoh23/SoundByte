@@ -30,6 +30,7 @@ class TimelineViewController: UIViewController{
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        nameArray.removeAll()
         var usersname = "username"
         let findUserObjectId = PFQuery(className: "Follow")
         findUserObjectId.whereKey("fromUser", equalTo: PFUser.currentUser()!)
@@ -71,7 +72,6 @@ extension TimelineViewController: UITableViewDataSource {
         
         func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
             SelectedSongNumber = indexPath.row
-            //grabSong()
         }
     
 

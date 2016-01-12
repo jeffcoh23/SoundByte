@@ -18,37 +18,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    var auth: SPTAuth = SPTAuth.defaultInstance()
+    let kClientID = "cf5b0855e8f440719ad3a1811e704fe3"
+    let kCallbackURL = "soundbyte://return-after-login"
+    let kTokenSwapURL = ""
+    let kTTokenRefreshServiceURL = ""
+    var kSessionUserDefaultsKey = "SpotifySession"
+
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+//    auth.requestedScopes = [SPTAuthStreamingScope]
+//    auth.redirectURL = NSURL(string: "soundbyte://return-after-login")
+//    var loginURL: NSURL = auth.loginURL
+//    auth.sessionUserDefaultsKey = "SpotifySession"
+//
+//    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         Parse.enableLocalDatastore()
         // Initialize Parse.
         Parse.setApplicationId("WtGRPWzBj8ZHiNsGOTqXWIVE1lPMafB2jTDyhi6H",
             clientKey: "UmJp9oYG8HhqFZk4aXHyD0QJZlmNcPA5AuztdhKb")
-        var auth: SPTAuth = SPTAuth.defaultInstance()
-        auth.clientID = "cf5b0855e8f440719ad3a1811e704fe3"
-        auth.requestedScopes = [SPTAuthStreamingScope]
-        auth.redirectURL = NSURL(string: "soundbyte://return-after-login")
+        
+        
+        
         
         return true
     }
     
-    func application(application: UIApplication, url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool{
-        var auth: SPTAuth = SPTAuth.defaultInstance()
-        var authCallback: SPTAuthCallback = {(error: NSError?, session: SPTSession?) -> Void in
-            if error != nil {
-                NSLog("auth error:")
-                return
-            }
-            auth.session = session
-            NSNotificationCenter.defaultCenter().postNotificationName("sessionUpdated", object: self)
-        }
-        if auth.canHandleURL(url){
-            auth.handleAuthCallbackWithTriggeredAuthURL(url, callback: authCallback)
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        // Ask SPTAuth if the URL given is a Spotify authentication callback
+        if (SPTAuth.defaultInstance().canHandleURL(url)) {
+            SPTAuth.defaultInstance().handleAuthCallbackWithTriggeredAuthURL(url, callback: { (error, session) -> Void in
+                if (error != nil) {
+                    println("*** Auth error: \(error)")
+                    return
+                }
+                
+                let nav = self.window?.rootViewController as! UINavigationController
+                let vc = nav.topViewController as! SpotifyLoginViewController
+                
+            })
+            
             return true
         }
+        
         return false
     }
-    
     
 
     func applicationWillResignActive(application: UIApplication) {
