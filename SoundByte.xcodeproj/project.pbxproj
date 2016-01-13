@@ -29,6 +29,7 @@
 		CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */; };
 		CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */; };
 		CF626F2E1C164893006093A9 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF626F2D1C164893006093A9 /* Spotify.framework */; };
+		CF691DF91C456B57002289B6 /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF691DF81C456B57002289B6 /* SpotifyLoginViewController.swift */; };
 		CFAEC7451C0E3373002E4F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAEC7441C0E3373002E4F55 /* Main.storyboard */; };
 		CFB339F11BE1DDBF00FAC89C /* StartingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */; };
 		CFC23E871C24AC8300B2A6E3 /* SpotifyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC23E861C24AC8300B2A6E3 /* SpotifyAuth.swift */; };
@@ -85,6 +86,7 @@
 		CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		CF626F2D1C164893006093A9 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
+		CF691DF81C456B57002289B6 /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
 		CFAEC7441C0E3373002E4F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CFB339F01BE1DDBF00FAC89C /* StartingTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingTabViewController.swift; sourceTree = "<group>"; };
 		CFC23E861C24AC8300B2A6E3 /* SpotifyAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyAuth.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */,
 				CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */,
+				CF691DF81C456B57002289B6 /* SpotifyLoginViewController.swift */,
 			);
 			name = Login/Register;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			files = (
 				CFDD84FD1C1B41ED007148A6 /* SongSearchTableViewCell.swift in Sources */,
 				CF1CE4021BDE97EB007AA9A4 /* SettingsViewController.swift in Sources */,
+				CF691DF91C456B57002289B6 /* SpotifyLoginViewController.swift in Sources */,
 				CFC23E891C24AE8200B2A6E3 /* FriendPlaylistViewController.swift in Sources */,
 				CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */,
 				CF0DC8F01C209315005C9825 /* TimelineTableViewCell.swift in Sources */,
@@ -544,12 +548,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundByte.xcodeproj",
 					"$(PROJECT_DIR)/SoundByte.xcodeproj/rdio-ios-4.0.0",
 				);
 				INFOPLIST_FILE = SoundByte/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -559,6 +565,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundByte/SoundByte-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -568,12 +575,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundByte.xcodeproj",
 					"$(PROJECT_DIR)/SoundByte.xcodeproj/rdio-ios-4.0.0",
 				);
 				INFOPLIST_FILE = SoundByte/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -583,6 +592,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundByte/SoundByte-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

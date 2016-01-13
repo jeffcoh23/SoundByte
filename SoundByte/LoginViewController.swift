@@ -40,13 +40,15 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         var userEmail = userEmailTextField.text
         userEmail = userEmail.lowercaseString
         var userPassword = userPasswordTextField.text
-        
+
         PFUser.logInWithUsernameInBackground(userEmail, password: userPassword){
             user, error in
             if user != nil{

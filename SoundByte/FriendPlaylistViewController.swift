@@ -102,10 +102,8 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
 
     
     func sessionUpdatedNotification (notification: NSNotification) -> Void{
-        //if self.navigationController?.topViewController == self{
             var auth: SPTAuth = SPTAuth.defaultInstance()
             if auth.session.isValid(){
-                NSLog("sdfssdfsf")
                 self.setupSpotifyPlayer()
                 self.loginWithSpotifySession(auth.session)
                 
@@ -115,25 +113,25 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: "sessionUpdated", object: nil)
-//        let auth = SPTAuth.defaultInstance()
-//        auth.clientID = kClientID
-//        auth.requestedScopes = [SPTAuthStreamingScope]
-//        auth.redirectURL = NSURL(string: kCallbackURL)
+        NSLog("\(viaSegue)")
 
         super.viewDidLoad()
         self.titleLabel.text = "Nothing Playing"
         self.albumLabel.text = ""
         self.artistLabel.text = ""
-        let followingQuery = PFQuery(className: "Follow")
-        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
+        
+        let selectedFriendQuery = PFUser.query()!
+        var selectedFriendUsername = selectedFriendQuery.whereKey("username", equalTo: viaSegue)
+        var selectedFriendName = selectedFriendQuery.getFirstObject()
+        var userSelectedFriendName = selectedFriendName!.objectId
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
-        playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        
+        let pointer = PFObject(withoutDataWithClassName: "_User", objectId: userSelectedFriendName)
+        playlistFromFollowedUsers.whereKey("user", equalTo: pointer)
+
         playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
             
             (result: [AnyObject]?, error: NSError?) -> Void in
-            
             
             var songIDs = result as! [PFObject]
             if songIDs.count < 1{
@@ -144,7 +142,7 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
                     self.grabSong(self.IDArray[i])
                 }
-                //NSLog("\(self.IDArray)")
+                //NSLog("\(url?.valueForKey("uri") as! NSURL)")
             }
             
         })
@@ -167,9 +165,10 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                 var err : NSError? = nil
                 let jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(recievedData, options: NSJSONReadingOptions.AllowFragments, error: &err) as! NSDictionary
                 if err == nil{
-                    NSLog("\(jsonResult.description)")
-                    let list = jsonResult.objectForKey("preview_url") as! String
-                    self.audioPlayer = AVPlayer(URL: (NSURL(string: list)))
+                    let songPreview = jsonResult.objectForKey("preview_url") as! String
+                    let songURI = jsonResult.objectForKey("uri") as! String
+                    self.updateUI(NSURL(string: songURI))
+                    self.audioPlayer = AVPlayer(URL: (NSURL(string: songPreview)))
                     self.audioPlayer.play()
                     
                     
@@ -181,26 +180,8 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
         })
     }
     
-        
-//        audioPlayer = AVPlayer(URL: (NSURL(string: "https://p.scdn.co/mp3-preview/934da7155ec15deb326635d69d050543ecbee2b4")))
-//        audioPlayer.play()
-        
-//            self.player!.playURIs(spotifyURIArray, fromIndex: 0) { (error) -> Void in
-//                    if let error = error {
-//                        println(error)
-//                    }
-////                    else{
-////                        //NSLog("yo")
-//                        self.updateUI(self.player.currentTrackURI)
-////
-////                }
-//            }
-
-        //}
-    //}
     
     func updateUI(uriTrack: NSURL!){
-        //NSLog("\(self.player.currentTrackURI)")
         var auth: SPTAuth = SPTAuth.defaultInstance()
         if uriTrack == nil{
             self.coverView.image = nil
@@ -288,7 +269,7 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     @IBAction func playPauseButtonTapped(sender: AnyObject) {
         self.player.setIsPlaying(!self.player.isPlaying, callback: nil)
-        self.updateUI(self.player.currentTrackURI)
+        //self.updateUI()
 
     }
     @IBAction func rewindButtonTapped(sender: AnyObject) {
