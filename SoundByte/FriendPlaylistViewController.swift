@@ -102,10 +102,8 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
 
     
     func sessionUpdatedNotification (notification: NSNotification) -> Void{
-        //if self.navigationController?.topViewController == self{
             var auth: SPTAuth = SPTAuth.defaultInstance()
             if auth.session.isValid(){
-                NSLog("sdfssdfsf")
                 self.setupSpotifyPlayer()
                 self.loginWithSpotifySession(auth.session)
                 
@@ -121,28 +119,19 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
         self.titleLabel.text = "Nothing Playing"
         self.albumLabel.text = ""
         self.artistLabel.text = ""
+        
         let selectedFriendQuery = PFUser.query()!
         var selectedFriendUsername = selectedFriendQuery.whereKey("username", equalTo: viaSegue)
-        
-        
-        //selectedFriendQuery.includeKey("objectId")
-        //var selectedFriendName = selectedFriendQuery.getFirstObject() as! PFUser
-        //var userSelectedFriendName = selectedFriendName.objectId
-        
-        
-        //NSLog("\(selectedFriendName)")
-        // Use objectforkey("username") to get the object and thus the objectid
-        let followingQuery = PFQuery(className: "Follow")
-        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
+        var selectedFriendName = selectedFriendQuery.getFirstObject()
+        var userSelectedFriendName = selectedFriendName!.objectId
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
-        playlistFromFollowedUsers.whereKey("user", matchesKey: selectedFriendUsername.valueForKey("objectId") as! String, inQuery: followingQuery)
-        //playlistFromFollowedUsers.whereKey("user", matchesKey: userSelectedFriendName!, inQuery: followingQuery)
+        let pointer = PFObject(withoutDataWithClassName: "_User", objectId: userSelectedFriendName)
+        playlistFromFollowedUsers.whereKey("user", equalTo: pointer)
 
         playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
             
             (result: [AnyObject]?, error: NSError?) -> Void in
-            
             
             var songIDs = result as! [PFObject]
             if songIDs.count < 1{
@@ -178,7 +167,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                 if err == nil{
                     let songPreview = jsonResult.objectForKey("preview_url") as! String
                     let songURI = jsonResult.objectForKey("uri") as! String
-                    NSLog("\(songURI)")
                     self.updateUI(NSURL(string: songURI))
                     self.audioPlayer = AVPlayer(URL: (NSURL(string: songPreview)))
                     self.audioPlayer.play()

@@ -52,8 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return
                 }
                 
-                let nav = self.window?.rootViewController as! UINavigationController
-                let vc = nav.topViewController as! SpotifyLoginViewController
+                //let nav = self.window?.rootViewController as! UINavigationController
+                //let vc = nav.topViewController as! SpotifyLoginViewController
                 
             })
             

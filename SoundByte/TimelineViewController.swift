@@ -19,7 +19,9 @@ public var SelectedSongNumber = Int()
 
 class TimelineViewController: UIViewController{
     
-    //var valueToPass: String!
+    
+    
+    var valueToPass: [PFObject]!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -46,6 +48,7 @@ class TimelineViewController: UIViewController{
                         
                         queryUsers!.getObjectInBackgroundWithId(user.objectId!, block: {( userGet: PFObject?, error: NSError?) -> Void in
                             if let userGet = userGet{
+                                self.valueToPass?.append(userGet)
                                 self.nameArray.append(userGet.objectForKey("username") as! String)
                                 self.tableView.reloadData()
                             }

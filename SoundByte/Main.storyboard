@@ -91,7 +91,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-1H-hP4">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-1H-hP4">
                                 <rect key="frame" x="16" y="256" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.90588241820000004" green="0.50196081400000003" blue="0.49019610879999997" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -310,7 +310,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="usernameLabel" destination="RO2-aB-fC6" id="w8q-Ri-ErE"/>
-                                            <segue destination="2Z2-5S-ffi" kind="show" identifier="friendPlaylist" id="8zx-wz-AFm"/>
+                                            <segue destination="2Z2-5S-ffi" kind="showDetail" identifier="friendPlaylist" id="8zx-wz-AFm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
