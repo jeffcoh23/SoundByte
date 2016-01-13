@@ -114,7 +114,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: "sessionUpdated", object: nil)
-        NSLog("\(viaSegue)")
 
         super.viewDidLoad()
         self.titleLabel.text = "Nothing Playing"
@@ -248,9 +247,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                 println("Couldn't login with session: \(error)")
                 return
             }
-            //self.grabSong()
-            //NSLog("\(self.player.currentTrackURI)")
-
             
         })
     }
@@ -265,35 +261,35 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     // Buttons for playing, pausing, rewinding, and fast-forwarding
 
+//
+//    
+//    @IBAction func playPauseButtonTapped(sender: AnyObject) {
+//        self.player.setIsPlaying(!self.player.isPlaying, callback: nil)
+//        //self.updateUI()
+//
+//    }
+//    @IBAction func rewindButtonTapped(sender: AnyObject) {
+//        //NSLog("\(self.player.currentTrackURI)")
+//        self.player?.skipPrevious(nil)
+//        self.updateUI(self.player.currentTrackURI)
+//       // NSLog("\(self.player.currentTrackURI)")
+//
+//
+//
+//    }
+//    
+//    @IBAction func fastForwardButtonTapped(sender: AnyObject) {
+//        //the problem is that the spotify track number does not update after the skipNext is called, so the 
+//        // updating does not really happen
+//        NSLog("\(self.player.currentTrackURI)")
+//
+//        self.player?.skipNext(nil)
+//        updateUI(self.player.currentTrackURI)
+//        NSLog("\(self.player.currentTrackURI)")
 
-    
-    @IBAction func playPauseButtonTapped(sender: AnyObject) {
-        self.player.setIsPlaying(!self.player.isPlaying, callback: nil)
-        //self.updateUI()
-
-    }
-    @IBAction func rewindButtonTapped(sender: AnyObject) {
-        //NSLog("\(self.player.currentTrackURI)")
-        self.player?.skipPrevious(nil)
-        self.updateUI(self.player.currentTrackURI)
-       // NSLog("\(self.player.currentTrackURI)")
 
 
-
-    }
-    
-    @IBAction func fastForwardButtonTapped(sender: AnyObject) {
-        //the problem is that the spotify track number does not update after the skipNext is called, so the 
-        // updating does not really happen
-        NSLog("\(self.player.currentTrackURI)")
-
-        self.player?.skipNext(nil)
-        updateUI(self.player.currentTrackURI)
-        NSLog("\(self.player.currentTrackURI)")
-
-
-
-    }
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

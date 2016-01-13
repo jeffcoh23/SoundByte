@@ -86,24 +86,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: "sessionUpdated", object: nil)
-        //NSLog("\(auth.session.description)")
-        //loginWithSpotifySession(auth.session)
-    //    spotifyAuthenticator.clientID = kClientID
-      //  spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
-       // spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
-        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
-        //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
-        //SPTAuthViewController.authenticationViewController()
-  //      let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
-        //spotifyAuthenticationViewController.delegate = self
-//        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-//        spotifyAuthenticationViewController.definesPresentationContext = true
-//       presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
-
-//        if spotifyAuthenticator.session!.accessToken == nil{
-//            songSearchBar.hidden = true
-//            tableViewSongResults.hidden = true
-//        }
+        self.spotifyLoginButton.hidden = true
         let followingQuery = PFQuery(className: "Follow")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
