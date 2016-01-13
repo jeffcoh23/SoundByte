@@ -13,10 +13,11 @@ import Parse
 
 class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
 
+    var viaSegue: String!
     let kClientID = "cf5b0855e8f440719ad3a1811e704fe3"
     let kCallbackURL = "soundbyte://return-after-login"
-    //let kTokenSwapURL = "http://localhost:1234/swap"
-    //let kTokenRefreshURL = "http://localhost:1234/refresh"
+    //let kTokenSwapURL = "http://lochttp://localhost:1234/refreshalhost:1234/swap"
+    //let kTokenRefreshURL = ""
     
     var player: SPTAudioStreamingController!
     let spotifyAuthenticator = SPTAuth.defaultInstance()
@@ -142,7 +143,6 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
                     self.grabSong(self.IDArray[i])
                 }
-                //NSLog("\(url?.valueForKey("uri") as! NSURL)")
             }
             
         })
