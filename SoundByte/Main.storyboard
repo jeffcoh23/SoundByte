@@ -736,29 +736,6 @@
                                 <color key="textColor" red="0.97814254369999998" green="0.98725848999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="056-w6-97H">
-                                <rect key="frame" x="56" y="437" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="hpl-is-5DW"/>
-                                </constraints>
-                                <state key="normal" title="&lt;&lt;">
-                                    <color key="titleColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="rewindButtonTapped:" destination="2Z2-5S-ffi" eventType="touchUpInside" id="0Fs-Bx-4Od"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0L-3k-9Cb">
-                                <rect key="frame" x="137" y="437" width="77" height="30"/>
-                                <state key="normal" title="Play/Pause">
-                                    <color key="titleColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playPauseButtonTapped:" destination="2Z2-5S-ffi" eventType="touchUpInside" id="3xn-ef-NgM"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YGG-fY-FgU">
                                 <rect key="frame" x="165" y="126" width="20" height="20"/>
                             </activityIndicatorView>
@@ -768,59 +745,19 @@
                                     <constraint firstAttribute="width" secondItem="cN4-KO-GJC" secondAttribute="height" id="4QE-Kj-I1E"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piK-no-0Ry">
-                                <rect key="frame" x="93" y="512" width="134" height="30"/>
-                                <state key="normal" title="Log out from player">
-                                    <color key="titleColor" red="0.46784092589999998" green="1" blue="0.44851382670000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutClicked:" destination="2Z2-5S-ffi" eventType="touchUpInside" id="7dK-ym-nV0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njg-cW-hFY">
-                                <rect key="frame" x="137" y="210" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginWithSpotify:" destination="2Z2-5S-ffi" eventType="touchUpInside" id="J6T-08-4HW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gy-xz-4Zs">
-                                <rect key="frame" x="217" y="437" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="oyW-c6-Z37"/>
-                                </constraints>
-                                <state key="normal" title="&gt;&gt;">
-                                    <color key="titleColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="fastForwardButtonTapped:" destination="2Z2-5S-ffi" eventType="touchUpInside" id="cjq-Zm-W2O"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.097284675010000002" green="0.091569580050000002" blue="0.097326144370000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="G0L-3k-9Cb" firstAttribute="leading" secondItem="056-w6-97H" secondAttribute="trailing" constant="20" id="3v4-Tn-JOL"/>
                             <constraint firstItem="i63-5g-SfV" firstAttribute="top" secondItem="VG2-pT-ADf" secondAttribute="bottom" constant="10" id="4SQ-Xp-iie"/>
-                            <constraint firstItem="7gy-xz-4Zs" firstAttribute="top" secondItem="i63-5g-SfV" secondAttribute="bottom" constant="20" id="6uA-Qb-ZzM"/>
                             <constraint firstAttribute="width" secondItem="ydu-PN-ZYD" secondAttribute="width" id="8Gv-nM-Da4"/>
-                            <constraint firstItem="056-w6-97H" firstAttribute="top" secondItem="i63-5g-SfV" secondAttribute="bottom" constant="20" id="Crh-jq-k9T"/>
-                            <constraint firstItem="G0L-3k-9Cb" firstAttribute="top" secondItem="i63-5g-SfV" secondAttribute="bottom" constant="20" id="Dyg-X5-HLn"/>
                             <constraint firstItem="UMC-DH-R5m" firstAttribute="top" secondItem="cN4-KO-GJC" secondAttribute="bottom" constant="26" id="Frb-I6-bFM"/>
                             <constraint firstItem="ydu-PN-ZYD" firstAttribute="centerX" secondItem="cN4-KO-GJC" secondAttribute="centerX" id="Ibj-zI-DZx"/>
-                            <constraint firstItem="ydu-PN-ZYD" firstAttribute="centerX" secondItem="piK-no-0Ry" secondAttribute="centerX" id="Jmb-xA-fOX"/>
                             <constraint firstItem="ydu-PN-ZYD" firstAttribute="centerX" secondItem="UMC-DH-R5m" secondAttribute="centerX" id="X72-6V-lzQ"/>
                             <constraint firstAttribute="centerX" secondItem="ydu-PN-ZYD" secondAttribute="centerX" id="YDw-AX-76J"/>
                             <constraint firstAttribute="height" secondItem="ydu-PN-ZYD" secondAttribute="height" id="aog-Fy-zwJ"/>
                             <constraint firstItem="ydu-PN-ZYD" firstAttribute="top" secondItem="cN4-KO-GJC" secondAttribute="top" id="eWX-WG-v4E"/>
-                            <constraint firstItem="ydu-PN-ZYD" firstAttribute="centerX" secondItem="G0L-3k-9Cb" secondAttribute="centerX" constant="-0.5" id="fIq-Hk-S6n"/>
                             <constraint firstItem="ydu-PN-ZYD" firstAttribute="centerX" secondItem="i63-5g-SfV" secondAttribute="centerX" id="fwM-ad-kVm"/>
                             <constraint firstAttribute="centerY" secondItem="ydu-PN-ZYD" secondAttribute="centerY" id="h9U-aq-VBn"/>
-                            <constraint firstItem="7gy-xz-4Zs" firstAttribute="leading" secondItem="G0L-3k-9Cb" secondAttribute="trailing" constant="20" id="jrY-ww-hmM"/>
-                            <constraint firstItem="piK-no-0Ry" firstAttribute="top" secondItem="G0L-3k-9Cb" secondAttribute="bottom" constant="3" id="kVk-2w-cFF"/>
                             <constraint firstAttribute="width" secondItem="cN4-KO-GJC" secondAttribute="width" id="o7l-LB-8Fq"/>
                             <constraint firstItem="VG2-pT-ADf" firstAttribute="top" secondItem="UMC-DH-R5m" secondAttribute="bottom" constant="10" id="rDM-Bg-NDj"/>
                             <constraint firstItem="ydu-PN-ZYD" firstAttribute="centerX" secondItem="VG2-pT-ADf" secondAttribute="centerX" id="rb8-w1-BGF"/>
