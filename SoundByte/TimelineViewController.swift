@@ -15,9 +15,11 @@ import Parse
 import AVKit
 
 public var SelectedSongNumber = Int()
+//public var valueToPass: String!
 
 class TimelineViewController: UIViewController{
     
+    //var valueToPass: String!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -60,6 +62,18 @@ class TimelineViewController: UIViewController{
 
 extension TimelineViewController: UITableViewDataSource {
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "friendPlaylist"){
+            if let destination = segue.destinationViewController as? FriendPlaylistViewController{
+                var path = tableView.indexPathForSelectedRow()!
+                //let cell = tableView.cellForRowAtIndexPath(path!)
+                destination.viaSegue = self.nameArray[path.row]
+                
+            }
+            
+        }
+    }
+    
         func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
             return self.nameArray.count ?? 0
         }
@@ -71,6 +85,10 @@ extension TimelineViewController: UITableViewDataSource {
         }
         
         func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+            _ = tableView.indexPathForSelectedRow()!
+            if let _ = tableView.cellForRowAtIndexPath(indexPath){
+                self.performSegueWithIdentifier("friendPlaylist", sender: self)
+            }
             SelectedSongNumber = indexPath.row
         }
     

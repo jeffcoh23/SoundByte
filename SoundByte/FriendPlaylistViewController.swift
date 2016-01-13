@@ -115,21 +115,30 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: "sessionUpdated", object: nil)
-//        let auth = SPTAuth.defaultInstance()
-//        auth.clientID = kClientID
-//        auth.requestedScopes = [SPTAuthStreamingScope]
-//        auth.redirectURL = NSURL(string: kCallbackURL)
+        NSLog("\(viaSegue)")
 
         super.viewDidLoad()
         self.titleLabel.text = "Nothing Playing"
         self.albumLabel.text = ""
         self.artistLabel.text = ""
+        let selectedFriendQuery = PFUser.query()!
+        var selectedFriendUsername = selectedFriendQuery.whereKey("username", equalTo: viaSegue)
+        
+        
+        //selectedFriendQuery.includeKey("objectId")
+        //var selectedFriendName = selectedFriendQuery.getFirstObject() as! PFUser
+        //var userSelectedFriendName = selectedFriendName.objectId
+        
+        
+        //NSLog("\(selectedFriendName)")
+        // Use objectforkey("username") to get the object and thus the objectid
         let followingQuery = PFQuery(className: "Follow")
         followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
-        playlistFromFollowedUsers.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        
+        playlistFromFollowedUsers.whereKey("user", matchesKey: selectedFriendUsername.valueForKey("objectId") as! String, inQuery: followingQuery)
+        //playlistFromFollowedUsers.whereKey("user", matchesKey: userSelectedFriendName!, inQuery: followingQuery)
+
         playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
             
             (result: [AnyObject]?, error: NSError?) -> Void in

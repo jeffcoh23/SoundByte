@@ -33,22 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ),
             dispatch_get_main_queue(), closure)
     }
-//    auth.requestedScopes = [SPTAuthStreamingScope]
-//    auth.redirectURL = NSURL(string: "soundbyte://return-after-login")
-//    var loginURL: NSURL = auth.loginURL
-//    auth.sessionUserDefaultsKey = "SpotifySession"
-//
-//    
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         Parse.enableLocalDatastore()
         // Initialize Parse.
         Parse.setApplicationId("WtGRPWzBj8ZHiNsGOTqXWIVE1lPMafB2jTDyhi6H",
             clientKey: "UmJp9oYG8HhqFZk4aXHyD0QJZlmNcPA5AuztdhKb")
-        
-        
-        
-        
         return true
     }
     

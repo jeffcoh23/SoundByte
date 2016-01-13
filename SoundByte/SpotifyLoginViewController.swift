@@ -20,14 +20,16 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
     let spotifyLoginViewControllerSegue = "SpotifyLoginSuccessful"
     
     override func viewDidLoad(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: "sessionUpdated", object: nil)
-        var auth: SPTAuth = SPTAuth.defaultInstance()
-        if auth.session != nil{
-            self.performSegueWithIdentifier(self.spotifyLoginViewControllerSegue, sender: nil)
-        }
+        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: UIApplicationWillEnterForegroundNotification, object: nil)
+//        var auth: SPTAuth = SPTAuth.defaultInstance()
+//        if (auth.session.isValid()){
+//            self.performSegueWithIdentifier(spotifyLoginViewControllerSegue, sender: nil)
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         var auth: SPTAuth = SPTAuth.defaultInstance()
         if (auth.session == nil){
             return
@@ -35,6 +37,7 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
         
         //check if auth is still valid
         if (auth.session.isValid()){
+            NSLog("viewWillAppear shit")
             self.performSegueWithIdentifier(spotifyLoginViewControllerSegue, sender: nil)
         }
         
@@ -52,17 +55,19 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
                 NSLog("***Error renewing session: %@", error)
                 return
             }
+            NSLog("something to do with renewtokenandshow")
             self.performSegueWithIdentifier(self.spotifyLoginViewControllerSegue, sender: nil)
         })
     }
     
     func sessionUpdatedNotification (notification: NSNotification) -> Void{
-        if self.navigationController?.topViewController == self{
+        
             var auth: SPTAuth = SPTAuth.defaultInstance()
             if auth.session.isValid(){
+                NSLog("something to do with sessionupdatedshit")
                 self.performSegueWithIdentifier(spotifyLoginViewControllerSegue, sender: nil)
                 
-            }
+            
         }
     }
     

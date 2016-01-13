@@ -32,7 +32,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="H46-WE-5id" kind="presentation" identifier="SpotifyLoginSuccessful" id="0iG-FK-dfV"/>
+                        <segue destination="H46-WE-5id" kind="presentation" identifier="SpotifyLoginSuccessful" animates="NO" id="0iG-FK-dfV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HP3-Le-kZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,7 +177,7 @@
                     <connections>
                         <outlet property="userEmailTextField" destination="G5P-IA-EjI" id="2xj-Cu-eoL"/>
                         <outlet property="userPasswordTextField" destination="z3P-te-LD8" id="UtT-jB-4WU"/>
-                        <segue destination="8Je-GT-raX" kind="presentation" identifier="LoginSuccessful" id="qC7-Ap-fGk"/>
+                        <segue destination="8Je-GT-raX" kind="presentation" identifier="LoginSuccessful" animates="NO" id="qC7-Ap-fGk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I38-rK-jMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,7 +310,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="usernameLabel" destination="RO2-aB-fC6" id="w8q-Ri-ErE"/>
-                                            <segue destination="2Z2-5S-ffi" kind="show" id="8zx-wz-AFm"/>
+                                            <segue destination="2Z2-5S-ffi" kind="show" identifier="friendPlaylist" id="8zx-wz-AFm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
