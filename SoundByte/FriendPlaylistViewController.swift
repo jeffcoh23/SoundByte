@@ -152,8 +152,8 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
         let url = NSURL(string: apiURL)
         
         var urlRequest = NSMutableURLRequest(URL: url!) as NSMutableURLRequest
-        let headersAuth = NSString(format: "Bearer %@", spotifyAuthenticator.session.accessToken)
-        urlRequest.setValue(headersAuth as? String, forHTTPHeaderField: "Authorization")
+        //let headersAuth = NSString(format: "Bearer %@", spotifyAuthenticator.session.accessToken)
+        //urlRequest.setValue(headersAuth as? String, forHTTPHeaderField: "Authorization")
         
         let queue = NSOperationQueue()
         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: queue, completionHandler: {(response: NSURLResponse!, recievedData: NSData!, error: NSError!) -> Void in
