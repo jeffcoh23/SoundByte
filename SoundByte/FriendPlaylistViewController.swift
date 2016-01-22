@@ -170,6 +170,21 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
         
     }
     
+    
+    @IBAction func nextSongButton(sender: AnyObject) {
+        self.queuePlayer.advanceToNextItem()
+    }
+    
+    @IBAction func playAndPauseButton(sender: AnyObject) {
+        if self.queuePlayer.rate == 1.0{
+            self.queuePlayer.pause()
+        }
+        else if (self.queuePlayer.rate == 0.0){
+            self.queuePlayer.play()
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
