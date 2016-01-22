@@ -277,7 +277,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="usernameLabel" destination="RO2-aB-fC6" id="w8q-Ri-ErE"/>
-                                            <segue destination="2Z2-5S-ffi" kind="showDetail" identifier="friendPlaylist" id="8zx-wz-AFm"/>
+                                            <segue destination="2Z2-5S-ffi" kind="show" identifier="friendPlaylist" id="8zx-wz-AFm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -708,6 +708,7 @@
                             </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cN4-KO-GJC">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cN4-KO-GJC" secondAttribute="height" id="4QE-Kj-I1E"/>
                                 </constraints>
@@ -741,8 +742,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CpN-PA-BAb" sceneMemberID="firstResponder"/>
+                <exit id="wnL-Mq-Bai" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="down" id="0pM-sk-iKe">
+                    <connections>
+                        <segue destination="wnL-Mq-Bai" kind="unwind" unwindAction="cancelToTimelineViewController:" id="ANq-FV-aER"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="302" y="2517"/>
+            <point key="canvasLocation" x="302" y="1777"/>
         </scene>
     </scenes>
     <resources>

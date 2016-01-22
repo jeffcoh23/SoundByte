@@ -11,16 +11,20 @@ import AVKit
 import AVFoundation
 import Parse
 
-class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
 
+
+class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
+    var blankshit : String!
+    var songDictionary: [NSURL : String] = [:]
     var viaSegue: String!
     let kClientID = "cf5b0855e8f440719ad3a1811e704fe3"
     let kCallbackURL = "soundbyte://return-after-login"
     //let kTokenSwapURL = "http://lochttp://localhost:1234/refreshalhost:1234/swap"
     //let kTokenRefreshURL = ""
-    
+    var queuePlayer: AVQueuePlayer!
     var player: SPTAudioStreamingController!
     let spotifyAuthenticator = SPTAuth.defaultInstance()
+    var songsArray = [AVPlayerItem]()
     var IDArray = [String]()
     var audioPlayer = AVPlayer()
     // All necessary labels including image views
@@ -31,90 +35,11 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    @IBAction func loginWithSpotify(sender: AnyObject) {
-        spotifyAuthenticator.clientID = kClientID
-        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
-        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
-        // spotifyAuthenticator.tokenSwapURL = NSURL(string: kTokenSwapURL)
-        //spotifyAuthenticator.tokenRefreshURL = NSURL(string: kTokenRefreshURL)
-        
-        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
-        spotifyAuthenticationViewController.delegate = self
-        spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        spotifyAuthenticationViewController.definesPresentationContext = true
-        presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.handleNewSession()
-    }
-    
-    func handleNewSession(){
-        let auth = SPTAuth.defaultInstance()
-        if self.player == nil{
-            player = SPTAudioStreamingController(clientId: auth.clientID) // can also use kClientID; they're the same value
-            player!.playbackDelegate = self
-            player!.diskCache = SPTDiskCache(capacity: 1024 * 1024 * 64)
-        }
-        self.player!.loginWithSession(auth.session, callback: { (error: NSError!) in
-            if error != nil {
-                println("Couldn't login with session: \(error)")
-                return
-            }
-            self.updateUI(self.player.currentTrackURI)
-            var spotifyURIArray = [NSURL]()
-            for i in 0...self.IDArray.count-1{
-                spotifyURIArray.append(NSURL(string: self.IDArray[i])!)
-            }
-            // NSLog("\(spotifyURIArray)")
-            self.player!.playURIs(spotifyURIArray, fromIndex: 0) { (error) -> Void in
-                if let error = error {
-                    println(error)
-                }
-            
-                self.updateUI(self.player.currentTrackURI)
-                //
-                //                }
-            }
-            
-            //}
-        })
 
-        
-    }
-
-    
-    
-    // SPTAuthViewDelegate protocol methods
-    
-    func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!) {
-        setupSpotifyPlayer()
-        loginWithSpotifySession(session)
-    }
-    
-    func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
-        println("login cancelled")
-    }
-    
-    func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
-        println("login failed")
-    }
-
-    
-    func sessionUpdatedNotification (notification: NSNotification) -> Void{
-            var auth: SPTAuth = SPTAuth.defaultInstance()
-            if auth.session.isValid(){
-                self.setupSpotifyPlayer()
-                self.loginWithSpotifySession(auth.session)
-                
-          //  }
-        }
-    }
     
     override func viewDidLoad() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionUpdatedNotification", name: "sessionUpdated", object: nil)
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: "sessionUpdated", object: nil)
+        
         super.viewDidLoad()
         self.titleLabel.text = "Nothing Playing"
         self.albumLabel.text = ""
@@ -128,55 +53,74 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
         let pointer = PFObject(withoutDataWithClassName: "_User", objectId: userSelectedFriendName)
         playlistFromFollowedUsers.whereKey("user", equalTo: pointer)
+        self.queuePlayer = AVQueuePlayer(items: nil)
 
         playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
             
             (result: [AnyObject]?, error: NSError?) -> Void in
             
             var songIDs = result as! [PFObject]
+            
             if songIDs.count < 1{
                 return
             }
             else{
+               
                 for i in 0...songIDs.count-1{
+                   var songPrev = songIDs[i].valueForKey("spotifyTrackNumber") as! String
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
-                    self.grabSong(self.IDArray[i])
+                    let apiURL = "https://api.spotify.com/v1/tracks/\(self.IDArray[i])"
+                    let url = NSURL(string: apiURL)
+                    
+                    var urlRequest = NSMutableURLRequest(URL: url!) as NSMutableURLRequest
+                    //let headersAuth = NSString(format: "Bearer %@", spotifyAuthenticator.session.accessToken)
+                    //urlRequest.setValue(headersAuth as? String, forHTTPHeaderField: "Authorization")
+                    
+                    let queue = NSOperationQueue()
+                    NSURLConnection.sendAsynchronousRequest(urlRequest, queue: queue, completionHandler: {(response: NSURLResponse!, recievedData: NSData!, error: NSError!) -> Void in
+                        if error != nil{
+                            println(error.localizedDescription)
+                        }
+                        else{
+                            var err : NSError? = nil
+                            let jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(recievedData, options: NSJSONReadingOptions.AllowFragments, error: &err) as! NSDictionary
+                            if err == nil{
+                                let songPreview = jsonResult.objectForKey("preview_url") as! String
+                                let songURI = jsonResult.objectForKey("uri") as! String
+                                //NSLog("\(songURI)")
+                                var asset: AVURLAsset = AVURLAsset(URL: (NSURL(string: songPreview)), options: nil)
+                                var playerItem = AVPlayerItem(asset: asset)
+                                
+                                self.queuePlayer.insertItem(playerItem, afterItem: self.queuePlayer.items().last as? AVPlayerItem)
+                                self.songDictionary.updateValue(songURI, forKey:  playerItem.valueForKey("URL") as! NSURL)
+                                if (self.queuePlayer.items().count <= 1) {
+                                    self.updateUI(NSURL(string: songURI))
+                                }
+                            }
+                            else{
+                                println(err?.localizedDescription)
+                            }
+                        }
+                    })
+                   
+                    
                 }
             }
+            self.queuePlayer.addObserver(self, forKeyPath: "currentItem", options: .New | .Initial, context: &self.songDictionary) //Send dictionary object in context
+            self.queuePlayer.play()
+
             
         })
     }
     
-    func grabSong(TrackId: String){
-        let apiURL = "https://api.spotify.com/v1/tracks/\(TrackId)"
-        let url = NSURL(string: apiURL)
-        
-        var urlRequest = NSMutableURLRequest(URL: url!) as NSMutableURLRequest
-        //let headersAuth = NSString(format: "Bearer %@", spotifyAuthenticator.session.accessToken)
-        //urlRequest.setValue(headersAuth as? String, forHTTPHeaderField: "Authorization")
-        
-        let queue = NSOperationQueue()
-        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: queue, completionHandler: {(response: NSURLResponse!, recievedData: NSData!, error: NSError!) -> Void in
-            if error != nil{
-                println(error.localizedDescription)
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if keyPath == "currentItem", let player = object as? AVPlayer,
+        currentItem = player.currentItem?.asset as? AVURLAsset {
+            var newSongURI = self.songDictionary[currentItem.valueForKey("URL") as! NSURL]
+            if newSongURI != nil{
+             self.updateUI(NSURL(string: newSongURI!))
             }
-            else{
-                var err : NSError? = nil
-                let jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(recievedData, options: NSJSONReadingOptions.AllowFragments, error: &err) as! NSDictionary
-                if err == nil{
-                    let songPreview = jsonResult.objectForKey("preview_url") as! String
-                    let songURI = jsonResult.objectForKey("uri") as! String
-                    self.updateUI(NSURL(string: songURI))
-                    self.audioPlayer = AVPlayer(URL: (NSURL(string: songPreview)))
-                    self.audioPlayer.play()
-                    
-                    
-                }
-                else{
-                    println(err?.localizedDescription)
-                }
-            }
-        })
+        }
     }
     
     
@@ -223,85 +167,12 @@ class FriendPlaylistViewController: UIViewController, SPTAuthViewDelegate, SPTAu
             })
         }
         }
-    }
-    
-
-    // SPTAudioStreamingPlaybackDelegate protocol methods
-    
-    private
-    
-    func setupSpotifyPlayer() {
-        player = SPTAudioStreamingController(clientId: spotifyAuthenticator.clientID) // can also use kClientID; they're the same value
-        player!.playbackDelegate = self
-        player!.diskCache = SPTDiskCache(capacity: 1024 * 1024 * 64)
         
     }
     
-    func loginWithSpotifySession(session: SPTSession) {
-//        if spotifyAuthenticator.session.accessToken != nil{
-//            self.spotifyLoginButton.hidden = true
-//        }
-        
-        player!.loginWithSession(session, callback: { (error: NSError!) in
-            if error != nil {
-                println("Couldn't login with session: \(error)")
-                return
-            }
-            
-        })
-    }
-
-        
-        
-        // Do any additional setup after loading the view.
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    // Buttons for playing, pausing, rewinding, and fast-forwarding
-
-//
-//    
-//    @IBAction func playPauseButtonTapped(sender: AnyObject) {
-//        self.player.setIsPlaying(!self.player.isPlaying, callback: nil)
-//        //self.updateUI()
-//
-//    }
-//    @IBAction func rewindButtonTapped(sender: AnyObject) {
-//        //NSLog("\(self.player.currentTrackURI)")
-//        self.player?.skipPrevious(nil)
-//        self.updateUI(self.player.currentTrackURI)
-//       // NSLog("\(self.player.currentTrackURI)")
-//
-//
-//
-//    }
-//    
-//    @IBAction func fastForwardButtonTapped(sender: AnyObject) {
-//        //the problem is that the spotify track number does not update after the skipNext is called, so the 
-//        // updating does not really happen
-//        NSLog("\(self.player.currentTrackURI)")
-//
-//        self.player?.skipNext(nil)
-//        updateUI(self.player.currentTrackURI)
-//        NSLog("\(self.player.currentTrackURI)")
-
-
-
-//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
