@@ -175,6 +175,11 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
         self.queuePlayer.advanceToNextItem()
     }
     
+    @IBAction func previousSongButton(sender: AnyObject) {
+      //  self.queuePlayer.
+    }
+    
+    
     @IBAction func playAndPauseButton(sender: AnyObject) {
         if self.queuePlayer.rate == 1.0{
             self.queuePlayer.pause()
