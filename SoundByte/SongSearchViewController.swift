@@ -177,7 +177,7 @@ extension SongSearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: spotifyAuthenticator.session.accessToken, callback: {( error, result) -> Void in
+        SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: nil, callback: {( error, result) -> Void in
             if let result = result as? SPTListPage{
                 self.spotifyListPage = result
                 //NSLog("\(self.spotifyListPage?.items.)")

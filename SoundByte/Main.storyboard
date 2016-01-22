@@ -6,39 +6,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Spotify Login View Controller-->
-        <scene sceneID="tON-rJ-CR0">
-            <objects>
-                <viewController id="8Je-GT-raX" customClass="SpotifyLoginViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OdK-2T-mSp"/>
-                        <viewControllerLayoutGuide type="bottom" id="FfT-Lc-lkF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0FQ-GA-eio">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjr-NB-qDI">
-                                <rect key="frame" x="115" y="269" width="91" height="30"/>
-                                <state key="normal" title="Spotify Login">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginWithSpotify:" destination="8Je-GT-raX" eventType="touchUpInside" id="ORO-DR-Aaz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <segue destination="H46-WE-5id" kind="presentation" identifier="SpotifyLoginSuccessful" animates="NO" id="0iG-FK-dfV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HP3-Le-kZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="879" y="477"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="cWK-ck-Ez1">
             <objects>
@@ -177,7 +144,7 @@
                     <connections>
                         <outlet property="userEmailTextField" destination="G5P-IA-EjI" id="2xj-Cu-eoL"/>
                         <outlet property="userPasswordTextField" destination="z3P-te-LD8" id="UtT-jB-4WU"/>
-                        <segue destination="8Je-GT-raX" kind="presentation" identifier="LoginSuccessful" animates="NO" id="qC7-Ap-fGk"/>
+                        <segue destination="H46-WE-5id" kind="presentation" identifier="LoginSuccessful" id="2tg-wX-HC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I38-rK-jMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trz-LT-E4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="1844"/>
+            <point key="canvasLocation" x="711" y="1078"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="IAT-s5-5eJ">
@@ -310,7 +277,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="usernameLabel" destination="RO2-aB-fC6" id="w8q-Ri-ErE"/>
-                                            <segue destination="2Z2-5S-ffi" kind="showDetail" identifier="friendPlaylist" id="8zx-wz-AFm"/>
+                                            <segue destination="2Z2-5S-ffi" kind="show" identifier="friendPlaylist" id="8zx-wz-AFm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -334,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cq1-Ri-JAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="1844"/>
+            <point key="canvasLocation" x="310" y="1078"/>
         </scene>
         <!--Song Search-->
         <scene sceneID="tEy-Pk-g5A">
@@ -462,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJ2-uo-nY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="1844"/>
+            <point key="canvasLocation" x="1103" y="1078"/>
         </scene>
         <!--Starting Tab View Controller-->
         <scene sceneID="Mtv-FZ-btW">
@@ -485,7 +452,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqy-cq-3sq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="1135"/>
+            <point key="canvasLocation" x="887" y="369"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="gai-aK-TSS">
@@ -700,7 +667,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGb-R3-YBR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512" y="1844"/>
+            <point key="canvasLocation" x="1520" y="1078"/>
         </scene>
         <!--Friend Playlist View Controller-->
         <scene sceneID="XL0-wr-21B">
@@ -741,6 +708,7 @@
                             </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cN4-KO-GJC">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cN4-KO-GJC" secondAttribute="height" id="4QE-Kj-I1E"/>
                                 </constraints>
@@ -774,8 +742,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CpN-PA-BAb" sceneMemberID="firstResponder"/>
+                <exit id="wnL-Mq-Bai" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="down" id="0pM-sk-iKe">
+                    <connections>
+                        <segue destination="wnL-Mq-Bai" kind="unwind" unwindAction="cancelToTimelineViewController:" id="ANq-FV-aER"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="302" y="2517"/>
+            <point key="canvasLocation" x="302" y="1777"/>
         </scene>
     </scenes>
     <resources>
