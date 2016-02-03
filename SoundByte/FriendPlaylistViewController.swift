@@ -106,7 +106,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
                     
                 }
             }
-            self.queuePlayer.addObserver(self, forKeyPath: "currentItem", options: .New | .Initial, context: &self.songDictionary) //Send dictionary object in context
+            self.queuePlayer.addObserver(self, forKeyPath: "currentItem", options: .New | .Initial, context: &self.songDictionary)
             self.queuePlayer.play()
 
             
@@ -170,13 +170,22 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
         
     }
     
+    @IBAction func exitButton(sender: AnyObject) {
+        self.queuePlayer.pause()
+    }
     
     @IBAction func nextSongButton(sender: AnyObject) {
+//        NSLog("\(self.queuePlayer.items().count-1)")
+//        NSLog("\(self.queuePlayer.items().endIndex)")
+//        if (self.queuePlayer.items().endIndex == 1){
+//            self.queuePlayer.items().first
+//            //return
+//        }
         self.queuePlayer.advanceToNextItem()
     }
     
     @IBAction func previousSongButton(sender: AnyObject) {
-      //  self.queuePlayer.
+      //self.queuePlayer.items().
     }
     
     

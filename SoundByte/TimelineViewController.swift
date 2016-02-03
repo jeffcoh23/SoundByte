@@ -32,6 +32,17 @@ class TimelineViewController: UIViewController{
         }
     }
     
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
+    }
+    
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+        if (self.respondsToSelector(action)){
+            return true
+        }
+        return false
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         nameArray.removeAll()
