@@ -22,7 +22,6 @@ class FavoritesViewController: UIViewController {
     }
     
     func fetchLikedSongs(){
-        var songWithInfoDictionary : [String : (String, String)]
         let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
         var query = PFUser.query()
         var likesQuery = PFQuery(className: "Like")
@@ -55,15 +54,46 @@ class FavoritesViewController: UIViewController {
 
             }
         }
-        NSLog("\(self.songWithInfoDictionary.count)")
+       
 
         return self.songWithInfoDictionary
     }
     
-    override func viewDidLoad() {
-        fetchLikedSongs()
-        super.viewDidLoad()
-        self.tableView.reloadData()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+        var query = PFUser.query()
+        var likesQuery = PFQuery(className: "Like")
+        var finalQuery = likesQuery.whereKey("fromUser", equalTo: pointer)
+        finalQuery.findObjectsInBackgroundWithBlock({
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil{
+                if let results = results{
+                    for result in results{
+                        var uriTrackAsString = result["likedSongURI"] as! String
+                        self.songURIArray.append(uriTrackAsString)
+                        var uriTrack = NSURL(string: result["likedSongURI"] as! String)
+                        SPTTrack.trackWithURI(uriTrack, session: nil) { (error, track) -> Void in
+                            if let track = track as? SPTTrack, artist = track.artists.first as? SPTPartialArtist{
+                                self.songWithInfoDictionary.updateValue((track.name, artist.name), forKey: uriTrackAsString)
+                                
+                                
+                                
+                            }
+                        }
+                        //self.fetchNameAndArtist(result["likedSongURI"] as! String)
+                        
+                    }
+                }
+            }
+            else{
+                return
+            }
+            
+            
+        })
+        //fetchLikedSongs()
+        //self.tableView.reloadData()
         
 
         // Do any additional setup after loading the view.

@@ -322,6 +322,15 @@
                                     <outlet property="delegate" destination="lbB-OO-luo" id="P0F-rA-60C"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gI-F8-wzo">
+                                <rect key="frame" x="105" y="115" width="111" height="30"/>
+                                <state key="normal" title="Login To Spotify">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginWithSpotify:" destination="lbB-OO-luo" eventType="touchUpInside" id="7j7-Le-9Mc"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="x8c-ev-Q0Z">
                                 <rect key="frame" x="0.0" y="153" width="320" height="366"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,15 +406,6 @@
                                     <outlet property="dataSource" destination="lbB-OO-luo" id="Odu-Wb-h2b"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gI-F8-wzo">
-                                <rect key="frame" x="105" y="115" width="111" height="30"/>
-                                <state key="normal" title="Login To Spotify">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginWithSpotify:" destination="lbB-OO-luo" eventType="touchUpInside" id="7j7-Le-9Mc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -468,8 +468,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FQJ-ZK-CPb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FQJ-ZK-CPb">
+                                <rect key="frame" x="0.0" y="37" width="320" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="57" id="ApQ-py-nZg" customClass="FavoritesTableViewCell" customModule="SoundByte" customModuleProvider="target">
@@ -479,25 +479,34 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd7-ls-LfA">
-                                                    <rect key="frame" x="35" y="8" width="41" height="21"/>
+                                                    <rect key="frame" x="35" y="8" width="277" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMK-q8-DqM">
-                                                    <rect key="frame" x="35" y="27" width="41" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Artist" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMK-q8-DqM">
+                                                    <rect key="frame" x="35" y="27" width="277" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zd7-ls-LfA" secondAttribute="trailing" constant="236" id="4gJ-Nv-6GM"/>
                                                 <constraint firstItem="zd7-ls-LfA" firstAttribute="leading" secondItem="UKh-FS-SDP" secondAttribute="leadingMargin" constant="27" id="4x1-EX-6OY"/>
                                                 <constraint firstItem="iMK-q8-DqM" firstAttribute="top" secondItem="zd7-ls-LfA" secondAttribute="bottom" constant="-2" id="6dQ-cQ-ERG"/>
+                                                <constraint firstItem="zd7-ls-LfA" firstAttribute="trailing" secondItem="UKh-FS-SDP" secondAttribute="trailingMargin" id="JGE-hP-Sn5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="iMK-q8-DqM" secondAttribute="trailing" constant="236" id="UcM-ca-Pd1"/>
                                                 <constraint firstItem="iMK-q8-DqM" firstAttribute="leading" secondItem="UKh-FS-SDP" secondAttribute="leadingMargin" constant="27" id="bEi-NS-R42"/>
+                                                <constraint firstItem="iMK-q8-DqM" firstAttribute="trailing" secondItem="UKh-FS-SDP" secondAttribute="trailingMargin" id="mgW-J8-mk7"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="4gJ-Nv-6GM"/>
+                                                    <exclude reference="UcM-ca-Pd1"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="artistName" destination="iMK-q8-DqM" id="fhz-bP-kYp"/>
@@ -505,9 +514,33 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="z1q-8v-dQO" id="Tbw-4r-L58"/>
+                                    <outlet property="delegate" destination="z1q-8v-dQO" id="Pxx-pJ-usb"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FQJ-ZK-CPb" firstAttribute="leading" secondItem="QaN-VL-SLL" secondAttribute="trailing" constant="-320" id="FhP-aV-OgA"/>
+                            <constraint firstItem="FQJ-ZK-CPb" firstAttribute="leading" secondItem="QaN-VL-SLL" secondAttribute="trailing" constant="8" symbolic="YES" id="T0a-5o-Xhx"/>
+                            <constraint firstItem="FQJ-ZK-CPb" firstAttribute="leading" secondItem="QaN-VL-SLL" secondAttribute="trailing" constant="-320" id="TNd-E3-dNw"/>
+                            <constraint firstItem="FQJ-ZK-CPb" firstAttribute="leading" secondItem="QaN-VL-SLL" secondAttribute="trailing" constant="-320" id="ddj-Ng-I1k"/>
+                            <constraint firstItem="FQJ-ZK-CPb" firstAttribute="top" secondItem="QaN-VL-SLL" secondAttribute="bottom" constant="-20" id="eIH-u8-izq"/>
+                            <constraint firstItem="FQJ-ZK-CPb" firstAttribute="leading" secondItem="QaN-VL-SLL" secondAttribute="trailing" constant="-320" id="pSL-Pt-noD"/>
+                            <constraint firstItem="FQJ-ZK-CPb" firstAttribute="leading" secondItem="QaN-VL-SLL" secondAttribute="trailing" constant="-320" id="yea-TO-ZjI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FhP-aV-OgA"/>
+                                <exclude reference="T0a-5o-Xhx"/>
+                                <exclude reference="TNd-E3-dNw"/>
+                                <exclude reference="ddj-Ng-I1k"/>
+                                <exclude reference="eIH-u8-izq"/>
+                                <exclude reference="pSL-Pt-noD"/>
+                                <exclude reference="yea-TO-ZjI"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" selectedImage="Heart" systemItem="favorites" id="j4K-mV-pof"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
