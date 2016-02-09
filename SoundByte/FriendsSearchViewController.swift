@@ -112,6 +112,7 @@ extension FriendsSearchViewController: UITableViewDataSource {
             // check if current user is already following displayed user
             // change button appereance based on result
             //cell.canFollow = !followingUsers.contains(user)
+            cell.canFollow = contains(followingUsers, user)
         }
         
         cell.delegate = self
@@ -153,12 +154,15 @@ extension FriendsSearchViewController: FriendSearchTableViewCellDelegate {
     }
     
     func cell(cell: FriendSearchTableViewCell, didSelectUnfollowUser user: PFUser) {
-        if var followingUsers = followingUsers {
+        if var followers = followingUsers {
             ParseHelper.removeFollowRelationshipFromUser(PFUser.currentUser()!, toUser: user)
             // update local cache
+            followers = followers.filter { $0.username != user.username}
             //removeObject(user, fromArray: &followingUsers)
-            self.followingUsers = followingUsers
+            self.followingUsers = followers
         }
     }
     
 }
+
+

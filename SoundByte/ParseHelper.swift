@@ -24,7 +24,10 @@ class ParseHelper{
     static let ParseFollowFromUser    = "fromUser"
     static let ParseFollowToUser      = "toUser"
     static let ParseUserUsername      = "username"
-    static let ParseSongClass = "Playlist"
+    static let ParseSongClass         = "Playlist"
+    static let ParseLikeClass         = "Like"
+    static let ParseLikeToPost        = "toPost"
+    static let ParseLikeFromUser      = "fromUser"
     
 static func getFollowingUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
     let query = PFQuery(className: ParseFollowClass)
@@ -55,7 +58,6 @@ static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
         var index1 = advance(song.uri.description.startIndex, 14)
         var subStr = str.substringFromIndex(index1)
         followObject.setObject(subStr, forKey: "spotifyTrackNumber")
-        //NSLog("\(subStr)")
         followObject.saveInBackgroundWithBlock(nil)
 }
 
@@ -80,6 +82,26 @@ static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
         }
     }
 }
+    static func likePost(user: PFUser) {
+        let likeObject = PFObject(className: ParseLikeClass)
+        likeObject.setObject(user, forKey: ParseLikeFromUser)
+        likeObject.saveInBackgroundWithBlock(nil)
+    }
+    
+    static func unlikePost(user: PFUser) {
+        let query = PFQuery(className: ParseLikeClass)
+        query.whereKey(ParseLikeFromUser, equalTo: user)
+        //query.whereKey(ParseLikeToPost, equalTo: post)
+        
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
+            if let results = results as? [PFObject] {
+                for likes in results {
+                    likes.deleteInBackgroundWithBlock(nil)
+                }
+            }
+        }
+    }
+    
 
 // MARK: Users
 
