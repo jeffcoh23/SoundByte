@@ -112,7 +112,7 @@ extension FriendsSearchViewController: UITableViewDataSource {
             // check if current user is already following displayed user
             // change button appereance based on result
             //cell.canFollow = !followingUsers.contains(user)
-            cell.canFollow = contains(followingUsers, user)
+            //cell.canFollow = contains(followingUsers, user)
         }
         
         cell.delegate = self
