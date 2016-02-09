@@ -15,6 +15,7 @@ import ConvenienceKit
 
 class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
+    @IBOutlet weak var likeButton: UIButton!
     var songBeingPlayedURI : String!
     var songDictionary: [NSURL : String] = [:]
     var viaSegue: String!
@@ -37,7 +38,28 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-
+    func wasSongAlreadyLiked(){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {() -> Void in
+            let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+            var query = PFUser.query()
+            var likesQuery = PFQuery(className: "Like")
+            var newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
+            var finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
+            
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                if (finalQuery.countObjects() != 0){
+                    self.likeButton.selected = true
+                }
+                else{
+                    self.likeButton.selected = false
+                }
+            })
+        })
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        wasSongAlreadyLiked()
+    }
     
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: "sessionUpdated", object: nil)
@@ -122,7 +144,10 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             if newSongURI != nil{
              self.updateUI(NSURL(string: newSongURI!))
              self.songBeingPlayedURI = newSongURI
+             
+             wasSongAlreadyLiked()
             }
+            
         }
     }
     
@@ -184,6 +209,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             likeObject.setObject(self.songBeingPlayedURI, forKey: "likedSongURI")
             likeObject.setObject(PFUser.currentUser()!, forKey: "fromUser")
             likeObject.saveInBackgroundWithBlock(nil)
+            self.likeButton.selected = true
         }
         else{
             finalQuery.findObjectsInBackgroundWithBlock {( results: [AnyObject]?, error: NSError?) -> Void in
@@ -191,8 +217,10 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
                     for likes in results{
                         likes.deleteInBackgroundWithBlock(nil)
                     }
+                    
                 }
             }
+            self.likeButton.selected = false
         }
     }
     
