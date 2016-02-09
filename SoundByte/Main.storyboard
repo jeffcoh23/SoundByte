@@ -315,15 +315,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gI-F8-wzo">
-                                <rect key="frame" x="105" y="115" width="111" height="30"/>
-                                <state key="normal" title="Login To Spotify">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginWithSpotify:" destination="lbB-OO-luo" eventType="touchUpInside" id="7j7-Le-9Mc"/>
-                                </connections>
-                            </button>
                             <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMP-L1-oiU">
                                 <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -406,6 +397,15 @@
                                     <outlet property="dataSource" destination="lbB-OO-luo" id="Odu-Wb-h2b"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gI-F8-wzo">
+                                <rect key="frame" x="105" y="115" width="111" height="30"/>
+                                <state key="normal" title="Login To Spotify">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginWithSpotify:" destination="lbB-OO-luo" eventType="touchUpInside" id="7j7-Le-9Mc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -448,11 +448,75 @@
                         <segue destination="zp4-Ww-yiD" kind="relationship" relationship="viewControllers" id="4Qv-hz-hKb"/>
                         <segue destination="lbB-OO-luo" kind="relationship" relationship="viewControllers" id="ska-qh-f97"/>
                         <segue destination="LLx-Zv-4su" kind="relationship" relationship="viewControllers" id="Nqe-rx-KPS"/>
+                        <segue destination="z1q-8v-dQO" kind="relationship" relationship="viewControllers" id="oWu-FG-8Dp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqy-cq-3sq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="887" y="369"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="eDj-Ho-ibH">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qiI-Hp-b2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="Favorites" id="z1q-8v-dQO" customClass="FavoritesViewController" customModule="SoundByte" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QaN-VL-SLL"/>
+                        <viewControllerLayoutGuide type="bottom" id="XQ3-GQ-kwc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jCz-KN-bFS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FQJ-ZK-CPb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="57" id="ApQ-py-nZg" customClass="FavoritesTableViewCell" customModule="SoundByte" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ApQ-py-nZg" id="UKh-FS-SDP">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd7-ls-LfA">
+                                                    <rect key="frame" x="35" y="8" width="41" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMK-q8-DqM">
+                                                    <rect key="frame" x="35" y="27" width="41" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zd7-ls-LfA" secondAttribute="trailing" constant="236" id="4gJ-Nv-6GM"/>
+                                                <constraint firstItem="zd7-ls-LfA" firstAttribute="leading" secondItem="UKh-FS-SDP" secondAttribute="leadingMargin" constant="27" id="4x1-EX-6OY"/>
+                                                <constraint firstItem="iMK-q8-DqM" firstAttribute="top" secondItem="zd7-ls-LfA" secondAttribute="bottom" constant="-2" id="6dQ-cQ-ERG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="iMK-q8-DqM" secondAttribute="trailing" constant="236" id="UcM-ca-Pd1"/>
+                                                <constraint firstItem="iMK-q8-DqM" firstAttribute="leading" secondItem="UKh-FS-SDP" secondAttribute="leadingMargin" constant="27" id="bEi-NS-R42"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="artistName" destination="iMK-q8-DqM" id="fhz-bP-kYp"/>
+                                            <outlet property="songName" destination="zd7-ls-LfA" id="O6I-bP-3Rg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" selectedImage="Heart" systemItem="favorites" id="j4K-mV-pof"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="FQJ-ZK-CPb" id="2Lb-mt-gTF"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1360" y="369"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="gai-aK-TSS">
