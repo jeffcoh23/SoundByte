@@ -28,6 +28,8 @@
 		CF1CE43D1BDE9A8B007AA9A4 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF1CE43C1BDE9A8B007AA9A4 /* libsqlite3.0.dylib */; };
 		CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */; };
 		CF1CE4481BDECA68007AA9A4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */; };
+		CF4B92821C6A88F300100CD7 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B92811C6A88F300100CD7 /* FavoritesViewController.swift */; };
+		CF4B92841C6A891600100CD7 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B92831C6A891600100CD7 /* FavoritesTableViewCell.swift */; };
 		CF626F2E1C164893006093A9 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF626F2D1C164893006093A9 /* Spotify.framework */; };
 		CF691DF91C456B57002289B6 /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF691DF81C456B57002289B6 /* SpotifyLoginViewController.swift */; };
 		CFAEC7451C0E3373002E4F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAEC7441C0E3373002E4F55 /* Main.storyboard */; };
@@ -85,6 +87,8 @@
 		CF1CE43E1BDEB069007AA9A4 /* SoundByte-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundByte-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		CF4B92811C6A88F300100CD7 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		CF4B92831C6A891600100CD7 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		CF626F2D1C164893006093A9 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		CF691DF81C456B57002289B6 /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
 		CFAEC7441C0E3373002E4F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 		CF1CE3F91BDE97EB007AA9A4 /* SoundByte */ = {
 			isa = PBXGroup;
 			children = (
+				CF4B92801C6A88DB00100CD7 /* Favorites */,
 				CF0DC8F41C209AD0005C9825 /* Login/Register */,
 				CF0DC8F11C209A85005C9825 /* FriendSearch */,
 				CF0DC8F21C209AA2005C9825 /* Timeline */,
@@ -260,6 +265,15 @@
 			);
 			name = Frameworks;
 			path = SoundByte.xcodeproj;
+			sourceTree = "<group>";
+		};
+		CF4B92801C6A88DB00100CD7 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				CF4B92811C6A88F300100CD7 /* FavoritesViewController.swift */,
+				CF4B92831C6A891600100CD7 /* FavoritesTableViewCell.swift */,
+			);
+			name = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDD84FD1C1B41ED007148A6 /* SongSearchTableViewCell.swift in Sources */,
+				CF4B92841C6A891600100CD7 /* FavoritesTableViewCell.swift in Sources */,
 				CF1CE4021BDE97EB007AA9A4 /* SettingsViewController.swift in Sources */,
 				CF691DF91C456B57002289B6 /* SpotifyLoginViewController.swift in Sources */,
 				CFC23E891C24AE8200B2A6E3 /* FriendPlaylistViewController.swift in Sources */,
@@ -421,6 +436,7 @@
 				CF0DC8F01C209315005C9825 /* TimelineTableViewCell.swift in Sources */,
 				CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */,
 				CF1CE4421BDEC99F007AA9A4 /* LoginViewController.swift in Sources */,
+				CF4B92821C6A88F300100CD7 /* FavoritesViewController.swift in Sources */,
 				CFFC56AD1C1628170062E102 /* SongSearchViewController.swift in Sources */,
 				CFFC56A21C0E38A20062E102 /* FriendSearchTableViewCell.swift in Sources */,
 				CFFC56A31C0E38A20062E102 /* FriendsSearchViewController.swift in Sources */,
