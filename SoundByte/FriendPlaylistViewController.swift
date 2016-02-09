@@ -10,13 +10,15 @@ import UIKit
 import AVKit
 import AVFoundation
 import Parse
-
+import ConvenienceKit
 
 
 class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
-    var blankshit : String!
+    
+    var songBeingPlayedURI : String!
     var songDictionary: [NSURL : String] = [:]
     var viaSegue: String!
+    var likes = [NSURL]?()
     let kClientID = "cf5b0855e8f440719ad3a1811e704fe3"
     let kCallbackURL = "soundbyte://return-after-login"
     //let kTokenSwapURL = "http://lochttp://localhost:1234/refreshalhost:1234/swap"
@@ -87,7 +89,6 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
                             if err == nil{
                                 let songPreview = jsonResult.objectForKey("preview_url") as! String
                                 let songURI = jsonResult.objectForKey("uri") as! String
-                                //NSLog("\(songURI)")
                                 var asset: AVURLAsset = AVURLAsset(URL: (NSURL(string: songPreview)), options: nil)
                                 var playerItem = AVPlayerItem(asset: asset)
                                 
@@ -95,6 +96,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
                                 self.songDictionary.updateValue(songURI, forKey:  playerItem.valueForKey("URL") as! NSURL)
                                 if (self.queuePlayer.items().count <= 1) {
                                     self.updateUI(NSURL(string: songURI))
+                                    self.songBeingPlayedURI = songURI
                                 }
                             }
                             else{
@@ -119,6 +121,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             var newSongURI = self.songDictionary[currentItem.valueForKey("URL") as! NSURL]
             if newSongURI != nil{
              self.updateUI(NSURL(string: newSongURI!))
+             self.songBeingPlayedURI = newSongURI
             }
         }
     }
@@ -168,6 +171,29 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
         }
         }
         
+    }
+    
+    @IBAction func likeButtonClicked(sender: AnyObject) {
+        let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+        var query = PFUser.query()
+        var likesQuery = PFQuery(className: "Like")
+        var newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
+        var finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
+        if (finalQuery.countObjects() == 0){
+            let likeObject = PFObject(className: "Like")
+            likeObject.setObject(self.songBeingPlayedURI, forKey: "likedSongURI")
+            likeObject.setObject(PFUser.currentUser()!, forKey: "fromUser")
+            likeObject.saveInBackgroundWithBlock(nil)
+        }
+        else{
+            finalQuery.findObjectsInBackgroundWithBlock {( results: [AnyObject]?, error: NSError?) -> Void in
+                if let results = results as? [PFObject]{
+                    for likes in results{
+                        likes.deleteInBackgroundWithBlock(nil)
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func exitButton(sender: AnyObject) {

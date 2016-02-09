@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A386b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="huG-Z2-wKp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="huG-Z2-wKp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -58,7 +58,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-1H-hP4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-1H-hP4">
                                 <rect key="frame" x="16" y="256" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.90588241820000004" green="0.50196081400000003" blue="0.49019610879999997" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -746,7 +746,7 @@
                                     <action selector="nextSongButton:" destination="2Z2-5S-ffi" eventType="touchUpInside" id="LKp-QJ-OPM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSG-tO-24S">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSG-tO-24S">
                                 <rect key="frame" x="122" y="449" width="77" height="30"/>
                                 <state key="normal" title="Play/Pause">
                                     <color key="titleColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -764,6 +764,17 @@
                                 </state>
                                 <connections>
                                     <segue destination="wnL-Mq-Bai" kind="unwind" unwindAction="prepareForUnwind:" id="RVW-Vm-fPj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWg-R5-fxx">
+                                <rect key="frame" x="252" y="362" width="52" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="LikeButton" image="Heart">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="Heart-selected"/>
+                                <connections>
+                                    <action selector="likeButtonClicked:" destination="2Z2-5S-ffi" eventType="touchUpInside" id="Esj-Jw-sSr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -809,6 +820,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Heart" width="72" height="68"/>
+        <image name="Heart-selected" width="72" height="68"/>
         <image name="user" width="126" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
