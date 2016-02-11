@@ -43,6 +43,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
             var query = PFUser.query()
             var likesQuery = PFQuery(className: "Like")
+            if (likesQuery.countObjects() > 1){
             var newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
             var finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
             
@@ -54,6 +55,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
                     self.likeButton.selected = false
                 }
             })
+            }
         })
     }
     

@@ -29,10 +29,10 @@ class RegisterPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func validateEmail(candidate: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
-    }
+//    func validateEmail(candidate: String) -> Bool {
+//        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+//        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
+//    }
     
     
     
@@ -55,10 +55,10 @@ class RegisterPageViewController: UIViewController {
         }
         
         //Validates email
-        if (validateEmail(userEmail)==false){
-            displayMyAlertMessage("Not a valid email address")
-            return
-        }
+//        if (validateEmail(userEmail)==false){
+//            displayMyAlertMessage("Not a valid email address")
+//            return
+//        }
         
         //check if passwords match
         if(userPassword != userRepeatPassword){
