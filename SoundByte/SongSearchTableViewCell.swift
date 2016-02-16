@@ -11,7 +11,7 @@ import Parse
 
 protocol SongSearchTableViewCellDelegate: class {
     func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?)
-//  func cell(cell: SongSearchTableViewCell, didSelectUnfollowSong song: String)
+    func cell(cell: SongSearchTableViewCell, didSelectUnFollowSong song: AnyObject?)
 }
 
 class SongSearchTableViewCell: UITableViewCell {
@@ -24,9 +24,28 @@ class SongSearchTableViewCell: UITableViewCell {
 
     var songURI: AnyObject?
 
+    var canFollow: Bool? = true {
+        didSet {
+            /*
+            Change the state of the follow button based on whether or not
+            it is possible to follow a user.
+            */
+            if let canFollow = canFollow {
+                addSongSearchButton.selected = !canFollow
+            }
+        }
+    }
+
 
     @IBAction func songFollowButtonTapped(sender: AnyObject) {
-        delegate?.cell(self, didSelectFollowSong: songURI!)
-        ParseHelper.addFollowSongRelationshipToUser(songURI!, user: PFUser.currentUser()!)
+        if let canFollow = canFollow where canFollow == true {
+            delegate?.cell(self, didSelectFollowSong: songURI!)
+            ParseHelper.addFollowSongRelationshipToUser(songURI!, user: PFUser.currentUser()!)
+            self.canFollow = false
+        } else {
+            delegate?.cell(self, didSelectUnFollowSong: songURI!)
+            ParseHelper.removeFollowSongRelationshipToUser(songURI!, user: PFUser.currentUser()!)
+            self.canFollow = true
+        }
     }
 }

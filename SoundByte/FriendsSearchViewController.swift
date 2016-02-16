@@ -33,6 +33,19 @@ class FriendsSearchViewController: UIViewController {
         }
     }
     
+    func doesUserContain(user: PFUser) -> Bool{
+       // containQuery = ParseHelper.allUsers(updateList)
+        var followedUsers = PFQuery(className: "Follow")
+        var currentUsersFriends = followedUsers.whereKey("fromUser", equalTo: user) ?? []
+        if currentUsersFriends.countObjects() > 0{
+            return true
+        }
+        else{
+            return false
+        }
+        
+    }
+    
     // the current parse query
     var query: PFQuery? {
         didSet {
@@ -112,7 +125,8 @@ extension FriendsSearchViewController: UITableViewDataSource {
             // check if current user is already following displayed user
             // change button appereance based on result
             //cell.canFollow = !followingUsers.contains(user)
-            //cell.canFollow = contains(followingUsers, user)
+            
+            cell.canFollow = ParseHelper.getFollowingUsersForUser(followingUsers, user)
         }
         
         cell.delegate = self

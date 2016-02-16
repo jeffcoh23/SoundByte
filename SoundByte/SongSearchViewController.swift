@@ -29,6 +29,49 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     var spotifyListPage: SPTListPage?
     
     @IBOutlet weak var spotifyLoginButton: UIButton!
+    
+    
+    // the current parse query
+    var query: PFQuery? {
+        didSet {
+            // whenever we assign a new query, cancel any previous requests
+            oldValue?.cancel()
+        }
+    }
+    
+    // this view can be in two different states
+    enum State {
+        case DefaultMode
+        case SearchMode
+    }
+    
+    // whenever the state changes, perform one of the two queries and update the list
+    var state: State = .DefaultMode {
+        didSet {
+            switch (state) {
+            case .DefaultMode:
+                query = ParseHelper.allUsers(updateList)
+                
+            case .SearchMode:
+                let searchText = songSearchBar?.text ?? ""
+                query = ParseHelper.searchUsers(searchText, completionBlock:updateList)
+            }
+        }
+    }
+    
+    // MARK: Update userlist
+    
+    /**
+    Is called as the completion block of all queries.
+    As soon as a query completes, this method updates the Table View.
+    */
+    func updateList(results: [PFObject]?, error: NSError?) {
+        self.tableViewSongResults.reloadData()
+        
+    }
+
+    
+    
     @IBAction func loginWithSpotify(sender: AnyObject) {
         spotifyAuthenticator.clientID = kClientID
         spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
@@ -59,16 +102,10 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         print("login failed")
     }
 //    
-//    override func viewWillAppear(animated: Bool) {
-//        spotifyAuthenticator.clientID = kClientID
-//        spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
-//        spotifyAuthenticator.redirectURL = NSURL(string: kCallbackURL)
-//        super.viewWillAppear(animated)
-//        let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
-//        spotifyAuthenticationViewController.delegate = self
-//        setupSpotifyPlayer()
-//        NSLog("\(spotifyAuthenticator.session.description)")
-//    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        state = .DefaultMode
+    }
     
     func sessionUpdatedNotification (notification: NSNotification) -> Void{
         if self.navigationController?.topViewController == self{
@@ -166,21 +203,21 @@ extension SongSearchViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
-        //state = .SearchMode
+        state = .SearchMode
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
-        //state = .DefaultMode
+        state = .DefaultMode
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         SPTSearch.performSearchWithQuery(searchText, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: nil, callback: {( error, result) -> Void in
             if let result = result as? SPTListPage{
                 self.spotifyListPage = result
-                //NSLog("\(self.spotifyListPage?.items.)")
+                
                 self.tableViewSongResults.reloadData()
             }
             //  }
@@ -231,5 +268,7 @@ extension SongSearchViewController: UITableViewDataSource {
 extension SongSearchViewController: SongSearchTableViewCellDelegate {
     
     func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?) {
+    }
+    func cell(cell: SongSearchTableViewCell, didSelectUnFollowSong song: AnyObject?) {
     }
 }
