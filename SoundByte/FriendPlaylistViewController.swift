@@ -40,21 +40,21 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
     
     func wasSongAlreadyLiked(){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {() -> Void in
-            let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
-            var query = PFUser.query()
+            var pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+            // _ = PFUser.query()
             var likesQuery = PFQuery(className: "Like")
-            if (likesQuery.countObjects() > 1){
+            if (likesQuery.countObjects(nil) > 1){
             var newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
             var finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
             
-            dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                if (finalQuery.countObjects() != 0){
+           // dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                if (finalQuery.countObjectsInBackground() != 0){
                     self.likeButton.selected = true
                 }
                 else{
                     self.likeButton.selected = false
                 }
-            })
+         //   })
             }
         })
     }
@@ -72,20 +72,21 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
         self.artistLabel.text = ""
         
         let selectedFriendQuery = PFUser.query()!
-        var selectedFriendUsername = selectedFriendQuery.whereKey("username", equalTo: viaSegue)
-        var selectedFriendName = selectedFriendQuery.getFirstObject()
-        var userSelectedFriendName = selectedFriendName!.objectId
+        _ = selectedFriendQuery.whereKey("username", equalTo: viaSegue)
+        let selectedFriendName = try! selectedFriendQuery.getFirstObject()
+        let userSelectedFriendName = selectedFriendName.objectId
         
         let playlistFromFollowedUsers = PFQuery(className: "Playlist")
         let pointer = PFObject(withoutDataWithClassName: "_User", objectId: userSelectedFriendName)
         playlistFromFollowedUsers.whereKey("user", equalTo: pointer)
-        self.queuePlayer = AVQueuePlayer(items: nil)
+        self.queuePlayer = AVQueuePlayer()
+           // AVQueuePlayer(items: nil)
 
         playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
             
-            (result: [AnyObject]?, error: NSError?) -> Void in
+            (result: [PFObject]?, error: NSError?) -> Void in
             
-            var songIDs = result as! [PFObject]
+            var songIDs = result as [PFObject]!
             
             if songIDs.count < 1{
                 return
@@ -93,30 +94,30 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             else{
                
                 for i in 0...songIDs.count-1{
-                   var songPrev = songIDs[i].valueForKey("spotifyTrackNumber") as! String
+                   _ = songIDs[i].valueForKey("spotifyTrackNumber") as! String
                     self.IDArray.append(songIDs[i].valueForKey("spotifyTrackNumber") as! String)
                     let apiURL = "https://api.spotify.com/v1/tracks/\(self.IDArray[i])"
                     let url = NSURL(string: apiURL)
                     
-                    var urlRequest = NSMutableURLRequest(URL: url!) as NSMutableURLRequest
+                    let urlRequest = NSMutableURLRequest(URL: url!) as NSMutableURLRequest
                     //let headersAuth = NSString(format: "Bearer %@", spotifyAuthenticator.session.accessToken)
                     //urlRequest.setValue(headersAuth as? String, forHTTPHeaderField: "Authorization")
                     
                     let queue = NSOperationQueue()
-                    NSURLConnection.sendAsynchronousRequest(urlRequest, queue: queue, completionHandler: {(response: NSURLResponse!, recievedData: NSData!, error: NSError!) -> Void in
+                    NSURLConnection.sendAsynchronousRequest(urlRequest, queue: queue, completionHandler: {(response: NSURLResponse?, recievedData: NSData?, error: NSError?) -> Void in
                         if error != nil{
-                            println(error.localizedDescription)
+                            print(error!.localizedDescription)
                         }
                         else{
                             var err : NSError? = nil
-                            let jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(recievedData, options: NSJSONReadingOptions.AllowFragments, error: &err) as! NSDictionary
+                            let jsonResult : NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(recievedData!, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
                             if err == nil{
                                 let songPreview = jsonResult.objectForKey("preview_url") as! String
                                 let songURI = jsonResult.objectForKey("uri") as! String
-                                var asset: AVURLAsset = AVURLAsset(URL: (NSURL(string: songPreview)), options: nil)
+                                var asset: AVURLAsset = AVURLAsset(URL: (NSURL(string: songPreview))!, options: nil)
                                 var playerItem = AVPlayerItem(asset: asset)
                                 
-                                self.queuePlayer.insertItem(playerItem, afterItem: self.queuePlayer.items().last as? AVPlayerItem)
+                                self.queuePlayer.insertItem(playerItem, afterItem: self.queuePlayer.items().last as? AVPlayerItem! ?? self.queuePlayer.items().first)
                                 self.songDictionary.updateValue(songURI, forKey:  playerItem.valueForKey("URL") as! NSURL)
                                 if (self.queuePlayer.items().count <= 1) {
                                     self.updateUI(NSURL(string: songURI))
@@ -124,7 +125,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
                                 }
                             }
                             else{
-                                println(err?.localizedDescription)
+                                print(err?.localizedDescription)
                             }
                         }
                     })
@@ -132,17 +133,17 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
                     
                 }
             }
-            self.queuePlayer.addObserver(self, forKeyPath: "currentItem", options: .New | .Initial, context: &self.songDictionary)
+            self.queuePlayer.addObserver(self, forKeyPath: "currentItem", options: [.New, .Initial], context: &self.songDictionary)
             self.queuePlayer.play()
 
             
         })
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "currentItem", let player = object as? AVPlayer,
         currentItem = player.currentItem?.asset as? AVURLAsset {
-            var newSongURI = self.songDictionary[currentItem.valueForKey("URL") as! NSURL]
+            let newSongURI = self.songDictionary[currentItem.valueForKey("URL") as! NSURL]
             if newSongURI != nil{
              self.updateUI(NSURL(string: newSongURI!))
              self.songBeingPlayedURI = newSongURI
@@ -155,7 +156,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
     
     
     func updateUI(uriTrack: NSURL!){
-        var auth: SPTAuth = SPTAuth.defaultInstance()
+        let auth: SPTAuth = SPTAuth.defaultInstance()
         if uriTrack == nil{
             self.coverView.image = nil
             //self.shadedCoverView.image = nil
@@ -168,7 +169,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             self.albumLabel.text = track.album.name
             //var artist = track.artists[0] as! SPTPartialTrack
             self.artistLabel.text = artist.name
-            var imageURL = track.album.largestCover.imageURL
+            let imageURL = track.album.largestCover.imageURL
             if imageURL == nil{
                 NSLog("This album doesnt have any images!", track.album)
                 self.coverView.image = nil
@@ -178,7 +179,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),{() -> Void in
                 var error: NSError? = nil
                 var image: UIImage? = nil
-                var imageData = NSData(contentsOfURL: imageURL)
+                let imageData = NSData(contentsOfURL: imageURL)
                 if imageData != nil{
                     image = UIImage(data: imageData!)
                 }
@@ -203,21 +204,21 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
     @IBAction func likeButtonClicked(sender: AnyObject) {
         let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
         var query = PFUser.query()
-        var likesQuery = PFQuery(className: "Like")
-        var newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
-        var finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
-        if (finalQuery.countObjects() == 0){
+        let likesQuery = PFQuery(className: "Like")
+        let newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
+        let finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
+        if (finalQuery.countObjectsInBackground() == 0){
             let likeObject = PFObject(className: "Like")
             likeObject.setObject(self.songBeingPlayedURI, forKey: "likedSongURI")
             likeObject.setObject(PFUser.currentUser()!, forKey: "fromUser")
-            likeObject.saveInBackgroundWithBlock(nil)
+            likeObject.saveEventually()
             self.likeButton.selected = true
         }
         else{
-            finalQuery.findObjectsInBackgroundWithBlock {( results: [AnyObject]?, error: NSError?) -> Void in
-                if let results = results as? [PFObject]{
+            finalQuery.findObjectsInBackgroundWithBlock {( results: [PFObject]?, error: NSError?) -> Void in
+                if let results = results as? [PFObject]!{
                     for likes in results{
-                        likes.deleteInBackgroundWithBlock(nil)
+                        likes.delete(nil) //deleteInBackgroundWithBlock(nil)
                     }
                     
                 }

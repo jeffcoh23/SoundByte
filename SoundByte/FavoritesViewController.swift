@@ -24,10 +24,10 @@ class FavoritesViewController: UIViewController {
     func fetchLikedSongs(){
         let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
         var query = PFUser.query()
-        var likesQuery = PFQuery(className: "Like")
-        var finalQuery = likesQuery.whereKey("fromUser", equalTo: pointer)
-        finalQuery.findObjectsInBackgroundWithBlock({
-            (results: [AnyObject]?, error: NSError?) -> Void in
+        let likesQuery = PFQuery(className: "Like")
+        let finalQuery = likesQuery.whereKey("fromUser", equalTo: pointer)
+        finalQuery.findObjectsInBackgroundWithBlock ( {
+            (results: [PFObject]?, error: NSError?) -> Void in
             if error == nil{
                 if let results = results{
                     for result in results{
@@ -47,7 +47,7 @@ class FavoritesViewController: UIViewController {
     }
     
     func fetchNameAndArtist(uriTrackAsString: String!) -> [String : (String, String)]{
-        var uriTrack = NSURL(string: uriTrackAsString)
+        let uriTrack = NSURL(string: uriTrackAsString)
         SPTTrack.trackWithURI(uriTrack, session: nil) { (error, track) -> Void in
             if let track = track as? SPTTrack, artist = track.artists.first as? SPTPartialArtist{
                 self.songWithInfoDictionary.updateValue((track.name, artist.name), forKey: uriTrackAsString)
@@ -63,16 +63,16 @@ class FavoritesViewController: UIViewController {
         super.viewWillAppear(animated)
         let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
         var query = PFUser.query()
-        var likesQuery = PFQuery(className: "Like")
-        var finalQuery = likesQuery.whereKey("fromUser", equalTo: pointer)
+        let likesQuery = PFQuery(className: "Like")
+        let finalQuery = likesQuery.whereKey("fromUser", equalTo: pointer)
         finalQuery.findObjectsInBackgroundWithBlock({
-            (results: [AnyObject]?, error: NSError?) -> Void in
+            (results: [PFObject]?, error: NSError?) -> Void in
             if error == nil{
                 if let results = results{
                     for result in results{
-                        var uriTrackAsString = result["likedSongURI"] as! String
+                        let uriTrackAsString = result["likedSongURI"] as! String
                         self.songURIArray.append(uriTrackAsString)
-                        var uriTrack = NSURL(string: result["likedSongURI"] as! String)
+                        let uriTrack = NSURL(string: result["likedSongURI"] as! String)
                         SPTTrack.trackWithURI(uriTrack, session: nil) { (error, track) -> Void in
                             if let track = track as? SPTTrack, artist = track.artists.first as? SPTPartialArtist{
                                 self.songWithInfoDictionary.updateValue((track.name, artist.name), forKey: uriTrackAsString)
