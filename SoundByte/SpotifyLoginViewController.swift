@@ -30,7 +30,7 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var auth: SPTAuth = SPTAuth.defaultInstance()
+        let auth: SPTAuth = SPTAuth.defaultInstance()
         if (auth.session == nil){
             return
         }
@@ -48,7 +48,7 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
     }
     
     func renewTokenAndShowPlayer(){
-        var auth: SPTAuth = SPTAuth.defaultInstance()
+        let auth: SPTAuth = SPTAuth.defaultInstance()
         auth.renewSession(auth.session, callback:{(error: NSError!, session: SPTSession!) -> Void in
             auth.session = session
             if error != nil{
@@ -62,7 +62,7 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
     
     func sessionUpdatedNotification (notification: NSNotification) -> Void{
         
-            var auth: SPTAuth = SPTAuth.defaultInstance()
+            let auth: SPTAuth = SPTAuth.defaultInstance()
             if auth.session.isValid(){
                 NSLog("something to do with sessionupdatedshit")
                 self.performSegueWithIdentifier(spotifyLoginViewControllerSegue, sender: nil)
@@ -89,18 +89,18 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
     // SPTAuthViewDelegate protocol methods
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!) {
-        var auth: SPTAuth = SPTAuth.defaultInstance()
+        let auth: SPTAuth = SPTAuth.defaultInstance()
         self.performSegueWithIdentifier(spotifyLoginViewControllerSegue, sender: nil)
         setupSpotifyPlayer()
         loginWithSpotifySession(auth.session)
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
-        println("login cancelled")
+        print("login cancelled")
     }
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
-        println("login failed")
+        print("login failed")
     }
     
     private
@@ -118,7 +118,7 @@ class SpotifyLoginViewController: UIViewController, SPTAuthViewDelegate, SPTAudi
         }
         player!.loginWithSession(session, callback: { (error: NSError!) in
             if error != nil {
-                println("Couldn't login with session: \(error)")
+                print("Couldn't login with session: \(error)")
                 return
             }
             

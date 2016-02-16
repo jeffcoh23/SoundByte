@@ -50,7 +50,7 @@ class TimelineViewController: UIViewController{
         let findUserObjectId = PFQuery(className: "Follow")
         findUserObjectId.whereKey("fromUser", equalTo: PFUser.currentUser()!)
         
-        findUserObjectId.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
+        findUserObjectId.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let results = results{
                     for result in results {
@@ -67,7 +67,7 @@ class TimelineViewController: UIViewController{
                     }
                 }
             } else{
-                    println(error)
+                    print(error)
                     return
             }
         }
@@ -79,7 +79,7 @@ extension TimelineViewController: UITableViewDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "friendPlaylist"){
             if let destination = segue.destinationViewController as? FriendPlaylistViewController{
-                var path = tableView.indexPathForSelectedRow()!
+                let path = tableView.indexPathForSelectedRow!
                 //let cell = tableView.cellForRowAtIndexPath(path!)
                 destination.viaSegue = self.nameArray[path.row]
                 
@@ -99,7 +99,7 @@ extension TimelineViewController: UITableViewDataSource {
         }
         
         func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-            _ = tableView.indexPathForSelectedRow()!
+            _ = tableView.indexPathForSelectedRow!
             if let _ = tableView.cellForRowAtIndexPath(indexPath){
                 self.performSegueWithIdentifier("friendPlaylist", sender: self)
             }

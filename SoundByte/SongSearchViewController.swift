@@ -45,18 +45,18 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     // SPTAuthViewDelegate protocol methods
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!) {
-        var auth: SPTAuth = SPTAuth.defaultInstance()
+        let auth: SPTAuth = SPTAuth.defaultInstance()
         setupSpotifyPlayer()
         //NSLog("\(auth.session.description)")
         loginWithSpotifySession(auth.session)
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
-        println("login cancelled")
+        print("login cancelled")
     }
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
-        println("login failed")
+        print("login failed")
     }
 //    
 //    override func viewWillAppear(animated: Bool) {
@@ -72,7 +72,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     
     func sessionUpdatedNotification (notification: NSNotification) -> Void{
         if self.navigationController?.topViewController == self{
-            var auth: SPTAuth = SPTAuth.defaultInstance()
+            let auth: SPTAuth = SPTAuth.defaultInstance()
             if auth.session.isValid(){
                 
                 self.setupSpotifyPlayer()
@@ -95,10 +95,10 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         
         playlistFromFollowedUsers.findObjectsInBackgroundWithBlock({
             
-            (result: [AnyObject]?, error: NSError?) -> Void in
+            (result: [PFObject]?, error: NSError?) -> Void in
             
             
-            var songIDs = result as! [PFObject]
+            var songIDs = result as! [PFObject]!
             if songIDs.count < 1{
                 return
             }
@@ -144,7 +144,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         
         player!.loginWithSession(session, callback: { (error: NSError!) in
             if error != nil {
-                println("Couldn't login with session: \(error)")
+                print("Couldn't login with session: \(error)")
                 return
             }
             //self.grabSong()
@@ -202,7 +202,7 @@ extension SongSearchViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongSearchTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongSearchTableViewCell
         
         
         cell.addSongSearchButton.hidden = true
@@ -216,7 +216,7 @@ extension SongSearchViewController: UITableViewDataSource {
             //var partialTrack = self.spotifyListPage?.items[indexPath.row].artists?.first.description
             cell.artistSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].artists?.first!.name
             cell.songSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].name
-            var song = self.spotifyListPage?.items[indexPath.row]
+            let song = self.spotifyListPage?.items[indexPath.row]
             cell.songURI = song
         }
         

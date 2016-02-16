@@ -43,13 +43,13 @@ class RegisterPageViewController: UIViewController {
         let userRepeatPassword = repeatPasswordTextField.text
         
         //Check for empty fields
-        if(userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty){
+        if(userEmail!.isEmpty || userPassword!.isEmpty || userRepeatPassword!.isEmpty){
             displayMyAlertMessage("All fields are required")
             return
         }
         
         //Validates password length
-        if (count(userPassword) > 17 || (count(userPassword)<5)){
+        if (userPassword!.characters.count > 17 || (userPassword!.characters.count<5)){
             displayMyAlertMessage("Password must be between 5 and 12 characters")
             return
         }
@@ -85,7 +85,7 @@ class RegisterPageViewController: UIViewController {
     }
     //Display alert message with confirmation
     func displayMyAlertMessage(userMessage:String){
-        var myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert);
+        let myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert);
         
         let okAction = UIAlertAction(title:"OK", style:UIAlertActionStyle.Default, handler:nil);
         

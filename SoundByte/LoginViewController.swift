@@ -46,10 +46,10 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         var userEmail = userEmailTextField.text
-        userEmail = userEmail.lowercaseString
-        var userPassword = userPasswordTextField.text
+        userEmail = userEmail!.lowercaseString
+        let userPassword = userPasswordTextField.text
 
-        PFUser.logInWithUsernameInBackground(userEmail, password: userPassword){
+        PFUser.logInWithUsernameInBackground(userEmail!, password: userPassword!){
             user, error in
             if user != nil{
                 self.performSegueWithIdentifier(self.loginViewControllerSegue, sender: nil)

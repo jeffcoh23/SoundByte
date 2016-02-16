@@ -13,8 +13,8 @@ import Parse
 /**
 Fetches all users that the provided user is following.
 
-:param: user The user whose followees you want to retrieve
-:param: completionBlock The completion block that is called when the query completes
+- parameter user: The user whose followees you want to retrieve
+- parameter completionBlock: The completion block that is called when the query completes
 */
 
 class ParseHelper{
@@ -29,7 +29,7 @@ class ParseHelper{
     static let ParseLikeToPost        = "toPost"
     static let ParseLikeFromUser      = "fromUser"
     
-static func getFollowingUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
+    static func getFollowingUsersForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock){ //PFArrayResultBlock) {
     let query = PFQuery(className: ParseFollowClass)
     
     query.whereKey(ParseFollowFromUser, equalTo:user)
@@ -39,8 +39,8 @@ static func getFollowingUsersForUser(user: PFUser, completionBlock: PFArrayResul
 /**
 Establishes a follow relationship between two users.
 
-:param: user    The user that is following
-:param: toUser  The user that is being followed
+- parameter user:    The user that is following
+- parameter toUser:  The user that is being followed
 */
 static func addFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
     let followObject = PFObject(className: ParseFollowClass)
@@ -54,9 +54,9 @@ static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
         let followObject = PFObject(className: ParseSongClass)
         followObject.setObject(user, forKey: "user")
     
-        var str = song.uri.description
-        var index1 = advance(song.uri.description.startIndex, 14)
-        var subStr = str.substringFromIndex(index1)
+        let str = song.uri.description
+        let index1 = song.uri.description.startIndex.advancedBy(14)
+        let subStr = str.substringFromIndex(index1)
         followObject.setObject(subStr, forKey: "spotifyTrackNumber")
         followObject.saveInBackgroundWithBlock(nil)
 }
@@ -64,8 +64,8 @@ static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
 /**
 Deletes a follow relationship between two users.
 
-:param: user    The user that is following
-:param: toUser  The user that is being followed
+- parameter user:    The user that is following
+- parameter toUser:  The user that is being followed
 */
 static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
     let query = PFQuery(className: ParseFollowClass)
@@ -73,9 +73,9 @@ static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
     query.whereKey(ParseFollowToUser, equalTo: toUser)
     
     query.findObjectsInBackgroundWithBlock {
-        (results: [AnyObject]?, error: NSError?) -> Void in
+        (results: [PFObject]?, error: NSError?) -> Void in
         
-        let results = results as? [PFObject] ?? []
+        let results = results as? [PFObject]! ?? []
         
         for follow in results {
             follow.deleteInBackgroundWithBlock(nil)
@@ -93,8 +93,8 @@ static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
         query.whereKey(ParseLikeFromUser, equalTo: user)
         //query.whereKey(ParseLikeToPost, equalTo: post)
         
-        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
-            if let results = results as? [PFObject] {
+        query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+            if let results = results as? [PFObject]! {
                 for likes in results {
                     likes.deleteInBackgroundWithBlock(nil)
                 }
@@ -109,11 +109,11 @@ static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
 Fetch all users, except the one that's currently signed in.
 Limits the amount of users returned to 20.
 
-:param: completionBlock The completion block that is called when the query completes
+- parameter completionBlock: The completion block that is called when the query completes
 
-:returns: The generated PFQuery
+- returns: The generated PFQuery
 */
-static func allUsers(completionBlock: PFArrayResultBlock) -> PFQuery {
+static func allUsers(completionBlock: PFQueryArrayResultBlock) -> PFQuery {
     let query = PFUser.query()!
     // exclude the current user
     query.whereKey(ParseHelper.ParseUserUsername,
@@ -129,12 +129,12 @@ static func allUsers(completionBlock: PFArrayResultBlock) -> PFQuery {
 /**
 Fetch users whose usernames match the provided search term.
 
-:param: searchText The text that should be used to search for users
-:param: completionBlock The completion block that is called when the query completes
+- parameter searchText: The text that should be used to search for users
+- parameter completionBlock: The completion block that is called when the query completes
 
-:returns: The generated PFQuery
+- returns: The generated PFQuery
 */
-static func searchUsers(searchText: String, completionBlock: PFArrayResultBlock)
+static func searchUsers(searchText: String, completionBlock: PFQueryArrayResultBlock)
     -> PFQuery {
         /*
         NOTE: We are using a Regex to allow for a case insensitive compare of usernames.
