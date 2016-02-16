@@ -20,7 +20,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     //let kTokenRefreshURL = "http://localhost:1234/refresh"
     
     
-    
+    var songsAlreadyLiked: [String]?
     
     @IBOutlet weak var tableViewSongResults: UITableView!
     @IBOutlet weak var songSearchBar: UISearchBar!
@@ -30,6 +30,11 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     
     @IBOutlet weak var spotifyLoginButton: UIButton!
     
+    var followingSongs: [String]?{
+        didSet{
+            tableViewSongResults.reloadData()
+        }
+    }
     
     // the current parse query
     var query: PFQuery? {
@@ -105,6 +110,16 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         state = .DefaultMode
+        ParseHelper.getFollowingSongsForUser(PFUser.currentUser()!) {
+            (results: [PFObject]?, error: NSError?) -> Void in
+            let relations = results as? [PFObject]! ?? []
+            // use map to extract the User from a Follow object
+            self.followingSongs = relations.map {
+                $0.valueForKey("spotifyTrackNumber") as! String
+            }
+            
+        }
+        
     }
     
     func sessionUpdatedNotification (notification: NSNotification) -> Void{
@@ -241,7 +256,7 @@ extension SongSearchViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongSearchTableViewCell
         
-        
+
         cell.addSongSearchButton.hidden = true
         if spotifyListPage?.items == nil{
             cell.songSearchLabel!.text = "No Results Found"
@@ -254,8 +269,14 @@ extension SongSearchViewController: UITableViewDataSource {
             cell.artistSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].artists?.first!.name
             cell.songSearchLabel!.text = self.spotifyListPage?.items[indexPath.row].name
             let song = self.spotifyListPage?.items[indexPath.row]
+            let URISong = song!.uri.description
+            //NSLog("\(song!.uri.description)")
             cell.songURI = song
+            if let followingSongs = followingSongs{
+                cell.canFollow = !followingSongs.contains(URISong)
+            }
         }
+        
         
         cell.delegate = self
         

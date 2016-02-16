@@ -14,7 +14,6 @@ import ConvenienceKit
 
 
 class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
-    
     @IBOutlet weak var likeButton: UIButton!
     var songBeingPlayedURI : String!
     var songDictionary: [NSURL : String] = [:]

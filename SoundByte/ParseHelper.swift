@@ -35,6 +35,15 @@ class ParseHelper{
     query.whereKey(ParseFollowFromUser, equalTo:user)
     query.findObjectsInBackgroundWithBlock(completionBlock)
 }
+    
+    static func getFollowingSongsForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock){
+        let query = PFQuery(className: ParseSongClass)
+        var pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+        query.whereKey("user", equalTo: pointer)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    
 
 /**
 Establishes a follow relationship between two users.
