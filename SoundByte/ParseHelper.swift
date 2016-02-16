@@ -35,6 +35,15 @@ class ParseHelper{
     query.whereKey(ParseFollowFromUser, equalTo:user)
     query.findObjectsInBackgroundWithBlock(completionBlock)
 }
+    
+    static func getFollowingSongsForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock){
+        let query = PFQuery(className: ParseSongClass)
+        var pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+        query.whereKey("user", equalTo: pointer)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    
 
 /**
 Establishes a follow relationship between two users.
@@ -60,6 +69,14 @@ static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
         followObject.setObject(subStr, forKey: "spotifyTrackNumber")
         followObject.saveInBackgroundWithBlock(nil)
 }
+    
+static func removeFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
+    var pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+    let followObject = PFQuery(className: ParseSongClass)
+    let followingUser = followObject.whereKey(user.objectId!, equalTo: pointer)
+    let followingSong = followingUser.whereKey(song as! String, equalTo: "spotifyTrackNumber")
+    followingSong.delete(nil)
+    }
 
 /**
 Deletes a follow relationship between two users.

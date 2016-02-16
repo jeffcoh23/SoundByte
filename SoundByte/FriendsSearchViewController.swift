@@ -9,10 +9,10 @@
 import UIKit
 import ConvenienceKit
 import Parse
+import Bond
 
 class FriendsSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     // stores all the users that match the current search query
@@ -32,6 +32,19 @@ class FriendsSearchViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+//    func doesUserContain(user: PFUser) -> Bool{
+//       // containQuery = ParseHelper.allUsers(updateList)
+//        var followedUsers = PFQuery(className: "Follow")
+//        var currentUsersFriends = followedUsers.whereKey("fromUser", equalTo: user) ?? []
+////        if currentUsersFriends.countObjects() > 0{
+////            return true
+////        }
+////        else{
+////            return false
+////        }
+//        
+//    }
     
     // the current parse query
     var query: PFQuery? {
@@ -109,10 +122,12 @@ extension FriendsSearchViewController: UITableViewDataSource {
         cell.user = user
         
         if let followingUsers = followingUsers {
+            
             // check if current user is already following displayed user
             // change button appereance based on result
-            //cell.canFollow = !followingUsers.contains(user)
-            //cell.canFollow = contains(followingUsers, user)
+            cell.canFollow = !followingUsers.contains(user)
+            
+           // cell.canFollow = !contains(followingUsers, user)
         }
         
         cell.delegate = self

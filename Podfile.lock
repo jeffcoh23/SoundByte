@@ -20,16 +20,19 @@ PODS:
     - AFNetworking/NSURLSession
   - AFOAuth2Manager (2.0.0):
     - AFNetworking (~> 2.2)
+  - Bond (4.3.0)
   - ConvenienceKit (0.2.0)
 
 DEPENDENCIES:
-  - AFNetworking (= 2.2.1)
-  - AFOAuth2Manager (= 2.0.0)
-  - ConvenienceKit (= 0.2.0)
+  - AFNetworking
+  - AFOAuth2Manager
+  - Bond
+  - ConvenienceKit
 
 SPEC CHECKSUMS:
   AFNetworking: 59a0b8e9ecd4e194d64b4967232cd2cc83490113
   AFOAuth2Manager: 247d23d9d7a7a4297a00346c6ff07d130d8433c0
+  Bond: ebe2364b18130690083cbceff036420b21494ae4
   ConvenienceKit: 947032f82c3d419d107e0cbde1fcb725e9c7ed62
 
 COCOAPODS: 0.39.0

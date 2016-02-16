@@ -5,9 +5,10 @@
 
 target 'SoundByte' do
 
-pod 'AFNetworking', '2.2.1'
-pod 'AFOAuth2Manager', '2.0.0'
-pod 'ConvenienceKit', '0.2.0'
+pod 'AFNetworking'
+pod 'AFOAuth2Manager'
+pod 'ConvenienceKit'
+pod 'Bond'
 
 end
 
