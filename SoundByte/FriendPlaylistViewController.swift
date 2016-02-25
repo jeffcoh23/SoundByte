@@ -42,19 +42,19 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             var pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
             // _ = PFUser.query()
             var likesQuery = PFQuery(className: "Like")
-            if (likesQuery.countObjects(nil) > 1){
-            var newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
-            var finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
+            //if (try! likesQuery.findObjects().count > 1){
+                var newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
+                var finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
             
-           // dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                if (finalQuery.countObjectsInBackground() != 0){
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                if (try! finalQuery.findObjects().count != 0){
                     self.likeButton.selected = true
                 }
                 else{
                     self.likeButton.selected = false
                 }
-         //   })
-            }
+            })
+            //}
         })
     }
     
@@ -86,7 +86,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             (result: [PFObject]?, error: NSError?) -> Void in
             
             var songIDs = result as [PFObject]!
-            
+            //NSLog("\(songIDs.count())")
             if songIDs.count < 1{
                 return
             }
@@ -138,6 +138,7 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             
         })
     }
+
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "currentItem", let player = object as? AVPlayer,
@@ -200,20 +201,27 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
         
     }
     
+
+    
     @IBAction func likeButtonClicked(sender: AnyObject) {
         let pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
-        var query = PFUser.query()
+        //var query = PFUser.query()
         let likesQuery = PFQuery(className: "Like")
+        let personQuery = likesQuery.whereKey("fromUser", equalTo: pointer)
         let newLikesQuery = likesQuery.whereKey("likedSongURI", equalTo: self.songBeingPlayedURI)
         let finalQuery = newLikesQuery.whereKey("fromUser", equalTo: pointer)
-        if (finalQuery.countObjectsInBackground() == 0){
+        if (try! finalQuery.findObjects().count == 0){
             let likeObject = PFObject(className: "Like")
             likeObject.setObject(self.songBeingPlayedURI, forKey: "likedSongURI")
             likeObject.setObject(PFUser.currentUser()!, forKey: "fromUser")
             likeObject.saveEventually()
             self.likeButton.selected = true
+            var selectedSong = ["newLikedSong" : self.songBeingPlayedURI]
+            NSLog("\(self.songBeingPlayedURI)")
+            NSNotificationCenter.defaultCenter().postNotificationName("likeButtonClicked", object: nil, userInfo: selectedSong)
         }
         else{
+            //finalQuery.delete(nil)
             finalQuery.findObjectsInBackgroundWithBlock {( results: [PFObject]?, error: NSError?) -> Void in
                 if let results = results as? [PFObject]!{
                     for likes in results{
@@ -224,6 +232,8 @@ class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackD
             }
             self.likeButton.selected = false
         }
+
+
     }
     
     @IBAction func exitButton(sender: AnyObject) {
