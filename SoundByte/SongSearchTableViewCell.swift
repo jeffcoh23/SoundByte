@@ -10,8 +10,8 @@ import UIKit
 import Parse
 
 protocol SongSearchTableViewCellDelegate: class {
-    func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?)
-    func cell(cell: SongSearchTableViewCell, didSelectUnFollowSong song: AnyObject?)
+    func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: SPTPartialTrack?)
+    func cell(cell: SongSearchTableViewCell, didSelectUnFollowSong song: SPTPartialTrack?)
 }
 
 class SongSearchTableViewCell: UITableViewCell {
@@ -22,7 +22,7 @@ class SongSearchTableViewCell: UITableViewCell {
     weak var delegate: SongSearchTableViewCellDelegate?
  
 
-    var songURI: AnyObject?
+    var songURI: SPTPartialTrack?
 
     var canFollow: Bool? = true {
         didSet {

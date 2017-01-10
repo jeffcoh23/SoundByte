@@ -8,6 +8,7 @@ target 'SoundByte' do
 pod 'AFNetworking'
 pod 'AFOAuth2Manager'
 pod 'ConvenienceKit'
+pod 'Parse'
 pod 'Bond'
 
 end
@@ -15,4 +16,3 @@ end
 target 'SoundByteTests' do
 
 end
-

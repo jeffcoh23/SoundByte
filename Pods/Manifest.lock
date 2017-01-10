@@ -1,38 +1,48 @@
 PODS:
-  - AFNetworking (2.2.1):
-    - AFNetworking/NSURLConnection (= 2.2.1)
-    - AFNetworking/NSURLSession (= 2.2.1)
-    - AFNetworking/Reachability (= 2.2.1)
-    - AFNetworking/Security (= 2.2.1)
-    - AFNetworking/Serialization (= 2.2.1)
-    - AFNetworking/UIKit (= 2.2.1)
-  - AFNetworking/NSURLConnection (2.2.1):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.1):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.1)
-  - AFNetworking/Security (2.2.1)
-  - AFNetworking/Serialization (2.2.1)
-  - AFNetworking/UIKit (2.2.1):
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AFOAuth2Manager (2.0.0):
-    - AFNetworking (~> 2.2)
+  - AFOAuth2Manager (2.2.0):
+    - AFNetworking/NSURLConnection (~> 2.2)
+  - Bolts/Tasks (1.8.4)
   - Bond (4.3.0)
-  - ConvenienceKit (0.2.0)
+  - ConvenienceKit (0.4.0)
+  - Parse (1.14.2):
+    - Bolts/Tasks (~> 1.8)
 
 DEPENDENCIES:
   - AFNetworking
   - AFOAuth2Manager
   - Bond
   - ConvenienceKit
+  - Parse
 
 SPEC CHECKSUMS:
-  AFNetworking: 59a0b8e9ecd4e194d64b4967232cd2cc83490113
-  AFOAuth2Manager: 247d23d9d7a7a4297a00346c6ff07d130d8433c0
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AFOAuth2Manager: 952eb62e8fd8022971e64c6e8fe28b9e999224af
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Bond: ebe2364b18130690083cbceff036420b21494ae4
-  ConvenienceKit: 947032f82c3d419d107e0cbde1fcb725e9c7ed62
+  ConvenienceKit: ba1ad8797897dc0d011676e961a2f3e9b270c841
+  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 627e6ab0b1df95ef732f3523ff42ff8d97fc2b26
+
+COCOAPODS: 1.1.1

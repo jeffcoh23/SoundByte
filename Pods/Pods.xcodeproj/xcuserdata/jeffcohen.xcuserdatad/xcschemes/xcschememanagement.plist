@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bond.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,44 +34,23 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Parse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SoundByte.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SoundByteTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>1D01A0FBC070EAE24E44CA973E453454</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>66559F6532B3BA0704064F5C3C8CB533</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>80076C510C29F960587E43C0597ECBD5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A2E36B9882E86F5D27BE6CD32B093518</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C7EDDBA4BE9EFCDCD12AA17ADE01F057</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C91A46012F8822DFDBAC8BC32FCC9001</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

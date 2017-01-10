@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class RegisterPageViewController: UIViewController {
     
@@ -53,12 +54,6 @@ class RegisterPageViewController: UIViewController {
             displayMyAlertMessage("Password must be between 5 and 12 characters")
             return
         }
-        
-        //Validates email
-//        if (validateEmail(userEmail)==false){
-//            displayMyAlertMessage("Not a valid email address")
-//            return
-//        }
         
         //check if passwords match
         if(userPassword != userRepeatPassword){

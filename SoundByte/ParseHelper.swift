@@ -55,7 +55,6 @@ static func addFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
     let followObject = PFObject(className: ParseFollowClass)
     followObject.setObject(user, forKey: ParseFollowFromUser)
     followObject.setObject(toUser, forKey: ParseFollowToUser)
-    
     followObject.saveInBackgroundWithBlock(nil)
 }
     
@@ -70,12 +69,16 @@ static func addFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
         followObject.saveInBackgroundWithBlock(nil)
 }
     
-static func removeFollowSongRelationshipToUser(song: AnyObject, user: PFUser ){
-    var pointer = PFObject(withoutDataWithClassName: "_User", objectId: PFUser.currentUser()!.objectId!)
+static func removeFollowSongRelationshipToUser(song: SPTPartialTrack, user: PFUser ){
     let followObject = PFQuery(className: ParseSongClass)
-    let followingUser = followObject.whereKey(user.objectId!, equalTo: pointer)
-    let followingSong = followingUser.whereKey(song as! String, equalTo: "spotifyTrackNumber")
-    followingSong.delete(nil)
+    let followingUser = followObject.whereKey("user", equalTo: user)
+    let nextone = followingUser.whereKey("spotifyTrackNumber", equalTo: song.identifier!)
+    nextone.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+        let results = results as? [PFObject]! ?? []
+            for follow in results {
+                follow.deleteInBackgroundWithBlock(nil)
+            }
+        }
     }
 
 /**
@@ -88,7 +91,6 @@ static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser) {
     let query = PFQuery(className: ParseFollowClass)
     query.whereKey(ParseFollowFromUser, equalTo:user)
     query.whereKey(ParseFollowToUser, equalTo: toUser)
-    
     query.findObjectsInBackgroundWithBlock {
         (results: [PFObject]?, error: NSError?) -> Void in
         

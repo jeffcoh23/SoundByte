@@ -12,8 +12,8 @@ public class TextView : UITextView {
 
   public var placeholderText: String = "Tap to edit"
   
-  public required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  public required init(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)!
     initialize()
   }
   
