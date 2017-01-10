@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 import Parse
-import ConvenienceKit
+// import ConvenienceKit
 
 
 class FriendPlaylistViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {

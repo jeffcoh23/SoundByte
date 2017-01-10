@@ -35,10 +35,11 @@ class FriendSearchTableViewCell: UITableViewCell {
             if let canFollow = canFollow {
                 followButton.selected = !canFollow
             }
+
         }
     }
     
-    @IBAction func followButtonTapped(sender: AnyObject) {
+    @IBAction func followButtonTapped(sender: UIButton) {
         if let canFollow = canFollow where canFollow == true {
             delegate?.cell(self, didSelectFollowUser: user!)
             self.canFollow = false

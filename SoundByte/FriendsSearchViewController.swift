@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import ConvenienceKit
+//import ConvenienceKit
 import Parse
-import Bond
+//import Bond
 
 class FriendsSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -32,19 +32,6 @@ class FriendsSearchViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    
-//    func doesUserContain(user: PFUser) -> Bool{
-//       // containQuery = ParseHelper.allUsers(updateList)
-//        var followedUsers = PFQuery(className: "Follow")
-//        var currentUsersFriends = followedUsers.whereKey("fromUser", equalTo: user) ?? []
-////        if currentUsersFriends.countObjects() > 0{
-////            return true
-////        }
-////        else{
-////            return false
-////        }
-//        
-//    }
     
     // the current parse query
     var query: PFQuery? {
@@ -126,8 +113,6 @@ extension FriendsSearchViewController: UITableViewDataSource {
             // check if current user is already following displayed user
             // change button appereance based on result
             cell.canFollow = !followingUsers.contains(user)
-            
-           // cell.canFollow = !contains(followingUsers, user)
         }
         
         cell.delegate = self
@@ -165,16 +150,12 @@ extension FriendsSearchViewController: FriendSearchTableViewCellDelegate {
     func cell(cell: FriendSearchTableViewCell, didSelectFollowUser user: PFUser) {
         ParseHelper.addFollowRelationshipFromUser(PFUser.currentUser()!, toUser: user)
         // update local cache
-        followingUsers?.append(user)
+        self.followingUsers?.append(user)
     }
     
     func cell(cell: FriendSearchTableViewCell, didSelectUnfollowUser user: PFUser) {
-        if let followers = followingUsers {
+        if let followingUsers = followingUsers {
             ParseHelper.removeFollowRelationshipFromUser(PFUser.currentUser()!, toUser: user)
-            // update local cache
-            //followers = followers.filter { $0.username != user.username}
-            //removeObject(user, fromArray: &followingUsers)
-            self.followingUsers = followers
         }
     }
     

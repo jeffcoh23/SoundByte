@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class FavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!

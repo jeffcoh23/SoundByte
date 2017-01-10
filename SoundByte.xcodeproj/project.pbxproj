@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D80BFF75C45C620609B537F /* Pods_SoundByte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AF81E996464C4841DC437B /* Pods_SoundByte.framework */; };
+		34829F01B5FA93E01D0DACD8 /* Pods_SoundByteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EE6AA71681A325735812D8 /* Pods_SoundByteTests.framework */; };
+		43F3EB29321DDE322CD3BF32 /* Pods_SoundByte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AC2C9F5D25A1962A321D16 /* Pods_SoundByte.framework */; };
 		CF0DC8F01C209315005C9825 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DC8EF1C209315005C9825 /* TimelineTableViewCell.swift */; };
 		CF1CE3FD1BDE97EB007AA9A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE3FC1BDE97EB007AA9A4 /* AppDelegate.swift */; };
 		CF1CE4021BDE97EB007AA9A4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE4011BDE97EB007AA9A4 /* SettingsViewController.swift */; };
@@ -59,9 +60,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		781D2C69B1A2CD1540177A39 /* Pods-SoundByte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.debug.xcconfig"; sourceTree = "<group>"; };
-		A6AF81E996464C4841DC437B /* Pods_SoundByte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundByte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B010D826907277282D7E27BB /* Pods-SoundByte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.release.xcconfig"; sourceTree = "<group>"; };
+		38EE6AA71681A325735812D8 /* Pods_SoundByteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundByteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77DD64A6263BB7CAAFDC4D63 /* Pods-SoundByteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByteTests/Pods-SoundByteTests.release.xcconfig"; sourceTree = "<group>"; };
+		989A7B4D78E6918245A35462 /* Pods-SoundByte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.release.xcconfig"; sourceTree = "<group>"; };
+		A700C4884B38F5BC75FCC3AB /* Pods-SoundByteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByteTests/Pods-SoundByteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CF0DC8EF1C209315005C9825 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		CF1CE3F71BDE97EB007AA9A4 /* SoundByte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundByte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF1CE3FB1BDE97EB007AA9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +107,8 @@
 		CFFC56A51C0E4AEB0062E102 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		CFFC56A71C1623E40062E102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CFFC56AC1C1628170062E102 /* SongSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchViewController.swift; sourceTree = "<group>"; };
+		E9AC2C9F5D25A1962A321D16 /* Pods_SoundByte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundByte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC6D8DE45C79CE4AEF695513 /* Pods-SoundByte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundByte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +133,7 @@
 				CF1CE4291BDE9A27007AA9A4 /* ParseUI.framework in Frameworks */,
 				CF1CE4281BDE9A27007AA9A4 /* Parse.framework in Frameworks */,
 				CF1CE4271BDE9A27007AA9A4 /* Bolts.framework in Frameworks */,
-				0D80BFF75C45C620609B537F /* Pods_SoundByte.framework in Frameworks */,
+				43F3EB29321DDE322CD3BF32 /* Pods_SoundByte.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,17 +141,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34829F01B5FA93E01D0DACD8 /* Pods_SoundByteTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12D4F172CF78994499666929 /* Pods */ = {
+		6CDE1DE611490ADC982B2FD1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				781D2C69B1A2CD1540177A39 /* Pods-SoundByte.debug.xcconfig */,
-				B010D826907277282D7E27BB /* Pods-SoundByte.release.xcconfig */,
+				EC6D8DE45C79CE4AEF695513 /* Pods-SoundByte.debug.xcconfig */,
+				989A7B4D78E6918245A35462 /* Pods-SoundByte.release.xcconfig */,
+				A700C4884B38F5BC75FCC3AB /* Pods-SoundByteTests.debug.xcconfig */,
+				77DD64A6263BB7CAAFDC4D63 /* Pods-SoundByteTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -183,8 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				CF1CE4471BDECA68007AA9A4 /* RegisterPageViewController.swift */,
-				CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */,
 				CF691DF81C456B57002289B6 /* SpotifyLoginViewController.swift */,
+				CF1CE4411BDEC99F007AA9A4 /* LoginViewController.swift */,
 			);
 			name = Login/Register;
 			sourceTree = "<group>";
@@ -195,7 +202,7 @@
 				CF1CE3F91BDE97EB007AA9A4 /* SoundByte */,
 				CF1CE3F81BDE97EB007AA9A4 /* Products */,
 				CF1CE41F1BDE98DE007AA9A4 /* Frameworks */,
-				12D4F172CF78994499666929 /* Pods */,
+				6CDE1DE611490ADC982B2FD1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,6 +218,7 @@
 		CF1CE3F91BDE97EB007AA9A4 /* SoundByte */ = {
 			isa = PBXGroup;
 			children = (
+				CFC108511E241D8300D3AE50 /* Data Models */,
 				CF4B92801C6A88DB00100CD7 /* Favorites */,
 				CF0DC8F41C209AD0005C9825 /* Login/Register */,
 				CF0DC8F11C209A85005C9825 /* FriendSearch */,
@@ -261,7 +269,8 @@
 				CF1CE4241BDE9A27007AA9A4 /* Bolts.framework */,
 				CF1CE4251BDE9A27007AA9A4 /* Parse.framework */,
 				CF1CE4261BDE9A27007AA9A4 /* ParseUI.framework */,
-				A6AF81E996464C4841DC437B /* Pods_SoundByte.framework */,
+				E9AC2C9F5D25A1962A321D16 /* Pods_SoundByte.framework */,
+				38EE6AA71681A325735812D8 /* Pods_SoundByteTests.framework */,
 			);
 			name = Frameworks;
 			path = SoundByte.xcodeproj;
@@ -276,6 +285,13 @@
 			name = Favorites;
 			sourceTree = "<group>";
 		};
+		CFC108511E241D8300D3AE50 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Data Models";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -283,12 +299,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF1CE4191BDE97EB007AA9A4 /* Build configuration list for PBXNativeTarget "SoundByte" */;
 			buildPhases = (
-				574CBC4A7CD5BCD09B83A6CA /* Check Pods Manifest.lock */,
+				FFD6FD2B38EFB4D340C891D5 /* [CP] Check Pods Manifest.lock */,
 				CF1CE3F31BDE97EB007AA9A4 /* Sources */,
 				CF1CE3F41BDE97EB007AA9A4 /* Frameworks */,
 				CF1CE3F51BDE97EB007AA9A4 /* Resources */,
-				F3E6FD03BD2EE47A08472FA5 /* Embed Pods Frameworks */,
-				36D3F8F8C353BC27628D5D4D /* Copy Pods Resources */,
+				6AE91AF08ADB12DB81ADE9DE /* [CP] Embed Pods Frameworks */,
+				2556CC7C5D88CDCE226E8C48 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,9 +319,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF1CE41C1BDE97EB007AA9A4 /* Build configuration list for PBXNativeTarget "SoundByteTests" */;
 			buildPhases = (
+				FE38EDD61DC6F76F7DBCF724 /* [CP] Check Pods Manifest.lock */,
 				CF1CE40B1BDE97EB007AA9A4 /* Sources */,
 				CF1CE40C1BDE97EB007AA9A4 /* Frameworks */,
 				CF1CE40D1BDE97EB007AA9A4 /* Resources */,
+				6BC5D63655DC235BFE490241 /* [CP] Embed Pods Frameworks */,
+				AA866F370E199284A53526E9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -378,14 +397,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		36D3F8F8C353BC27628D5D4D /* Copy Pods Resources */ = {
+		2556CC7C5D88CDCE226E8C48 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,34 +412,79 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		574CBC4A7CD5BCD09B83A6CA /* Check Pods Manifest.lock */ = {
+		6AE91AF08ADB12DB81ADE9DE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F3E6FD03BD2EE47A08472FA5 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundByte/Pods-SoundByte-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BC5D63655DC235BFE490241 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundByteTests/Pods-SoundByteTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA866F370E199284A53526E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundByteTests/Pods-SoundByteTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE38EDD61DC6F76F7DBCF724 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FFD6FD2B38EFB4D340C891D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -563,7 +627,7 @@
 		};
 		CF1CE41A1BDE97EB007AA9A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 781D2C69B1A2CD1540177A39 /* Pods-SoundByte.debug.xcconfig */;
+			baseConfigurationReference = EC6D8DE45C79CE4AEF695513 /* Pods-SoundByte.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -593,7 +657,7 @@
 		};
 		CF1CE41B1BDE97EB007AA9A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B010D826907277282D7E27BB /* Pods-SoundByte.release.xcconfig */;
+			baseConfigurationReference = 989A7B4D78E6918245A35462 /* Pods-SoundByte.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -622,6 +686,7 @@
 		};
 		CF1CE41D1BDE97EB007AA9A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A700C4884B38F5BC75FCC3AB /* Pods-SoundByteTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -641,6 +706,7 @@
 		};
 		CF1CE41E1BDE97EB007AA9A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77DD64A6263BB7CAAFDC4D63 /* Pods-SoundByteTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

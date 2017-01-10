@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4D1DA99861A14CC07A32068D83A5CEFC365C2657",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4D1DA99861A14CC07A32068D83A5CEFC365C2657" : 0,
+    "8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164" : 0,
+    "0A891745A5ADA564E7F5DAC563AD5C8DD4CC37D3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FF54BA36-C5D0-4C02-B47F-F5537891930F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4D1DA99861A14CC07A32068D83A5CEFC365C2657" : "SoundByte",
+    "8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164" : "",
+    "0A891745A5ADA564E7F5DAC563AD5C8DD4CC37D3" : "SoundByteSoundByte"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SoundByte",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SoundByte.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jeffcoh23\/SoundByte.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0A891745A5ADA564E7F5DAC563AD5C8DD4CC37D3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jeffcoh23\/SoundByte",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4D1DA99861A14CC07A32068D83A5CEFC365C2657"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jeffcoh23\/SoundByte.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8C714CB9A412A0C00ECCD488FC91BFC6DAAF4164"
+    }
+  ]
+}

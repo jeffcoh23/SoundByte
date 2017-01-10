@@ -7,23 +7,19 @@
 //
 
 import Foundation
-
-//
-//  LoginViewController.swift
-//  Tutorial1
-//
-//  Created by Jeff Cohen on 9/29/15.
-//  Copyright (c) 2015 Jeff Cohen. All rights reserved.
-//
-
 import UIKit
 import Parse
 import Bolts
 
 class LoginViewController: UIViewController {
     
+    //text field for username
     @IBOutlet weak var userEmailTextField: UITextField!
+    
+    //text field for password
     @IBOutlet weak var userPasswordTextField: UITextField!
+    
+    //Segue name
     let loginViewControllerSegue = "LoginSuccessful"
     
     override func viewDidLoad() {
@@ -42,7 +38,7 @@ class LoginViewController: UIViewController {
     
 
     
-    
+    //Action when login button is tapped
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         var userEmail = userEmailTextField.text

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 
 //run "ruby spotify_token_swap.rb" to launch server
@@ -74,7 +75,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
         self.tableViewSongResults.reloadData()
         
     }
-
+    
     
     
     @IBAction func loginWithSpotify(sender: AnyObject) {
@@ -106,7 +107,7 @@ class SongSearchViewController: UIViewController, SPTAuthViewDelegate, SPTAudioS
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         print("login failed")
     }
-//    
+    //
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         state = .DefaultMode
@@ -256,7 +257,7 @@ extension SongSearchViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongSearchTableViewCell
         
-
+        
         cell.addSongSearchButton.hidden = true
         if spotifyListPage?.items == nil{
             cell.songSearchLabel!.text = "No Results Found"
@@ -271,10 +272,11 @@ extension SongSearchViewController: UITableViewDataSource {
             let song = self.spotifyListPage?.items[indexPath.row]
             let URISong = song!.uri.description
             //NSLog("\(song!.uri.description)")
-            cell.songURI = song
+            cell.songURI = song as? SPTPartialTrack
             if let followingSongs = followingSongs{
                 cell.canFollow = !followingSongs.contains(URISong)
             }
+            
         }
         
         
@@ -288,8 +290,8 @@ extension SongSearchViewController: UITableViewDataSource {
 
 extension SongSearchViewController: SongSearchTableViewCellDelegate {
     
-    func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: AnyObject?) {
+    func cell(cell: SongSearchTableViewCell, didSelectFollowSong song: SPTPartialTrack?) {
     }
-    func cell(cell: SongSearchTableViewCell, didSelectUnFollowSong song: AnyObject?) {
+    func cell(cell: SongSearchTableViewCell, didSelectUnFollowSong song: SPTPartialTrack?) {
     }
 }
